@@ -1,6 +1,7 @@
 <?php
 
   require_once 'Controleurs/controleurAccueil.php';
+  require_once 'Controleurs/controleurAnnuaire.php';
 
   class routeur{
 
@@ -8,6 +9,7 @@
 
     public function __construct(){
       $this->controleurAccueil = new accueil();
+      $this->controleurAnnuaire = new annuaire();
       session_start();
     }
 
@@ -18,6 +20,10 @@
 
         case 'accueil':
           $this->controleurAccueil->affichageAccueil();
+          break;
+
+        case 'annuaire':
+          $this->controleurAnnuaire->affichageAnnuaire();
           break;
 
         default:
