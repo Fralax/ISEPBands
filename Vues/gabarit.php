@@ -3,6 +3,9 @@
 
 <head>
     <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="Contenu/gabarit.css" />
+
     <title><?= $titre ?></title>
 </head>
 
@@ -23,9 +26,7 @@
     </div>
 
     <footer>
-      <p>
         ISEPBands &copy; 2016 - Tous droits r&eacute;serv&eacute;s
-      </p>
     </footer>
 
   </body>

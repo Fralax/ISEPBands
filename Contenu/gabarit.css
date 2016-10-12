@@ -1,0 +1,30 @@
+*{
+    font-family: sans-serif;
+}
+
+header #logo{
+  text-align: center;
+}
+
+body{
+  background-color: rgba(245, 245, 225, 1);
+}
+
+#wrap {
+	position: relative;
+	margin-top: 3em;
+}
+
+#main {
+  overflow:auto;
+  padding-bottom: 150px;
+}
+
+footer{
+  position: relative;
+  text-align: center;
+  clear:both;
+  margin-top: -90px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
