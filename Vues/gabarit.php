@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
 
     <link rel="stylesheet" href="Contenu/gabarit.css" />
+    <link rel="stylesheet" href="Contenu/vueAccueil.css" />
 
     <title><?= $titre ?></title>
 </head>
@@ -15,7 +16,9 @@
     <header>
       <div id="logo">
         <a href="index.php?page=accueil"><img id="logo" src="Autres/LogoISEPBands.jpg" width="460" height="300" ></a>
-        <h1> <?php echo $slogan  ?> </h1>
+      </div>
+      <div class="bienvenue">
+        <h1>Bienvenue sur le site d'ISEP Bands !</h1>
       </div>
     </header>
 

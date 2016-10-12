@@ -1,3 +1,3 @@
 <?php $this->titre = "Accueil" ?>
 
-<h1>Bienvenue sur le site d'ISEP Bands !</h1>
+<a href="index.php?page=annuaire"><p>coucou</p></a>
