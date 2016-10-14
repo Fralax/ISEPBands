@@ -12,12 +12,12 @@
       $this->controleurAccueil = new accueil();
       $this->controleurAnnuaire = new annuaire();
       $this->controleurInscription = new inscription();
-      session_start();
+      //session_start();
     }
 
     public function routerRequete(){
       $routeur = new routeur();
-
+      error_reporting (0);
       switch($_GET['page']){
 
         case 'accueil':
@@ -29,7 +29,7 @@
           break;
 
         case 'inscription':
-            $this->controleurInscription->affichageInscription();
+            $this->controleurInscription->inscriptionUtilisateur();
             break;
 
 
