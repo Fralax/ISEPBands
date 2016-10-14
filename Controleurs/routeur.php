@@ -2,6 +2,7 @@
 
   require_once 'Controleurs/controleurAccueil.php';
   require_once 'Controleurs/controleurAnnuaire.php';
+  require_once 'Controleurs/controleurInscription.php';
 
   class routeur{
 
@@ -10,6 +11,7 @@
     public function __construct(){
       $this->controleurAccueil = new accueil();
       $this->controleurAnnuaire = new annuaire();
+      $this->controleurInscription = new inscription();
       session_start();
     }
 
@@ -25,6 +27,11 @@
         case 'annuaire':
           $this->controleurAnnuaire->affichageAnnuaire();
           break;
+
+        case 'inscription':
+            $this->controleurInscription->affichageInscription();
+            break;
+
 
         default:
           $_SESSION = array();
