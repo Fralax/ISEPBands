@@ -5,6 +5,7 @@
   class inscription{
 
 
+
    public function inscriptionUtilisateur(){
      $envoyer = $_POST["envoyer"];
      $nom = $_POST["nom"];
@@ -15,19 +16,17 @@
         if (($nom != "") && ($prenom != "") && ($email != "") && ($confirmEmail != "")){
           if ($email == $confirmEmail){
             header("location: index.php");
-            
-          }
-          else{
+
+          }else{
             echo "Les emails ne correspondent pas ! :(";
+
+
           }
         }
-      }
-    $vue = new Vue('Inscription');
-    $vue->generer();
-  }
 
-
-
+      $vue = new Vue('Inscription');
+      $vue->generer();
+    }
 
   }
 
