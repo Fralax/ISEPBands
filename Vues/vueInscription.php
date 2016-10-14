@@ -1,13 +1,16 @@
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Isep band Inscription</title>
-  </head>
-  <body>
-    <form action="Controleurs/controleurInscription.php" method="post">
-      Email :
-      <input type="text" name="email">
-      <input type="submit" value="Valider">
-    </form>
-  </body>
-</html>
+<form action="" method="post">
+  
+  Nom :
+  <input type="text" name="nom" value="">
+  <br>Prenom :
+  <input type="text" name="prenom" value="">
+  <br>Email :
+  <input type="text" name="email" value="">
+  <br>Confirmez votre email :
+  <input type="text" name="confirmEmail" value="">
+
+  <br>
+  <input type="submit" value="Valider" name="envoyer">
+
+
+</form>
