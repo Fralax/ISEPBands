@@ -2,19 +2,28 @@
 
   require_once 'Vues/vue.php';
 
-  $email = $_POST["email"];
   class inscription{
 
-    public $mail = $this->email;
 
-    public function affichageInscription(){
-      $vue = new Vue('Inscription');
-      $vue->generer();
-    }
-
-  //  public function nouveauMembre(){}
-      //ET LA ON MET LES TRUCS VERS LE MODELEINSCRIPTION
-
+   public function inscriptionUtilisateur(){
+     $envoyer = $_POST["envoyer"];
+     $nom = $_POST["nom"];
+     $prenom = $_POST["prenom"];
+     $email = $_POST["email"];
+     $confirmEmail = $_POST["confirmEmail"];
+      if (isset ($envoyer)){
+        if (($nom != "") && ($prenom != "") && ($email != "") && ($confirmEmail != "")){
+          if ($email == $confirmEmail){
+            header("location: index.php");
+          }
+          else{
+            echo "Les emails ne correspondent pas ! :(";
+          }
+        }
+      }
+    $vue = new Vue('Inscription');
+    $vue->generer();
+  }
 
 
 
