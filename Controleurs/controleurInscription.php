@@ -1,6 +1,7 @@
 <?php
 
   require_once 'Vues/vue.php';
+  require_once 'Modeles/utilisateurs.php';
 
   class inscription{
 
@@ -10,9 +11,12 @@
      $prenom = $_POST["prenom"];
      $email = $_POST["email"];
      $confirmEmail = $_POST["confirmEmail"];
+     $user = new utilisateurs();
+
      if (isset ($envoyer)){
        if (($nom != "") && ($prenom != "") && ($email != "") && ($confirmEmail != "")){
          if ($email == $confirmEmail){
+           $user->inscrireUtilisateur();
            header("Location: index.php");
           }else{
             echo "Les emails ne correspondent pas ! :(";
