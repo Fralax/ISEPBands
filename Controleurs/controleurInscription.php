@@ -15,6 +15,7 @@
         if (($nom != "") && ($prenom != "") && ($email != "") && ($confirmEmail != "")){
           if ($email == $confirmEmail){
             header("location: index.php");
+            
           }
           else{
             echo "Les emails ne correspondent pas ! :(";
