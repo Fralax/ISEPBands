@@ -2,7 +2,7 @@
 
   require_once 'Vues/vue.php';
 
-  class annuaire{
+  class controleurAnnuaire{
 
     public function affichageAnnuaire(){
       $vue = new Vue('Annuaire');

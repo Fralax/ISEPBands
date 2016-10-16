@@ -7,17 +7,18 @@
   class routeur{
 
     private $controleurAccueil;
+    private $controleurAnnuaire;
+    private $controleurInscription;
 
     public function __construct(){
-      $this->controleurAccueil = new accueil();
-      $this->controleurAnnuaire = new annuaire();
-      $this->controleurInscription = new inscription();
+      $this->controleurAccueil = new controleurAccueil();
+      $this->controleurAnnuaire = new controleurAnnuaire();
+      $this->controleurInscription = new controleurInscription();
       //session_start();
     }
 
     public function routerRequete(){
       $routeur = new routeur();
-      error_reporting (0);
       switch($_GET['page']){
 
         case 'accueil':
