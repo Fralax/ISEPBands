@@ -4,15 +4,12 @@ require_once "Modeles/modele.php";
 
 class utilisateurs extends modele {
 
-  public function inscrireUtilisateur(){
-    $sql = 'INSERT INTO utilisateur (u_prenom,u_nom,u_email) VALUES (:prenom,:nom,:email)';
-    $inscrireUtilisateur = $this->executerRequete($sql, array('prenom' => $_POST['prenom'], 'nom' => $_POST['nom'], 'email' => $_POST['email']));
-  }
+  public function inscrireUtilisateur($prenom, $nom, $email, $mdp, $portable, $promo, $dateInscription, $valide){
+    
+    $sql = 'INSERT INTO utilisateur (u_prenom, u_nom, u_email, u_mdp, u_portable, u_promo, u_dateInscription, u_valide) VALUES (:prenom, :nom, :email, :mdp, :portable, :promo, :dateInscription, :valide)';
 
-  public function afficherTest(){
-    $sql = 'SELECT * FROM utilisateur WHERE u_email=?';
-    $afficherTest = $this->executerRequete($sql, array($_POST['email']));
-    return $afficherTest;
+    $inscrireUtilisateur = $this->executerRequete($sql, array('prenom' => $prenom, 'nom' => $nom, 'email' => $email, 'mdp' => $mdp, 'portable' => $portable, 'promo' => $promo, 'dateInscription' => $dateInscription, 'valide' => $valide));
+
   }
 
 }

@@ -2,7 +2,7 @@
 
   require_once 'Vues/vue.php';
 
-  class accueil{
+  class controleurAccueil{
 
     public function affichageAccueil(){
       $vue = new Vue('Accueil');

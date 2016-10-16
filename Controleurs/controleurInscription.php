@@ -3,29 +3,47 @@
   require_once 'Vues/vue.php';
   require_once 'Modeles/utilisateurs.php';
 
-  class inscription{
+  class controleurInscription{
 
-   public function inscriptionUtilisateur(){
-     $envoyer = $_POST["envoyer"];
-     $nom = $_POST["nom"];
-     $prenom = $_POST["prenom"];
-     $email = $_POST["email"];
-     $confirmEmail = $_POST["confirmEmail"];
-     $user = new utilisateurs();
+    public function inscriptionUtilisateur(){
 
-     if (isset ($envoyer)){
-       if (($nom != "") && ($prenom != "") && ($email != "") && ($confirmEmail != "")){
-         if ($email == $confirmEmail){
-           $user->inscrireUtilisateur();
-           header("Location: index.php");
-          }else{
-            echo "Les emails ne correspondent pas ! :(";
+      $envoyer = $_POST['envoyer'];
+      $nom = $_POST['nom'];
+      $prenom = $_POST['prenom'];
+      $email = $_POST['email'];
+      $confirmEmail = $_POST['confirmEmail'];
+      $mdp = $_POST['mdp'];
+      $confirmMdp = $_POST['confirmMdp'];
+      $portable = $_POST['portable'];
+      $promo = $_POST['promo'];
+      $dateInscription = date('Y-m-d');
+      $valide = 0;
+      $user = new utilisateurs();
+
+      if (isset($envoyer)){
+        if (!empty($nom) && !empty($prenom) && !empty($email) && !empty($confirmEmail) && !empty($mdp) && !empty($confirmMdp) && !empty($promo) && !empty($portable)){
+          if ($email == $confirmEmail && $mdp == $confirmMdp){
+            $mdp = password_hash($mdp, PASSWORD_BCRYPT);
+            $user->inscrireUtilisateur($prenom, $nom, $email, $mdp, $portable, $promo, $dateInscription, $valide);
+            header("Location: index.php");
+          } else{
+            if ($email != $confirmEmail) {
+              echo "Les emails ne sont pas identiques !";
+            }
+            if ($mdp != $confirmMdp) {
+              echo "Les mots de passe de sont pas identiques !";
+            }
           }
+        } else{
+          echo "Des champs n'ont pas été remplis !";
         }
       }
       $vue = new Vue('Inscription');
       $vue->generer();
+
     }
+
+
   }
 
 ?>
