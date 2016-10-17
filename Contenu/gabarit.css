@@ -1,9 +1,28 @@
 *{
     font-family: sans-serif;
 }
+#logo{
+  margin : 20 px;
+  width: 150 px;
+  height : 100 px;
+  float : left;
+}
 
 header{
+  padding : auto;
+  background-color: Black;
   text-align: center;
+  color : rgb(122,35,23) ;
+  height :70px;
+
+  vertical-align: middle;
+
+}
+
+.bienvenue{
+  display : flex;
+  justify-content: center;
+
 }
 
 body{
