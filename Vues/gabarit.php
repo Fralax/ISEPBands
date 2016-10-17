@@ -50,7 +50,9 @@
 
     <header>
       <div id="logo">
+
         <a href="index.php?page=accueil"><img src="Autres/LogoISEPBands.png" width="460" height="300" ></a>
+
       </div>
       <div class="menu">
         <div class="connexion">
