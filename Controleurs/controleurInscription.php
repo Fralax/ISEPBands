@@ -23,12 +23,17 @@
       if (isset($envoyer)){
         if (!empty($nom) && !empty($prenom) && !empty($email) && !empty($confirmEmail) && !empty($mdp) && !empty($confirmMdp) && !empty($promo) && !empty($portable)){
           if ($email == $confirmEmail && $mdp == $confirmMdp){
-            $mdp = password_hash($mdp, PASSWORD_BCRYPT);
-            $user->inscrireUtilisateur($prenom, $nom, $email, $mdp, $portable, $promo, $dateInscription, $valide);
-            header("Location: index.php");
+            $resultatEmail = $user->verifierEmail($email)->fetch();
+            if (!$resultatEmail){
+              $mdp = password_hash($mdp, PASSWORD_BCRYPT);
+              $user->inscrireUtilisateur($prenom, $nom, $email, $mdp, $portable, $promo, $dateInscription, $valide);
+              header("Location: index.php");
+            } else{
+              echo "L'adresse Mail saisie est déjà utilisée avec un autre compte !";
+            }
           } else{
             if ($email != $confirmEmail) {
-              echo "Les emails ne sont pas identiques !";
+              echo "Les adressses Mail ne sont pas identiques !";
             }
             if ($mdp != $confirmMdp) {
               echo "Les mots de passe de sont pas identiques !";

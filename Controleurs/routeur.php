@@ -19,6 +19,7 @@
 
     public function routerRequete(){
       $routeur = new routeur();
+      error_reporting(0);
       switch($_GET['page']){
 
         case 'accueil':
