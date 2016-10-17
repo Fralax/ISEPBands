@@ -28,6 +28,7 @@
         <td>
           <input type="password" name="mdp" value="" placeholder="Mot de passe">
         </td>
+        <td>
           <input type="password" name="confirmMdp" value="" placeholder="Confirmez votre mot de passe">
         </td>
       </tr>
@@ -50,14 +51,5 @@
       </tr>
     </table>
   </div>
-
-  <div id="musique">
-    <table>
-      <tr>
-        <td>
-
-        </td>
-      </tr>
-    </table>
   <input type="submit" name="envoyer" value="S'inscrire !">
 </form>
