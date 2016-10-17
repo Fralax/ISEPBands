@@ -15,7 +15,7 @@
 
     <header>
       <div id="logo">
-        <a href="index.php?page=accueil"><img id="logo" src="Autres/LogoISEPBands.png" width="100" height="auto" ></a>
+        <a href="index.php?page=accueil"><img src="Autres/LogoISEPBands.png" width="100" height="auto" ></a>
       </div>
       <div class="bienvenue">
         <h1>Bienvenue sur le site d'ISEP Bands !</h1>
