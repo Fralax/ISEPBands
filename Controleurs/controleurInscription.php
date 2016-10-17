@@ -29,24 +29,25 @@
               $user->inscrireUtilisateur($prenom, $nom, $email, $mdp, $portable, $promo, $dateInscription, $valide);
               header("Location: index.php");
             } else{
-              echo "L'adresse Mail saisie est déjà utilisée avec un autre compte !";
+              ?> <script>alert("L'adresse Mail saisie est déjà utilisée avec un autre compte !")</script><?php
             }
           } else{
             if ($email != $confirmEmail) {
-              echo "Les adressses Mail ne sont pas identiques !";
+              ?> <script>alert("Les adresses Mail saisies sont différentes !")</script><?php
             }
             if ($mdp != $confirmMdp) {
-              echo "Les mots de passe de sont pas identiques !";
+              ?> <script>alert("Les Mots de passe saisis son différents !")</script><?php
             }
           }
         } else{
-          echo "Des champs n'ont pas été remplis !";
+          ?> <script>alert("Des champs n'ont pas été remplis !")</script><?php
         }
       }
       $vue = new Vue('Inscription');
       $vue->generer();
 
     }
+
 
 
   }
