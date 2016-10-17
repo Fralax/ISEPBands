@@ -22,4 +22,13 @@ class utilisateurs extends modele {
   }
 
 
+  public function verifierMdp($email){
+
+    $sql = 'SELECT u_mdp, u_email FROM utilisateur WHERE u_email = :email';
+    $resultatMdp = $this->executerRequete($sql, array('email' => $email));
+    return $resultatMdp;
+
+  }
+
+
 }
