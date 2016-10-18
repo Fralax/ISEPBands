@@ -58,7 +58,7 @@
     $vue->generer(array("intrumentsNonJoues" => $afficherInstrumentsNonJoues));
 
 
-
+ //CECI EST DU LOL POUR RECOMMIT ET PUSH
 }
 
   }
