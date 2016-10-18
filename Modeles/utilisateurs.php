@@ -31,4 +31,19 @@ class utilisateurs extends modele {
   }
 
 
+  public function pratiquerInstrument($email, $instrument, $niveau){
+    $sql= 'INSERT INTO pratique (p_email, p_instrument, p_niveau) VALUES (:email, :instrument, :niveau)';
+    $ajouterInstrument = $this->executerRequete($sql, array('email' => $email, 'instrument' => $instrument, 'niveau' => $niveau));
+
+  }
+
+
+  public function afficherInstrumentsNonJoues($email){
+    $sql='SELECT i_instrument FROM instrument WHERE i_instrument NOT IN (SELECT p_instrument FROM pratique WHERE p_email= :email)';
+    $afficherInstrumentsNonJoues = $this->executerRequete($sql, array('email' => $email));
+    return $afficherInstrumentsNonJoues;
+  }
+
+
+
 }

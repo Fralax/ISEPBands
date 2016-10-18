@@ -27,7 +27,9 @@
             if (!$resultatEmail){
               $mdp = password_hash($mdp, PASSWORD_BCRYPT);
               $user->inscrireUtilisateur($prenom, $nom, $email, $mdp, $portable, $promo, $dateInscription, $valide);
-              header("Location: index.php");
+              session_start();
+              $_SESSION['email'] = $email;
+              header("Location: index.php?page=inscriptioninstruments");
             } else{
               ?> <script>alert("L'adresse Mail saisie est déjà utilisée avec un autre compte !")</script><?php
             }
@@ -48,7 +50,16 @@
 
     }
 
-  //  public function 
+  public function inscriptionUtilisateurInstruments(){
+    $user = new utilisateurs();
+    $afficherInstrumentsNonJoues = $user -> afficherInstrumentsNonJoues($_SESSION['email'])-> fetchAll();
+
+    $vue = new Vue('InscriptionMusique');
+    $vue->generer(array("intrumentsNonJoues" => $afficherInstrumentsNonJoues));
+
+
+
+}
 
   }
 
