@@ -17,7 +17,10 @@
       $this->controleurAnnuaire = new controleurAnnuaire();
       $this->controleurInscription = new controleurInscription();
       $this->controleurconnexion = new controleurConnexion();
-      session_start();
+      if (!isset($_SESSION['email'])) {
+                session_start();
+      }
+
     }
 
     public function routerRequete(){
@@ -34,9 +37,12 @@
           break;
 
         case 'inscription':
-            $this->controleurInscription->inscriptionUtilisateur();
-            break;
+          $this->controleurInscription->inscriptionUtilisateur();
+          break;
 
+        case 'inscriptioninstruments':
+          $this->controleurInscription->inscriptionUtilisateurInstruments();
+          break;
 
         default:
           $_SESSION = array();
