@@ -27,9 +27,20 @@
       <div id="logo">
         <a href="index.php?page=accueil"><img src="Autres/LogoISEPBands.png" width="460" height="300" ></a>
       </div>
-      <div class="menu">
-        Menu Déroulant
-      </div>
+
+      <nav>
+        <ul id = "barreMenu">
+          <li><a href="index.php?page=accueil">Accueil</a></li>
+          <li><a href="index.php?page=planning">Planning</a></li>
+          <li> Annuaire
+            <ul>
+              <li> <a href="index.php?page=annuaire">Membres</a> </li>
+              <li> <a href="index.php?page=annuaire">Groupes</a> </li>
+            </ul>
+          </li>
+          <li><a href="index.php?page=profil">Bonjour <?php echo $_SESSION['prenom'] ?> !</a></li>
+        </ul>
+      </nav>
     </header>
 
     <div id="wrap">
@@ -51,7 +62,7 @@
     <header>
       <div id="logo">
 
-        <a href="index.php?page=accueil"><img src="Autres/LogoISEPBands.png" width="460" height="300" ></a>
+        <a href="index.php"><img src="Autres/LogoISEPBands.png" width="460" height="300" ></a>
 
       </div>
       <div class="menu">

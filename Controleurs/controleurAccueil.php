@@ -1,5 +1,5 @@
 <?php
-
+  require_once 'Modeles/utilisateurs.php';
   require_once 'Vues/vue.php';
 
   class controleurAccueil{
