@@ -17,7 +17,7 @@
         if (password_verify($mdp, $resultatMdp[0])){
           session_start();
           $_SESSION['email'] = $resultatMdp['u_email'];
-          var_dump($_SESSION['email']);
+          $_SESSION['prenom'] = $resultatMdp['u_prenom'];
           header("Location: index.php?page=accueil");
         } else{
           ?> <script> alert("L'adresse mail ou le mot de passe est erroné !") </script> <?php
