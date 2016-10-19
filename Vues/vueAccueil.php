@@ -15,5 +15,6 @@
 <?php if ($a == 1): ?>
   <div class="bienvenue">
     <h1>Bienvenue sur le site d'ISEP Bands !</h1>
+    <a href="index.php?page=accueil"><img src="Autres/LogoISEPBands.png" width="460" height="300" ></a>
   </div>
 <?php endif; ?>

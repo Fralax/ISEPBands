@@ -1,3 +1,5 @@
+<?php $this->titre = "Inscription" ?>
+
 <?php
   $date = date('Y');
   settype($date, "integer");

@@ -17,9 +17,7 @@
       $this->controleurAnnuaire = new controleurAnnuaire();
       $this->controleurInscription = new controleurInscription();
       $this->controleurconnexion = new controleurConnexion();
-      if (!isset($_SESSION['email'])) {
-                session_start();
-      }
+      session_start();
 
     }
 
