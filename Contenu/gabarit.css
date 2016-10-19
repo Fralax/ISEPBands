@@ -1,19 +1,72 @@
 *{
-    font-family: sans-serif;
+    font-family: 'Comic Sans MS', cursive;
 }
 
 #logo{
   text-align: center;
 }
 
-.menu{
-  text-align: center;
-}
-
 
 body{
   background-color: rgba(245, 245, 225, 1);
+  margin: 0;
+  padding: 0;
 }
+
+header nav{
+  position: relative;
+  text-align: center;
+  background-color: rgba(138, 38, 22, 1);
+  font-size: 1.1em;
+}
+
+header a{
+  color: white;
+  text-decoration: none;
+}
+
+header img{
+  height: 30%;
+  width: 30%;
+  vertical-align: middle;
+}
+
+header .barreMenu, .barreMenu ul{
+	padding : 0; /* pas de marge intérieure */
+	margin : 0; /* ni extérieure */ /* on définit une hauteur pour chaque élément */
+  line-height : 40px; /* on définit une hauteur pour chaque élément */
+	text-align : center; /* on centre le texte qui se trouve dans la liste */
+}
+
+header .barreMenu li {
+	/* on place les liens du menu horizontalement */
+	display: inline-block;
+	position: relative;
+	width: 15em;
+}
+
+header .postEmail{
+  padding-top: 0.6em;
+}
+
+header .barreMenu p{
+  margin-top: -10px;
+  margin-bottom: -5px;
+  padding-bottom: -5px;
+}
+
+header .barreMenu ul li {
+	/* on enlève ce comportement pour les liens du sous menu */
+  display: inherit;
+	border-radius: 0;
+}
+
+header .barreMenu ul {
+	position:absolute;
+  z-index: 1000;
+  background-color: rgba(138, 38, 22, 1);
+}
+
 
 #wrap {
 	position: relative;
@@ -30,6 +83,7 @@ footer{
   text-align: center;
   clear:both;
   margin-top: -90px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding: 0.8em;
+  background-color: rgba(138, 38, 22, 1);
+  color: white;
 }
