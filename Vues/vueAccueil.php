@@ -9,7 +9,7 @@
 ?>
 
 <?php if ($a == 0): ?>
-  Vos informations : test test 
+  Vos informations : Coucou Coucou
 <?php endif; ?>
 
 <?php if ($a == 1): ?>
