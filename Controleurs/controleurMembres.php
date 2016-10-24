@@ -11,16 +11,17 @@
       $instrumentPratique = $_POST['instrument'];
       $niveau = $_POST['niveau'];
       $annees = $_POST['annees'];
-      $afficherInstrumentsNonJoues = $user->afficherInstrumentsNonJoues($_SESSION['email'])->fetchAll();
-      $afficherInstrumentsJoues = $user->afficherInstrumentsJoues($_SESSION['email'])->fetchAll();
+      $afficherInstrumentsNonJoues = $user->afficherInstrumentsNonJoues($_GET['id'])->fetchAll();
+      $afficherInstrumentsJoues = $user->afficherInstrumentsJoues($_GET['id'])->fetchAll();
+      $afficherInfosMembre = $user->afficherInfosMembre($_GET['id'])->fetch();
 
       if (isset($ajouterInstrumentPratique)) {
-        $user->pratiquerInstrument($_SESSION['email'], $instrumentPratique, $niveau, $annees);
-        header("Location: index.php?page=profil");
+        $user->pratiquerInstrument($_SESSION['id'], $instrumentPratique, $niveau, $annees);
+        header("Location: index.php?page=profil&id=".$_SESSION['id']);
       }
 
       $vue = new Vue('Profil');
-      $vue->generer(array("intrumentsNonJoues" => $afficherInstrumentsNonJoues, "instrumentsJoues" => $afficherInstrumentsJoues));
+      $vue->generer(array("intrumentsNonJoues" => $afficherInstrumentsNonJoues, "instrumentsJoues" => $afficherInstrumentsJoues, "infos" => $afficherInfosMembre));
     }
 
     public function verificationValide(){

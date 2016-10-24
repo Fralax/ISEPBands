@@ -1,0 +1,67 @@
+.profilGeneral, .formulairesProfil{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.profilGeneral p{
+  text-align: center;
+}
+
+.profilGeneral table{
+  margin: auto;
+}
+
+.informationsProfil{
+  padding: 1em;
+  width: 45%;
+}
+
+.instrumentsProfil{
+  padding: 1em;
+  width: 45%;
+}
+
+.inscriptionConfirmee{
+  text-align: center;
+}
+
+.ajouterInstrumentsProfil, .ajouterInstrumentsProfil ul{
+	padding : 0; /* pas de marge intérieure */
+	margin : 0; /* ni extérieure */ /* on définit une hauteur pour chaque élément */
+	text-align : center; /* on centre le texte qui se trouve dans la liste */
+}
+
+.ajouterInstrumentsProfil li {
+	/* on place les liens du menu horizontalement */
+	display: inline-block;
+	position: relative;
+  text-align: center;
+}
+
+#lienAjouterInstrument{
+  border: 3px solid rgba(150, 38, 22, 1);
+  padding: 0.6em 1.2em;
+  background: transparent;
+  color: rgba(150, 38, 22, 1);
+  font-family: 'Lato', Calibri, Arial, sans-serif;
+  font-size: 1em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-block;
+  margin: 3px 2px;
+  border-radius: 2px;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#lienAjouterInstrument:hover{
+  background: #FFF;
+  color: rgba(250, 190, 107, 1);
+}
+
+a{
+  text-decoration: none;
+}

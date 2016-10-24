@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" href="Contenu/gabarit.css" />
     <link rel="stylesheet" href="Contenu/vueAccueil.css" />
+    <link rel="stylesheet" href="Contenu/vueProfil.css" />
     <title><?= $titre ?></title>
 </head>
 
@@ -45,7 +46,7 @@ if ($verificationSession == true) {
           </li>
           <li class = "toggleSousMenu"> <span> BONJOUR <?php echo strtoupper($_SESSION['prenom']) ?> ! </span>
             <ul class = "sousMenu">
-              <li> <a href="index.php?page=profil">Profil</a> </li>
+              <li> <a href="index.php?page=profil&id=<?php echo $_SESSION['id'] ?>">Profil</a> </li>
               <li> <a href="index.php">Déconnexion</a> </li>
             </ul>
           </li>
