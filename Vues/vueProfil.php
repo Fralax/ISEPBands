@@ -27,59 +27,108 @@ if ($verificationSession == true) {
   </div>
 <?php endif; ?>
 
-<?php if ($instrumentsJoues): ?>
-  Mes instruments :
-  <table>
-    <?php foreach ($instrumentsJoues as list($instrument, $niveau, $annees)): ?>
+<div class="profilGeneral">
+  <div class="informationsProfil">
+    <p> Informations </p>
+    <table>
       <tr>
-          <td>
-            <?php echo $instrument ?>
-          </td>
-          <td>
-            <?php echo "niveau : ".$niveau ?>
-          </td>
-          <td>
-            <?php
-              if ($annees <= 1) {
-                echo $annees." année d'expérience";
-              } else{
-                echo $annees." années d'expérience";
-              }
-            ?>
-          </td>
+        <td>
+          Email :
+        </td>
+        <td>
+          <?php echo $infos['u_email'] ?>
+        </td>
       </tr>
-    <?php endforeach; ?>
-  </table>
-<?php endif; ?>
+      <tr>
+        <td>
+          Portable :
+        </td>
+        <td>
+          <?php echo $infos['u_portable'] ?>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Promo :
+        </td>
+        <td>
+          <?php echo $infos['u_promo'] ?>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Date d'inscription :
+        </td>
+        <td>
+          <?php echo $infos['u_dateInscription'] ?>
+        </td>
+      </tr>
+    </table>
+  </div>
 
-<a href="#form1">Ajouter un instrument</a>
-<div id = "form1" class="formMusique">
-  <form method="post" action="">
-    <p>
-      <select name="instrument">
-        <?php foreach ($intrumentsNonJoues as list($nomInstrument)) { ?>
-          <option value = "<?php echo $nomInstrument ?>" > <?php echo $nomInstrument?> </option>
-        <?php } ?>
-      </select>
-      <select name="niveau">
-        <option value="Débutant">Débutant</option>
-        <option value="Intermédiaire">Intermédiaire</option>
-        <option value="Avancé">Avancé</option>
-        <option value="Confirmé">Confirmé</option>
-      </select>
-      <select name="annees">
-        <?php for ($i=0; $i <= 20; $i++) { ?>
-          <?php if ($i<=1) { ?>
-            <option value="<?php echo $i ?>"><?php echo $i ?> an</option>
-          <?php } else { ?>
-            <option value="<?php echo $i ?>"><?php echo $i ?> ans</option>
-          <?php } ?>
-        <?php } ?>
-      </select>
-    </p>
-    <p> <input type="submit" name="ajouterInstrumentPratique" value="Valider"> </p>
-  </form>
+  <?php if ($instrumentsJoues): ?>
+    <div class="instrumentsProfil">
+      <p> Instruments </p>
+      <table>
+        <?php foreach ($instrumentsJoues as list($instrument, $niveau, $annees)): ?>
+          <tr>
+              <td>
+                <?php echo $instrument ?>
+              </td>
+              <td>
+                <?php echo "niveau : ".$niveau ?>
+              </td>
+              <td>
+                <?php
+                  if ($annees <= 1) {
+                    echo $annees." année d'expérience";
+                  } else{
+                    echo $annees." années d'expérience";
+                  }
+                ?>
+              </td>
+          </tr>
+        <?php endforeach; ?>
+      </table>
+    </div>
+  <?php endif; ?>
 </div>
 
-<script src="http://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+<div class="formulairesProfil">
+  <nav>
+    <ul class = "ajouterInstrumentsProfil">
+      <li class = "toggleSousMenuProfil"> <span>Ajouter un Instrument</span>
+        <ul class = "sousMenuProfil">
+          <form method="post" action="">
+            <p>
+              <select name="instrument">
+                <?php foreach ($intrumentsNonJoues as list($nomInstrument)) { ?>
+                  <option value = "<?php echo $nomInstrument ?>" > <?php echo $nomInstrument?> </option>
+                <?php } ?>
+              </select>
+              <select name="niveau">
+                <option value="Débutant">Débutant</option>
+                <option value="Intermédiaire">Intermédiaire</option>
+                <option value="Avancé">Avancé</option>
+                <option value="Confirmé">Confirmé</option>
+              </select>
+              <select name="annees">
+                <?php for ($i=0; $i <= 20; $i++) { ?>
+                  <?php if ($i<=1) { ?>
+                    <option value="<?php echo $i ?>"><?php echo $i ?> an</option>
+                  <?php } else { ?>
+                    <option value="<?php echo $i ?>"><?php echo $i ?> ans</option>
+                  <?php } ?>
+                <?php } ?>
+              </select>
+            </p>
+            <p> <input type="submit" name="ajouterInstrumentPratique" value="Valider"> </p>
+          </form>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
 <script src="JS/formulaireInstruments.js"></script>

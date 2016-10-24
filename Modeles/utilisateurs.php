@@ -11,10 +11,10 @@ class utilisateurs extends modele {
   }
 
 
-  public function inscrireUtilisateur($prenom, $nom, $email, $mdp, $portable, $promo, $dateInscription, $valide){
-    $sql = 'INSERT INTO utilisateur (u_prenom, u_nom, u_email, u_mdp, u_portable, u_promo, u_dateInscription, u_valide) VALUES (:prenom, :nom, :email, :mdp, :portable, :promo, :dateInscription, :valide)';
+  public function inscrireUtilisateur($prenom, $nom, $email, $mdp, $portable, $promo, $dateInscription, $valide, $photo){
+    $sql = 'INSERT INTO utilisateur (u_prenom, u_nom, u_email, u_mdp, u_portable, u_promo, u_dateInscription, u_valide, u_photo) VALUES (:prenom, :nom, :email, :mdp, :portable, :promo, :dateInscription, :valide, :photo)';
 
-    $inscrireUtilisateur = $this->executerRequete($sql, array('prenom' => $prenom, 'nom' => $nom, 'email' => $email, 'mdp' => $mdp, 'portable' => $portable, 'promo' => $promo, 'dateInscription' => $dateInscription, 'valide' => $valide));
+    $inscrireUtilisateur = $this->executerRequete($sql, array('prenom' => $prenom, 'nom' => $nom, 'email' => $email, 'mdp' => $mdp, 'portable' => $portable, 'promo' => $promo, 'dateInscription' => $dateInscription, 'valide' => $valide, 'photo' => $photo));
   }
 
 
@@ -31,21 +31,21 @@ class utilisateurs extends modele {
   }
 
 
-  public function pratiquerInstrument($email, $instrument, $niveau, $annees){
-    $sql = 'INSERT INTO pratique (p_email, p_instrument, p_niveau, p_annees) VALUES (:email, :instrument, :niveau, :annees)';
-    $ajouterInstrument = $this->executerRequete($sql, array('email' => $email, 'instrument' => $instrument, 'niveau' => $niveau, 'annees' => $annees));
+  public function pratiquerInstrument($id, $instrument, $niveau, $annees){
+    $sql = 'INSERT INTO pratique (p_id, p_instrument, p_niveau, p_annees) VALUES (:id, :instrument, :niveau, :annees)';
+    $ajouterInstrument = $this->executerRequete($sql, array('id' => $id, 'instrument' => $instrument, 'niveau' => $niveau, 'annees' => $annees));
   }
 
 
-  public function afficherInstrumentsNonJoues($email){
-    $sql = 'SELECT i_instrument FROM instrument WHERE i_instrument NOT IN (SELECT p_instrument FROM pratique WHERE p_email= :email)';
-    $afficherInstrumentsNonJoues = $this->executerRequete($sql, array('email' => $email));
+  public function afficherInstrumentsNonJoues($id){
+    $sql = 'SELECT i_instrument FROM instrument WHERE i_instrument NOT IN (SELECT p_instrument FROM pratique WHERE p_id= :id)';
+    $afficherInstrumentsNonJoues = $this->executerRequete($sql, array('id' => $id));
     return $afficherInstrumentsNonJoues;
   }
 
-  public function afficherInstrumentsJoues($email){
-    $sql = 'SELECT p_instrument, p_niveau, p_annees FROM pratique WHERE p_email = :email ORDER BY p_annees DESC';
-    $afficherInstrumentsJoues = $this->executerRequete($sql, array('email' => $email));
+  public function afficherInstrumentsJoues($id){
+    $sql = 'SELECT p_instrument, p_niveau, p_annees FROM pratique WHERE p_id = :id ORDER BY p_annees DESC';
+    $afficherInstrumentsJoues = $this->executerRequete($sql, array('id' => $id));
     return $afficherInstrumentsJoues;
   }
 
@@ -55,7 +55,42 @@ class utilisateurs extends modele {
     return $recupererValide;
   }
 
-  
+  public function afficherInfosMembre($id){
+    $sql = 'SELECT u_prenom, u_nom, u_email, u_mdp, u_portable, u_promo, u_dateInscription, u_valide, u_photo FROM utilisateur WHERE u_id = :id';
+    $afficherMesInfos = $this->executerRequete ($sql, array('id' => $id));
+    return $afficherMesInfos;
+  }
+
+  public function modifierPhoto(){
+    $fichier = $_FILES['photo']['name'];
+    $dossier = 'avatars/';
+    $extensions = array('.png', '.gif', '.jpg', '.jpeg');
+    $extension = strrchr($fichier, '.');
+
+    if(!in_array($extension, $extensions)){
+     $erreur = 'Vous devez uploader un fichier de type png, gif, jpg ou jpeg...';
+    }
+
+    if(!isset($erreur)){
+     $fichier = strtr($fichier,'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
+     $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
+
+     if(move_uploaded_file($_FILES['photo']['tmp_name'], $dossier . $fichier)){
+       $sql = 'UPDATE teamhubp_teamhub.Utilisateurs SET u_photo = :photo WHERE u_pseudo = :pseudo';
+       $modifierPhoto = $this->executerRequete ($sql, array('photo' => $fichier,'pseudo' => $_SESSION['pseudo']));
+     } else {
+       echo 'Echec de l\'upload !';
+     }
+    } else {
+     echo $erreur;
+    }
+  }
+
+  public function afficherPhoto($id){
+    $sql = 'SELECT u_photo FROM utilisateur WHERE u_id = :id';
+    $afficherPhoto = $this->executerRequete($sql, array('id' => $id));
+    return $afficherPhoto;
+  }
 
 
 
