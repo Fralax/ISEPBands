@@ -27,9 +27,11 @@
               $mdp = password_hash($mdp, PASSWORD_BCRYPT);
               $user->inscrireUtilisateur($prenom, $nom, $email, $mdp, $portable, $promo, $dateInscription, $valide);
               session_start();
+              $id = $user->recupererID($email)->fetch();
               $_SESSION['email'] = $email;
               $_SESSION['prenom'] = $prenom;
-              header("Location: index.php?page=inscriptioninstruments");
+              $_SESSION['id'] = $id[0];
+              header("Location: index.php?page=profil&id=".$id[0]);
             } else{
               ?> <script>alert("L'adresse Mail saisie est déjà utilisée avec un autre compte !")</script><?php
             }
@@ -45,30 +47,6 @@
           ?> <script>alert("Des champs n'ont pas été remplis !")</script><?php
         }
       }
-      $vue = new Vue('Inscription');
-      $vue->generer();
-    }
-
-    public function inscriptionUtilisateurInstruments(){
-      $user = new utilisateurs();
-      $ajouterInstrumentPratique = $_POST['ajouterInstrumentPratique'];
-      $instrumentPratique = $_POST['instrument'];
-      $niveau = $_POST['niveau'];
-      $afficherInstrumentsNonJoues = $user->afficherInstrumentsNonJoues($_SESSION['email'])->fetchAll();
-      $afficherInstrumentsJoues = $user->afficherInstrumentsJoues($_SESSION['email'])->fetchAll();
-
-      if (isset($ajouterInstrumentPratique)) {
-        $user->pratiquerInstrument($_SESSION['email'], $instrumentPratique, $niveau);
-        header("Location: index.php?page=inscriptioninstruments");
-      }
-
-      $vue = new Vue('InscriptionMusique');
-      $vue->generer(array("intrumentsNonJoues" => $afficherInstrumentsNonJoues, "instrumentsJoues" => $afficherInstrumentsJoues));
-    }
-
-    public function affichageNonConfirme(){
-      $vue = new Vue('MailNonConfirme');
-      $vue->generer();
     }
 
   }
