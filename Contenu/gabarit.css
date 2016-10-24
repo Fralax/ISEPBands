@@ -1,5 +1,6 @@
 *{
-    font-family: 'Verdana';
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    letter-spacing: 1px;
 }
 
 #logo{
@@ -43,6 +44,127 @@ header .barreMenu li {
 	display: inline-block;
 	position: relative;
 	width: 15em;
+}
+
+#fade { /*--Masque opaque noir de fond--*/
+	display: none; /*--masqué par défaut--*/
+	background: #000;
+	position: fixed; left: 0; top: 0;
+	width: 100%; height: 100%;
+	opacity: .80;
+	z-index: 9999;
+}
+
+.popup_block{
+	display: none; /*--masqué par défaut--*/
+	background: rgba(245, 245, 225, 1);
+	padding: 20px;
+	border: 4px solid rgba(138, 38, 22, 1);
+	float: left;
+	font-size: 1em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	/*--Les différentes définitions de Box Shadow en CSS3--*/
+	-webkit-box-shadow: 0px 0px 20px #000;
+	-moz-box-shadow: 0px 0px 20px #000;
+	box-shadow: 0px 0px 20px #000;
+	/*--Coins arrondis en CSS3--*/
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+/*--Gérer la position fixed pour IE6--*/
+*html #fade {
+position: absolute;
+}
+
+*html .popup_block {
+position: absolute;
+}
+
+#formConnexion{
+  text-align: center;
+}
+
+#inscription, #connexion, #annuler{
+    border: 3px solid rgba(150, 38, 22, 1);
+    padding: 0.6em 1.2em;
+    background: transparent;
+    color: rgba(150, 38, 22, 1);
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    font-size: 1em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-block;
+    margin: 3px 2px;
+    border-radius: 2px;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+#connexion:hover, #annuler:hover, #inscription:hover {
+    background: #FFF;
+    color: rgba(250, 190, 107, 1);
+}
+
+#emailAccueil, #mdpAccueil {
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    padding: 15px;
+    display: block;
+    margin: 0 auto 10px;
+    width: 50%;
+    border:none;
+    font-family: 'Lato', sans-serif;
+    color: #73556b;
+    font-size: 0.8em;
+}
+
+#formInscription{
+  text-align: center;
+  letter-spacing: 1px;
+  color: rgba(150, 38, 22, 1);
+}
+
+#formInscription table{
+  text-align: left;
+  margin: auto;
+  width: 90%;
+}
+
+#formInscription img{
+  text-align: right;
+  width: 25px;
+  height: 25px;
+}
+
+#promo{
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  padding: 15px;
+  font-family: 'Lato', sans-serif;
+  background: transparent;
+  font-size: 0.8em;
+}
+
+#prenom, #nom, #email, #confirmerEmail, #mdp, #confirmerMdp, #portable{
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  padding: 15px;
+  display: block;
+  margin: 0 auto 10px;
+  width: 80%;
+  border:none;
+  font-family: 'Lato', sans-serif;
+  color: #73556b;
+  font-size: 0.8em;
 }
 
 header .postEmail{

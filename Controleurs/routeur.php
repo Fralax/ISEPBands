@@ -4,6 +4,7 @@
   require_once 'Controleurs/controleurAnnuaire.php';
   require_once 'Controleurs/controleurInscription.php';
   require_once 'Controleurs/controleurConnexion.php';
+  require_once 'Controleurs/controleurMembres.php';
 
   class routeur{
 
@@ -11,12 +12,14 @@
     private $controleurAnnuaire;
     private $controleurInscription;
     private $controleurConnexion;
+    private $controleurMembres;
 
     public function __construct(){
       $this->controleurAccueil = new controleurAccueil();
       $this->controleurAnnuaire = new controleurAnnuaire();
       $this->controleurInscription = new controleurInscription();
       $this->controleurconnexion = new controleurConnexion();
+      $this->controleurMembres = new controleurMembres();
       session_start();
 
     }
@@ -34,12 +37,8 @@
           $this->controleurAnnuaire->affichageAnnuaire();
           break;
 
-        case 'inscription':
-          $this->controleurInscription->inscriptionUtilisateur();
-          break;
-
-        case 'inscriptioninstruments':
-          $this->controleurInscription->inscriptionUtilisateurInstruments();
+        case 'profil':
+          $this->controleurMembres->affichageProfil();
           break;
 
         default:
