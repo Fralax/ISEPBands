@@ -1,45 +1,135 @@
-.profilGeneral, .formulairesProfil{
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-around;
+a{
+  text-decoration: none;
 }
 
-.profilGeneral p{
+a:hover{
+  text-decoration: none;
+}
+
+.inscriptionConfirmee{
+  padding-top: 1em;
+  text-align: center;
+  color: rgba(150, 38, 22, 1);
+}
+
+.photoNom p{
+  text-align: center;
+  font-size: 1.5em;
+  color: rgba(138, 38, 22, 1);
+  font-weight: 100;
+}
+
+.photoNom{
+  background-color: rgb(247, 177, 90);
+  padding: 1em;
+}
+
+.pasInstrument{
+  text-align: center;
+  color: rgba(150, 38, 22, 1);
+}
+
+.mesInstruments, .mesInformations{
+  text-align: center;
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: rgba(150, 38, 22, 1);
+}
+
+.nomInstrument{
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: rgba(150, 38, 22, 1);
+}
+
+.instruments{
+  color: rgba(150, 38, 22, 1);
+}
+
+.conteneurPhotoInstrument{
+  border-radius: 50%;
+  padding: 0.5em;
+  width: 70%;
+  border: solid rgb(247, 177, 90);
+  background-color: rgb(247, 177, 90);
+  margin: auto;
+  margin-bottom: 0.7em;
+}
+
+.row-centered {
+  text-align:center;
+}
+.col-centered {
+  display:inline-block;
+  float:none;
+  text-align:left;
+  margin-right:-4px;
+}
+
+.instrumentsProfil{
+  padding: 2em;
   text-align: center;
 }
 
-.profilGeneral table{
+.niveau, .experience{
+  line-height: 35%;
+}
+
+.detailsInstruments span{
+  font-weight: bold;
+}
+
+#photoInstrument{
+  height: 4em;
+  width: 4em;
   margin: auto;
 }
 
 .informationsProfil{
-  padding: 1em;
-  width: 45%;
-}
-
-.instrumentsProfil{
-  padding: 1em;
-  width: 45%;
-}
-
-.inscriptionConfirmee{
+  margin-bottom: 3em;
   text-align: center;
 }
 
-.ajouterInstrumentsProfil, .ajouterInstrumentsProfil ul{
-	padding : 0; /* pas de marge intérieure */
-	margin : 0; /* ni extérieure */ /* on définit une hauteur pour chaque élément */
-	text-align : center; /* on centre le texte qui se trouve dans la liste */
+.informationsProfil img{
+  height: 3.5em;
+  width: 3.5em;
+  margin: auto;
 }
 
-.ajouterInstrumentsProfil li {
-	/* on place les liens du menu horizontalement */
-	display: inline-block;
-	position: relative;
-  text-align: center;
+.conteneurPhotoFacebook img{
+  height: 5em;
+  width: 5em;
 }
 
-#lienAjouterInstrument{
+.conteneurPhotoFacebook a{
+  margin: auto;
+}
+
+.conteneurPhotoEmail{
+  border-radius: 50%;
+  padding: 1em;
+  background-color: rgb(247, 177, 90);
+  margin: auto;
+  width: 70%;
+}
+
+.conteneurPhotoPortable{
+  border-radius: 50%;
+  padding: 1em;
+  width: 70%;
+  background-color: rgb(247, 177, 90);
+  margin: auto;
+}
+
+.conteneurPhotoFacebook{
+  margin: auto;
+  width: 70%;
+}
+
+#liensFormulaires{
   border: 3px solid rgba(150, 38, 22, 1);
   padding: 0.6em 1.2em;
   background: transparent;
@@ -57,11 +147,69 @@
   transition: all 0.3s;
 }
 
-#lienAjouterInstrument:hover{
+#changerPhoto, #boutonLienFacebook, #ajouter{
+  border: 3px solid rgba(150, 38, 22, 1);
+  padding: 0.6em 1.2em;
+  background: transparent;
+  color: rgba(150, 38, 22, 1);
+  font-family: 'Lato', Calibri, Arial, sans-serif;
+  font-size: 0.5em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-block;
+  margin: 3px 2px;
+  border-radius: 2px;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#liensFormulaires:hover, #changerPhoto:hover{
   background: #FFF;
   color: rgba(250, 190, 107, 1);
 }
 
-a{
-  text-decoration: none;
+.formulairesProfil{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.navFormulairesProfil{
+  position: relative;
+  text-align: center;
+  font-size: 1em;
+  margin: auto;
+}
+
+
+.formulaires, .formulaires ul{
+	padding : 0; /* pas de marge intérieure */
+	margin : 0; /* ni extérieure */ /* on définit une hauteur pour chaque élément */
+	text-align : center; /* on centre le texte qui se trouve dans la liste */
+  color: rgba(150, 38, 22, 1);
+}
+
+
+.formulaires li {
+	/* on place les liens du menu horizontalement */
+	display: inline-block;
+	position: relative;
+  text-align: center;
+}
+
+.formulaires ul{
+  position: absolute;
+  z-index: 1000;
+  margin: auto;
+}
+
+.photoNom img{
+  display: block;
+  width: 8em;
+  height: 8em;
+  border-radius: 50%;
+  text-align: center;
+  margin: auto;
 }

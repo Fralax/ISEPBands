@@ -25,7 +25,7 @@
             $resultatEmail = $user->verifierEmail($email)->fetch();
             if (!$resultatEmail){
               $mdp = password_hash($mdp, PASSWORD_BCRYPT);
-              $user->inscrireUtilisateur($prenom, $nom, $email, $mdp, $portable, $promo, $dateInscription, $valide, "avatar.png");
+              $user->inscrireUtilisateur($prenom, $nom, $email, $mdp, $portable, $promo, $dateInscription, $valide, "avatars/avatar.png");
               session_start();
               $id = $user->recupererID($email)->fetch();
               $_SESSION['email'] = $email;

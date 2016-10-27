@@ -56,40 +56,25 @@ class utilisateurs extends modele {
   }
 
   public function afficherInfosMembre($id){
-    $sql = 'SELECT u_prenom, u_nom, u_email, u_mdp, u_portable, u_promo, u_dateInscription, u_valide, u_photo FROM utilisateur WHERE u_id = :id';
+    $sql = 'SELECT u_prenom, u_nom, u_email, u_mdp, u_portable, u_promo, u_dateInscription, u_valide, u_photo, u_facebook FROM utilisateur WHERE u_id = :id';
     $afficherMesInfos = $this->executerRequete ($sql, array('id' => $id));
     return $afficherMesInfos;
   }
 
-  public function modifierPhoto(){
-    $fichier = $_FILES['photo']['name'];
-    $dossier = 'avatars/';
-    $extensions = array('.png', '.gif', '.jpg', '.jpeg');
-    $extension = strrchr($fichier, '.');
-
-    if(!in_array($extension, $extensions)){
-     $erreur = 'Vous devez uploader un fichier de type png, gif, jpg ou jpeg...';
-    }
-
-    if(!isset($erreur)){
-     $fichier = strtr($fichier,'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
-     $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
-
-     if(move_uploaded_file($_FILES['photo']['tmp_name'], $dossier . $fichier)){
-       $sql = 'UPDATE teamhubp_teamhub.Utilisateurs SET u_photo = :photo WHERE u_pseudo = :pseudo';
-       $modifierPhoto = $this->executerRequete ($sql, array('photo' => $fichier,'pseudo' => $_SESSION['pseudo']));
-     } else {
-       echo 'Echec de l\'upload !';
-     }
-    } else {
-     echo $erreur;
-    }
+  public function modifierPhoto($id, $photo){
+    $sql = 'UPDATE utilisateur SET u_photo = :photo WHERE u_id = :id';
+    $modifierPhoto = $this->executerRequete ($sql, array('photo' => $photo, 'id' => $id));
   }
 
   public function afficherPhoto($id){
     $sql = 'SELECT u_photo FROM utilisateur WHERE u_id = :id';
     $afficherPhoto = $this->executerRequete($sql, array('id' => $id));
     return $afficherPhoto;
+  }
+
+  public function ajouterLienFacebook($id, $lien){
+    $sql = 'UPDATE utilisateur SET u_facebook = :lien WHERE u_id = :id';
+    $ajouterLienFacebook = $this->executerRequete($sql, array('lien' => $lien, 'id' => $id));
   }
 
 
