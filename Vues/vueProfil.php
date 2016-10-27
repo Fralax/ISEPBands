@@ -170,10 +170,27 @@ if ($verificationSessionExiste == true) {
             </form>
           </ul>
         </li>
+        <li class = "toggleSousMenuProfil"> <span>Crée un nouveau groupe</span>
+          <ul class = "sousMenuProfil">
+            <form action="" method="post" enctype="multipart/form-data">
+              <p><input type="text" name="nomGroupe" value=''></p>
+              <p><input id="changerPhoto" type="submit" name="creerGroupe" value="Créer un nouveau groupe"></p>
+            </form>
+            <?php
+              require_once 'Controleurs/controleurGroupes.php';
+                $creerGroupe = $_POST['creerGroupe'];
+                if (isset($creerGroupe)){
+                $cnx = new controleurGroupes();
+                $cnx->creationGroupe();
+              }
+              ?>
+          </ul>
+        </li>
       </ul>
     </nav>
   </div>
 <?php endif; ?>
+
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
 <script src="JS/vueProfil.js"></script>
