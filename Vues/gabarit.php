@@ -3,6 +3,9 @@
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width", initial-scale="1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="Contenu/gabarit.css" />
     <link rel="stylesheet" href="Contenu/vueAccueil.css" />
@@ -14,11 +17,11 @@
 
 require_once 'Controleurs/controleurMembres.php';
 $membre = new controleurMembres();
-$verificationSession = $membre->verificationSession();
-$verificationValide = $membre->verificationValide();
+$verificationSessionExiste = $membre->verificationSessionExiste();
+$verificationMembreValide = $membre->verificationMembreValide();
 
-if ($verificationSession == true) {
-  if ($verificationValide == true) {
+if ($verificationSessionExiste == true) {
+  if ($verificationMembreValide == true) {
     $i = 0;
   } else{
     $i = 2;
@@ -33,10 +36,9 @@ if ($verificationSession == true) {
   <body>
 
     <header>
-
       <nav>
         <ul class = "barreMenu">
-          <li><a href="index.php?page=accueil"><img src="Autres/LogoISEPBands.png" width="460" height="300" ></a></li>
+          <li><a href="index.php?page=accueil"><img src="Autres/logoblanc.png"></a></li>
           <li><a href="index.php?page=planning">PLANNING</a></li>
           <li class = "toggleSousMenu"> <span>ANNUAIRE</span>
             <ul class = "sousMenu">
@@ -54,10 +56,8 @@ if ($verificationSession == true) {
       </nav>
     </header>
 
-    <div id="wrap">
-      <div id="main" class="clearfix">
-        <?= $contenu ?>
-      </div>
+    <div class="container-fluid">
+      <?= $contenu ?>
     </div>
 
     <footer>
@@ -74,7 +74,7 @@ if ($verificationSession == true) {
 
       <nav>
         <ul class = "barreMenu">
-          <li><a href="index.php?page=accueil"><img src="Autres/LogoISEPBands.png"></a></li>
+          <li><a href="index.php?page=accueil"><img src="Autres/logoblanc.png"></a></li>
           <li class = "toggleSousMenu"> <span>ANNUAIRE</span>
             <ul class = "sousMenu">
               <li> <a href="index.php?page=annuaire">Membres</a> </li>
@@ -169,10 +169,8 @@ if ($verificationSession == true) {
       </div>
     </header>
 
-    <div id="wrap">
-      <div id="main" class="clearfix">
-        <?= $contenu ?>
-      </div>
+    <div class="container-fluid">
+      <?= $contenu ?>
     </div>
 
     <footer>
@@ -188,7 +186,7 @@ if ($verificationSession == true) {
     <header>
       <nav>
         <ul class = "barreMenu">
-          <li><a href="index.php?page=profil&id=<?php echo $_SESSION['id'] ?>"><img src="Autres/LogoISEPBands.png"></a></li>
+          <li><a href="index.php?page=profil&id=<?php echo $_SESSION['id'] ?>"><img src="Autres/logoblanc.png"></a></li>
           <li class = "toggleSousMenu"> <span>ANNUAIRE</span>
             <ul class = "sousMenu">
               <li> <a href="index.php?page=annuaire">Membres</a> </li>
@@ -197,6 +195,7 @@ if ($verificationSession == true) {
           </li>
           <li class = "toggleSousMenu"> <span> BONJOUR <?php echo strtoupper($_SESSION['prenom']) ?> ! </span>
             <ul class = "sousMenu">
+              <li> <a href="index.php?page=profil&id=<?php echo $_SESSION['id'] ?>">Profil</a> </li>
               <li> <a href="index.php">Déconnexion</a> </li>
             </ul>
           </li>
@@ -204,10 +203,8 @@ if ($verificationSession == true) {
       </nav>
     </header>
 
-    <div id="wrap">
-      <div id="main" class="clearfix">
-        <?= $contenu ?>
-      </div>
+    <div class="container-fluid">
+      <?= $contenu ?>
     </div>
 
     <footer>

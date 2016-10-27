@@ -3,15 +3,8 @@
     letter-spacing: 1px;
 }
 
-#logo{
-  text-align: center;
-}
-
-
 body{
   background-color: rgba(245, 245, 225, 1);
-  margin: 0;
-  padding: 0;
 }
 
 header nav{
@@ -26,9 +19,14 @@ header a{
   text-decoration: none;
 }
 
+header a:hover{
+  color: rgb(247, 177, 90);
+  text-decoration: none;
+}
+
 header img{
-  height: 30%;
-  width: 30%;
+  height: 3em;
+  width: 4.8em;
   vertical-align: middle;
 }
 
@@ -147,7 +145,6 @@ position: absolute;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  padding: 15px;
   font-family: 'Lato', sans-serif;
   background: transparent;
   font-size: 0.8em;
@@ -189,22 +186,11 @@ header .barreMenu ul {
   background-color: rgba(138, 38, 22, 1);
 }
 
-
-#wrap {
-	position: relative;
-	margin-top: 3em;
-}
-
-#main {
-  overflow:auto;
-  padding-bottom: 150px;
-}
-
 footer{
   position: relative;
   text-align: center;
   clear:both;
-  margin-top: -90px;
+  margin-top: 3em;
   padding: 0.8em;
   background-color: rgba(138, 38, 22, 1);
   color: white;

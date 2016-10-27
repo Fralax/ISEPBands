@@ -9,12 +9,14 @@
 ?>
 
 <?php if ($a == 0): ?>
-  Vos informations : Camille lolilol
+  Actualités d'ISEP Bands :
 <?php endif; ?>
 
 <?php if ($a == 1): ?>
-  <div class="bienvenue">
-    <h1>Bienvenue sur le site d'ISEP Bands !</h1>
-    <a href="index.php?page=accueil"><img src="Autres/LogoISEPBands.png" width="460" height="300" ></a>
+  <div class="row">
+    <div class="bienvenue">
+      <h1>Bienvenue sur le site d'ISEP Bands !</h1>
+      <a href="index.php?page=accueil"><img src="Autres/LogoISEPBands.png" width="368" height="240" ></a>
+    </div>
   </div>
 <?php endif; ?>
