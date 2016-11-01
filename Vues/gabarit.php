@@ -162,7 +162,7 @@ if ($verificationSessionExiste == true) {
                 </tr>
               </table>
               <p>
-                <select id="promo" name="promo">
+                <select class="select" name="promo">
                   <option value = "">Ta promo</option>
                   <?php for ($i = 0 ; $i <= 5; $i++){ ?>
                   <option value = "<?php echo $date + $i ?>"> <?php echo $date + $i ?> </option>

@@ -138,18 +138,18 @@ if ($verificationSessionExiste == true) {
       <div class="modal-content formInstrumentProfil">
         <form method="post" action="">
           <p>
-            <select name="instrument">
+            <select class="select" name="instrument">
               <?php foreach ($intrumentsNonJoues as list($nomInstrument)) { ?>
                 <option value = "<?php echo $nomInstrument ?>" > <?php echo $nomInstrument?> </option>
               <?php } ?>
             </select>
-            <select name="niveau">
+            <select class="select" name="niveau">
               <option value="Débutant">Débutant</option>
               <option value="Intermédiaire">Intermédiaire</option>
               <option value="Avancé">Avancé</option>
               <option value="Confirmé">Confirmé</option>
             </select>
-            <select name="annees">
+            <select class="select" name="annees">
               <?php for ($i=0; $i <= 20; $i++) { ?>
                 <?php if ($i<=1) { ?>
                   <option value="<?php echo $i ?>"><?php echo $i ?> an</option>
@@ -216,76 +216,6 @@ if ($verificationSessionExiste == true) {
   </div>
 
 </div>
-
-
-
-
-<?php if ($i == 0 || $i == 2): ?>
-  <div class="formulairesProfil">
-    <nav class="navFormulairesProfil">
-      <ul class = "formulaires">
-        <li class = "toggleSousMenuProfil"> <span>Ajoute un Instrument</span>
-          <ul class = "sousMenuProfil">
-            <form method="post" action="">
-              <p>
-                <select name="instrument">
-                  <?php foreach ($intrumentsNonJoues as list($nomInstrument)) { ?>
-                    <option value = "<?php echo $nomInstrument ?>" > <?php echo $nomInstrument?> </option>
-                  <?php } ?>
-                </select>
-                <select name="niveau">
-                  <option value="Débutant">Débutant</option>
-                  <option value="Intermédiaire">Intermédiaire</option>
-                  <option value="Avancé">Avancé</option>
-                  <option value="Confirmé">Confirmé</option>
-                </select>
-                <select name="annees">
-                  <?php for ($i=0; $i <= 20; $i++) { ?>
-                    <?php if ($i<=1) { ?>
-                      <option value="<?php echo $i ?>"><?php echo $i ?> an</option>
-                    <?php } else { ?>
-                      <option value="<?php echo $i ?>"><?php echo $i ?> ans</option>
-                    <?php } ?>
-                  <?php } ?>
-                </select>
-              </p>
-              <p> <input id="ajouter" type="submit" name="ajouterInstrumentPratique" value="Ajouter"> </p>
-            </form>
-          </ul>
-        </li>
-        <li class = "toggleSousMenuProfil"> <span>Ajoute ton Facebook</span>
-          <ul class = "sousMenuProfil">
-            <form action="" method="post" enctype="multipart/form-data">
-              <p>Lien vers ton profil<input type="text" name="lienFacebook"></p>
-              <p><input id="boutonLienFacebook" type="submit" name="boutonLienFacebook" value="Envoyer"></p>
-            </form>
-          </ul>
-        </li>
-        <li class = "toggleSousMenuProfil"> <span>Modifie ta photo</span>
-          <ul class = "sousMenuProfil">
-            <form action="" method="post" enctype="multipart/form-data">
-              <p><input type="file" name="avatar"></p>
-              <p><input id="changerPhoto" type="submit" name="changerPhoto" value="Changer de photo"></p>
-            </form>
-          </ul>
-        </li>
-        <li class = "toggleSousMenuProfil"> <span>Crée un nouveau groupe</span>
-          <ul class = "sousMenuProfil">
-            <?php
-              require_once 'Controleurs/controleurGroupes.php';
-              $creerGroupe = new controleurGroupes();
-              $creerGroupe->creationGroupe();
-            ?>
-            <form action="" method="post" enctype="multipart/form-data">
-              <p><input type="text" name="nomGroupe" value=''></p>
-              <p><input id="changerPhoto" type="submit" name="creerGroupe" value="Créer un nouveau groupe"></p>
-            </form>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-  </div>
-<?php endif; ?>
 
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
