@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="Contenu/gabarit.css" />
+    <link rel="stylesheet" href="Contenu/vueMesGroupes.css" />
     <link rel="stylesheet" href="Contenu/vueAccueil.css" />
     <link rel="stylesheet" href="Contenu/vueProfil.css" />
     <title><?= $titre ?></title>
@@ -26,7 +27,7 @@ if ($verificationSessionExiste == true) {
     $i = 2;
   }
 } else{
-  $i = 1;
+  $i = 1; //visiteur
 }
 
 ?>
@@ -45,6 +46,7 @@ if ($verificationSessionExiste == true) {
               <li> <a href="index.php?page=annuaire">Groupes</a> </li>
             </ul>
           </li>
+          <li> <a href="index.php?page=mesgroupes">MES GROUPES</a> </li>
           <li class = "toggleSousMenu"> <span> BONJOUR <?php echo strtoupper($_SESSION['prenom']) ?> ! </span>
             <ul class = "sousMenu">
               <li> <a href="index.php?page=profil&id=<?php echo $_SESSION['id'] ?>">Profil</a> </li>

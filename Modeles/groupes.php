@@ -14,6 +14,16 @@ class groupe extends modele {
     $ajouterAppartient = $this->executerRequete($sql, array('nomGroupe' => $nomGroupe, 'id' => $id));
   }
 
+  public function afficherMesGroupes($id){
+    $sql = 'SELECT a_groupe FROM appartient WHERE a_membre = :id';
+    $afficherMesGroupes = $this->executerRequete($sql, array('id' => $id));
+    return $afficherMesGroupes;
+  }
+
+  public function afficherMembresGroupes($nomGroupe)
+    $sql = 'SELECT a_membre FROM appartient WHERE a_groupe = ?';
+    $afficherMembresGroupes = $this -> executerRequete($sql, array($nomGroupe));
+    return $afficherMembresGroupes;
 }
 
 ?>
