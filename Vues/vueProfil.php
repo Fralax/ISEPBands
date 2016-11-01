@@ -172,7 +172,7 @@ if ($verificationSessionExiste == true) {
     <div class="modal-dialog">
       <div class="modal-content formFacebookProfil">
         <form action="" method="post" enctype="multipart/form-data">
-          <p>Lien vers ton profil<input type="text" name="lienFacebook"></p>
+          <p>Lien vers ton profil : <input type="text" name="lienFacebook"></p>
           <p>
             <input id="boutonLienFacebook" type="submit" name="boutonLienFacebook" value="Envoyer">
             <button id="annuler" type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
