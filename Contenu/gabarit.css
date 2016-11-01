@@ -110,7 +110,7 @@ header .barreMenu li {
   height: 25px;
 }
 
-#promo{
+.select{
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
