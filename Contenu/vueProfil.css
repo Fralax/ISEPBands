@@ -93,6 +93,10 @@ a:hover{
   text-align: center;
 }
 
+.formulaires{
+  text-align: center;
+}
+
 .informationsProfil img{
   height: 3.5em;
   width: 3.5em;
@@ -129,7 +133,7 @@ a:hover{
   width: 70%;
 }
 
-#liensFormulaires{
+.boutonsFormulaires{
   border: 3px solid rgba(150, 38, 22, 1);
   padding: 0.6em 1.2em;
   background: transparent;
@@ -147,13 +151,13 @@ a:hover{
   transition: all 0.3s;
 }
 
-#changerPhoto, #boutonLienFacebook, #ajouter{
+#changerPhoto, #boutonLienFacebook, #ajouter, #boutonCreerGroupe{
   border: 3px solid rgba(150, 38, 22, 1);
   padding: 0.6em 1.2em;
   background: transparent;
   color: rgba(150, 38, 22, 1);
   font-family: 'Lato', Calibri, Arial, sans-serif;
-  font-size: 0.5em;
+  font-size: 1em;
   letter-spacing: 1px;
   text-transform: uppercase;
   cursor: pointer;
@@ -165,44 +169,17 @@ a:hover{
   transition: all 0.3s;
 }
 
-#liensFormulaires:hover, #changerPhoto:hover{
+.formInstrumentProfil, .formPhotoProfil, .formFacebookProfil, .formCreerGroupeProfil{
+  text-align: center;
+  letter-spacing: 1px;
+  background-color: rgba(245, 245, 225, 1);
+  padding: 1em;
+  border: 3px solid rgba(150, 38, 22, 1);
+}
+
+.boutonsFormulaires:hover, #changerPhoto:hover, #boutonCreerGroupe:hover, #boutonLienFacebook:hover, #ajouter:hover{
   background: #FFF;
   color: rgba(250, 190, 107, 1);
-}
-
-.formulairesProfil{
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-}
-
-.navFormulairesProfil{
-  position: relative;
-  text-align: center;
-  font-size: 1em;
-  margin: auto;
-}
-
-
-.formulaires, .formulaires ul{
-	padding : 0; /* pas de marge intérieure */
-	margin : 0; /* ni extérieure */ /* on définit une hauteur pour chaque élément */
-	text-align : center; /* on centre le texte qui se trouve dans la liste */
-  color: rgba(150, 38, 22, 1);
-}
-
-
-.formulaires li {
-	/* on place les liens du menu horizontalement */
-	display: inline-block;
-	position: relative;
-  text-align: center;
-}
-
-.formulaires ul{
-  position: absolute;
-  z-index: 1000;
-  margin: auto;
 }
 
 .photoNom img{

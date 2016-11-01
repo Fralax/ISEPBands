@@ -7,11 +7,14 @@
 
 
     public function creationGroupe(){
-      $group = new groupe();
+      $groupe = new groupe();
       $id = $_SESSION['id'];
       $nomGroupe = $_POST['nomGroupe'];
 
-      $group->creerGroupe($id, $nomGroupe);
+      if (isset($_POST['creeGroupe'])) {
+        $groupe->creerGroupe($id, $nomGroupe);
+        $groupe->ajouterAppartient($id, $nomGroupe);
+      }
 
     }
   }
