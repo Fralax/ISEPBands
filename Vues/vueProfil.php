@@ -54,10 +54,8 @@ if ($verificationSessionExiste == true) {
     <?php if ($instrumentsJoues): ?>
       <?php foreach ($instrumentsJoues as list($instrument, $niveau, $annees)): ?>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered instrumentsProfil">
-          <div class="conteneurPhotoInstrument">
-            <img id = "photoInstrument" src="Autres/<?php echo $instrument ?>.png"/>
-          </div>
           <div class="detailsInstruments">
+            <img id = "photoInstrument" src="Autres/<?php echo $instrument ?>.png"/>
             <p class="nomInstrument">
               <?php echo $instrument ?>
             </p>
@@ -127,11 +125,15 @@ if ($verificationSessionExiste == true) {
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
         <button class="boutonsFormulaires" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#popupPhotoProfil">Modifie ta Photo</button>
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-        <button class="boutonsFormulaires" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#popupCreerGroupe">Crée un Groupe</button>
-      </div>
+      <?php endif; ?>
+      <?php if ($i==0): ?>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
+          <button class="boutonsFormulaires" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#popupCreerGroupe">Crée un Groupe</button>
+        </div>
+      <?php endif; ?>
+
     </div>
-  <?php endif; ?>
+
 
   <div id="popupAjouteInstrument" class="modal fade" role="dialog">
     <div class="modal-dialog">
