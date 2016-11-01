@@ -11,7 +11,7 @@
       $mesGroupes = $groupe -> afficherMesGroupes($id) -> fetchAll();
       $membresMesGroupes = array();
       foreach ($mesGroupes as list($nomGroupe)) {
-        $membresGroupes = $groupe -> afficherMembresGroupes($nomGroupe);
+        $membresGroupes = $groupe -> afficherMembresGroupes($nomGroupe) -> fetchAll();
         array_push($membresMesGroupes, $membresGroupes);
       }
       $vue = new Vue('MesGroupes');

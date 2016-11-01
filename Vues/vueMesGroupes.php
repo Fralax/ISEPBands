@@ -1,9 +1,15 @@
 <div class="container">
   <div class="row row-centered">
-    <?php foreach ($groupes as list($nomGroupe)): ?>
+    <?php for ($i=0; $i<count($listeMembres) ; $i++) { ?>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered groupes">
-        <?php echo $nomGroupe; ?>
+        <?php echo $groupes[$i][0]; ?>
+        <p>
+          <?php foreach ($listeMembres[$i] as list($membres) ): ?>
+          <?php echo $membres ?>
+        <?php endforeach; ?> </p>
       </div>
-    <?php endforeach; ?>
+
+    <?php } ?>
+
   </div>
 </div>
