@@ -99,7 +99,7 @@ if ($verificationSessionExiste == true) {
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-centered informationsProfil">
       <div class="conteneurPhotoFacebook">
-        <img src="Autres/facebook.png" alt="" />
+        <a href="<?php echo $infos['u_facebook'] ?>"><img src="Autres/facebook.png" alt="" /></a>
       </div>
       <div class="facebook">
         Profil Facebook
@@ -114,6 +114,105 @@ if ($verificationSessionExiste == true) {
       </p>
     </div>
 
+  </div>
+
+  <?php if ($i == 0 || $i == 2): ?>
+    <div class="row row-centered">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
+        <button class="boutonsFormulaires" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#popupAjouteInstrument">Ajoute un Instrument</button>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
+        <button class="boutonsFormulaires" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#popupAjouteFacebook">Ajoute ton Facebook</button>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
+        <button class="boutonsFormulaires" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#popupPhotoProfil">Modifie ta Photo</button>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
+        <button class="boutonsFormulaires" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#popupCreerGroupe">Crée un Groupe</button>
+      </div>
+    </div>
+  <?php endif; ?>
+
+  <div id="popupAjouteInstrument" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content formInstrumentProfil">
+        <form method="post" action="">
+          <p>
+            <select name="instrument">
+              <?php foreach ($intrumentsNonJoues as list($nomInstrument)) { ?>
+                <option value = "<?php echo $nomInstrument ?>" > <?php echo $nomInstrument?> </option>
+              <?php } ?>
+            </select>
+            <select name="niveau">
+              <option value="Débutant">Débutant</option>
+              <option value="Intermédiaire">Intermédiaire</option>
+              <option value="Avancé">Avancé</option>
+              <option value="Confirmé">Confirmé</option>
+            </select>
+            <select name="annees">
+              <?php for ($i=0; $i <= 20; $i++) { ?>
+                <?php if ($i<=1) { ?>
+                  <option value="<?php echo $i ?>"><?php echo $i ?> an</option>
+                <?php } else { ?>
+                  <option value="<?php echo $i ?>"><?php echo $i ?> ans</option>
+                <?php } ?>
+              <?php } ?>
+            </select>
+          </p>
+          <p>
+            <input id="ajouter" type="submit" name="ajouterInstrumentPratique" value="Ajouter">
+            <button id="annuler" type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="popupAjouteFacebook" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content formFacebookProfil">
+        <form action="" method="post" enctype="multipart/form-data">
+          <p>Lien vers ton profil<input type="text" name="lienFacebook"></p>
+          <p>
+            <input id="boutonLienFacebook" type="submit" name="boutonLienFacebook" value="Envoyer">
+            <button id="annuler" type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="popupPhotoProfil" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content formPhotoProfil">
+        <form action="" method="post" enctype="multipart/form-data">
+          <p><input type="file" name="avatar"></p>
+          <p>
+            <input id="changerPhoto" type="submit" name="changerPhoto" value="Changer de photo">
+            <button id="annuler" type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="popupCreerGroupe" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content formCreerGroupeProfil">
+        <?php
+          require_once 'Controleurs/controleurGroupes.php';
+          $creerGroupe = new controleurGroupes();
+          $creerGroupe->creationGroupe();
+        ?>
+        <form action="" method="post" enctype="multipart/form-data">
+          <p><input type="text" name="nomGroupe" value=''></p>
+          <p>
+            <input id="boutonCreerGroupe" type="submit" name="creerGroupe" value="Créer un nouveau groupe">
+            <button id="annuler" type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+          </p>
+        </form>
+      </div>
+    </div>
   </div>
 
 </div>
@@ -172,18 +271,15 @@ if ($verificationSessionExiste == true) {
         </li>
         <li class = "toggleSousMenuProfil"> <span>Crée un nouveau groupe</span>
           <ul class = "sousMenuProfil">
+            <?php
+              require_once 'Controleurs/controleurGroupes.php';
+              $creerGroupe = new controleurGroupes();
+              $creerGroupe->creationGroupe();
+            ?>
             <form action="" method="post" enctype="multipart/form-data">
               <p><input type="text" name="nomGroupe" value=''></p>
               <p><input id="changerPhoto" type="submit" name="creerGroupe" value="Créer un nouveau groupe"></p>
             </form>
-            <?php
-              require_once 'Controleurs/controleurGroupes.php';
-                $creerGroupe = $_POST['creerGroupe'];
-                if (isset($creerGroupe)){
-                $cnx = new controleurGroupes();
-                $cnx->creationGroupe();
-              }
-              ?>
           </ul>
         </li>
       </ul>
