@@ -7,11 +7,11 @@
 
     public function affichageMesGroupes(){
       $id = $_SESSION['id'];
-      $groupe = new groupe();
-      $mesGroupes = $groupe -> afficherMesGroupes($id) -> fetchAll();
+      $groupes = new groupes();
+      $mesGroupes = $groupes -> afficherMesGroupes($id) -> fetchAll();
       $membresMesGroupes = array();
-      foreach ($mesGroupes as list($nomGroupe)) {
-        $membresGroupes = $groupe -> afficherMembresGroupes($nomGroupe) -> fetchAll();
+      foreach ($mesGroupes as list($nomGroupe)){
+        $membresGroupes = $groupes -> afficherMembresGroupes($nomGroupe) -> fetchAll();
         array_push($membresMesGroupes, $membresGroupes);
       }
       $vue = new Vue('MesGroupes');
@@ -19,13 +19,13 @@
     }
 
     public function creationGroupe(){
-      $groupe = new groupe();
+      $groupes = new groupes();
       $id = $_SESSION['id'];
       $nomGroupe = $_POST['nomGroupe'];
 
-      if (isset($_POST['creeGroupe'])) {
-        $groupe -> creerGroupe($id, $nomGroupe);
-        $groupe -> ajouterAppartient($id, $nomGroupe);
+      if (isset($_POST['creerGroupe'])) {
+        $groupes -> creerGroupe($id, $nomGroupe);
+        $groupes -> ajouterAppartient($id, $nomGroupe);
       }
 
 
