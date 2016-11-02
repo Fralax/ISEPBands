@@ -32,19 +32,19 @@ class utilisateurs extends modele {
 
 
   public function pratiquerInstrument($id, $instrument, $niveau, $annees){
-    $sql = 'INSERT INTO pratique (p_id, p_instrument, p_niveau, p_annees) VALUES (:id, :instrument, :niveau, :annees)';
+    $sql = 'INSERT INTO pratique (u_id, p_instrument, p_niveau, p_annees) VALUES (:id, :instrument, :niveau, :annees)';
     $ajouterInstrument = $this->executerRequete($sql, array('id' => $id, 'instrument' => $instrument, 'niveau' => $niveau, 'annees' => $annees));
   }
 
 
   public function afficherInstrumentsNonJoues($id){
-    $sql = 'SELECT i_instrument FROM instrument WHERE i_instrument NOT IN (SELECT p_instrument FROM pratique WHERE p_id= :id)';
+    $sql = 'SELECT i_instrument FROM instrument WHERE i_instrument NOT IN (SELECT p_instrument FROM pratique WHERE u_id= :id)';
     $afficherInstrumentsNonJoues = $this->executerRequete($sql, array('id' => $id));
     return $afficherInstrumentsNonJoues;
   }
 
   public function afficherInstrumentsJoues($id){
-    $sql = 'SELECT p_instrument, p_niveau, p_annees FROM pratique WHERE p_id = :id ORDER BY p_annees DESC';
+    $sql = 'SELECT p_instrument, p_niveau, p_annees FROM pratique WHERE u_id = :id ORDER BY p_annees DESC';
     $afficherInstrumentsJoues = $this->executerRequete($sql, array('id' => $id));
     return $afficherInstrumentsJoues;
   }

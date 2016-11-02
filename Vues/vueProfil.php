@@ -53,9 +53,9 @@ if ($verificationSessionExiste == true) {
 
     <?php if ($instrumentsJoues): ?>
       <?php foreach ($instrumentsJoues as list($instrument, $niveau, $annees)): ?>
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered instrumentsProfil">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 col-centered instrumentsProfil">
           <div class="detailsInstruments">
-            <img id = "photoInstrument" src="Autres/<?php echo $instrument ?>.png"/>
+            <p><img id = "photoInstrument" src="Autres/<?php echo $instrument ?>.png"/></p>
             <p class="nomInstrument">
               <?php echo $instrument ?>
             </p>
