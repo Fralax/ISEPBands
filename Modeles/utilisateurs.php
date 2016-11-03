@@ -112,7 +112,7 @@ class utilisateurs extends modele {
   }
 
   public function afficherMembresGroupe($nomGroupe){
-    $sql = 'SELECT u_id FROM appartient WHERE g_nom = :nomGroupe';
+    $sql = 'SELECT u_id, u_prenom, u_nom, u_photo FROM appartient NATURAL JOIN utilisateur WHERE g_nom = :nomGroupe';
     $verifierAppartientGroupe = $this->executerRequete($sql, array(
       'nomGroupe' => $nomGroupe
     ));

@@ -11,6 +11,7 @@ $verificationCreateurGroupe = $groupe->verificationCreateurGroupe();
   foreach ($membres as list($id)) {
     if ($id == $_SESSION['id']) {
       $g = 1;
+      break;
     } else{
       $g = 2;
     }
@@ -26,19 +27,12 @@ $verificationCreateurGroupe = $groupe->verificationCreateurGroupe();
     </p>
   <?php endforeach; ?>
 
-  <div id="popupAjouteFacebook" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content formFacebookProfil">
-        <form action="" method="post" enctype="multipart/form-data">
-          <p>Lien vers ton profil : </p>
-          <p><input type="text" name="lienFacebook" placeholder="Lien Facebook"></p>
-          <p>
-            <input id="boutonLienFacebook" type="submit" name="boutonLienFacebook" value="Envoyer">
-            <button id="annuler" type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-          </p>
-        </form>
+  <div class="row row-centered membreGroupe">
+    <?php foreach ($membres as list($id, $prenom, $nom, $photo)): ?>
+      <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 col-centered membreGroupe">
+        <img class="photoGroupeMembre" src="<?php echo $photo ?>" />
+        <a href="index.php?page=profil&id=<?php echo $id ?>"> <?php echo $prenom." ".$nom ?></a>
       </div>
-    </div>
+    <?php endforeach; ?>
   </div>
-
 </div>
