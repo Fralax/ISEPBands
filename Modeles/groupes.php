@@ -25,6 +25,12 @@ class groupes extends modele {
     $afficherMembresGroupes = $this -> executerRequete($sql, array($nomGroupe));
     return $afficherMembresGroupes;
   }
+
+  public function afficherGroupes(){
+    $sql = 'SELECT * FROM groupe';
+    $afficherGroupes = $this->executerRequete($sql);
+    return $afficherGroupes;
+  }
 }
 
 ?>

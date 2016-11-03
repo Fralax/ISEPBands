@@ -1,7 +1,6 @@
 <?php
 
   require_once 'Controleurs/controleurAccueil.php';
-  require_once 'Controleurs/controleurAnnuaire.php';
   require_once 'Controleurs/controleurInscription.php';
   require_once 'Controleurs/controleurConnexion.php';
   require_once 'Controleurs/controleurMembres.php';
@@ -10,7 +9,6 @@
   class routeur{
 
     private $controleurAccueil;
-    private $controleurAnnuaire;
     private $controleurInscription;
     private $controleurConnexion;
     private $controleurMembres;
@@ -18,7 +16,6 @@
 
     public function __construct(){
       $this->controleurAccueil = new controleurAccueil();
-      $this->controleurAnnuaire = new controleurAnnuaire();
       $this->controleurInscription = new controleurInscription();
       $this->controleurconnexion = new controleurConnexion();
       $this->controleurMembres = new controleurMembres();
@@ -30,7 +27,7 @@
 
     public function routerRequete(){
       $routeur = new routeur();
-      error_reporting(0);
+      //error_reporting(0);
       switch($_GET['page']){
 
         case 'accueil':
@@ -38,7 +35,15 @@
           break;
 
         case 'annuaire':
-          $this->controleurAnnuaire->affichageAnnuaire();
+          switch ($_GET['annuaire']) {
+            case 'groupes':
+              $this->controleurGroupes->affichageGroupes();
+              break;
+
+            case 'membres':
+              $this->controleurMembres->affichageMembres();
+              break;
+          }
           break;
 
         case 'profil':
@@ -47,6 +52,10 @@
 
         case 'mesgroupes':
           $this->controleurGroupes->affichageMesGroupes();
+          break;
+
+        case 'groupe':
+          $this->controleurGroupes->affichageGroupe();
           break;
 
         default:
