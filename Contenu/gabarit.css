@@ -155,6 +155,10 @@ header .barreMenu ul {
   background-color: rgba(138, 38, 22, 1);
 }
 
+.container{
+  padding: 3em;
+}
+
 footer{
   position: relative;
   text-align: center;

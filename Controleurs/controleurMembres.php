@@ -75,6 +75,13 @@
       }
     }
 
+    public function affichageMembres(){
+      $user = new utilisateurs();
+      $affichageMembres = $user->afficherMembres()->fetchAll();
+      $vue = new Vue('AnnuaireMembres');
+      $vue->generer(array('membres' => $affichageMembres));
+    }
+
   }
 
 ?>

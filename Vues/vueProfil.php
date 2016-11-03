@@ -174,7 +174,8 @@ if ($verificationSessionExiste == true) {
     <div class="modal-dialog">
       <div class="modal-content formFacebookProfil">
         <form action="" method="post" enctype="multipart/form-data">
-          <p>Lien vers ton profil : <input type="text" name="lienFacebook"></p>
+          <p>Lien vers ton profil : </p>
+          <p><input type="text" name="lienFacebook" placeholder="Lien Facebook"></p>
           <p>
             <input id="boutonLienFacebook" type="submit" name="boutonLienFacebook" value="Envoyer">
             <button id="annuler" type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
@@ -188,6 +189,9 @@ if ($verificationSessionExiste == true) {
     <div class="modal-dialog">
       <div class="modal-content formPhotoProfil">
         <form action="" method="post" enctype="multipart/form-data">
+          <p>
+            Choisis ta photo :
+          </p>
           <p><input type="file" name="avatar"></p>
           <p>
             <input id="changerPhoto" type="submit" name="changerPhoto" value="Changer de photo">
@@ -207,7 +211,8 @@ if ($verificationSessionExiste == true) {
           $creerGroupe->creationGroupe();
         ?>
         <form action="" method="post" enctype="multipart/form-data">
-          <p><input type="text" name="nomGroupe" value=''></p>
+          <p>Pour commencer la création de ton groupe, donne lui un nom !</p>
+          <p><input type="text" name="nomGroupe" value='' placeholder="Nom"></p>
           <p>
             <input id="boutonCreerGroupe" type="submit" name="creerGroupe" value="Créer un nouveau groupe">
             <button id="annuler" type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
@@ -221,4 +226,4 @@ if ($verificationSessionExiste == true) {
 
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
-<script src="JS/vueProfil.js"></script>
+<script src="JS/ajouterMembre.js"></script>

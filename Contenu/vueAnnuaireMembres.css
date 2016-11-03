@@ -1,0 +1,20 @@
+a{
+  text-decoration: none;
+  color: rgba(138, 38, 22, 1);
+}
+
+a:hover{
+  color: rgb(247, 177, 90);
+}
+
+.photoAnnuaireMembre{
+  width: 6em;
+  height: 6em;
+  border-radius: 50%;
+}
+
+
+.membreAnnuaire{
+  text-align: center;
+  padding: 2em;
+}
