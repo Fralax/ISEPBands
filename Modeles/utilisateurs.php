@@ -54,6 +54,24 @@ class utilisateurs extends modele {
       'annees' => $annees));
   }
 
+  public function modifierInstrument($id, $instrument, $niveau, $annees){
+    $sql = 'UPDATE pratique SET p_niveau = :niveau, p_annees = :annees WHERE u_id = :id AND p_instrument = :instrument';
+    $modifierInstrument = $this->executerRequete($sql, array(
+      'id' => $id,
+      'instrument' => $instrument,
+      'niveau' => $niveau,
+      'annees' => $annees
+    ));
+  }
+
+  public function supprimerInstrument($id, $instrument){
+    $sql = 'DELETE FROM pratique WHERE u_id = :id AND p_instrument = :instrument';
+    $supprimerInstrument = $this->executerRequete($sql, array(
+      'id' => $id,
+      'instrument' => $instrument
+    ));
+  }
+
 
   public function afficherInstrumentsNonJoues($id){
     $sql = 'SELECT i_instrument FROM instrument WHERE i_instrument NOT IN (SELECT p_instrument FROM pratique WHERE u_id= :id)';

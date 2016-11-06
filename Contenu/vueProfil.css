@@ -142,7 +142,31 @@ a:hover{
   transition: all 0.3s;
 }
 
-#changerPhoto, #boutonLienFacebook, #ajouter, #boutonCreerGroupe{
+.petitsBoutonsFormulaires{
+  border: 3px solid rgba(150, 38, 22, 1);
+  padding: 0.6em 1.2em;
+  background: transparent;
+  color: rgba(150, 38, 22, 1);
+  font-family: 'Lato', Calibri, Arial, sans-serif;
+  font-size: 0.5em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-block;
+  margin: 3px 2px;
+  border-radius: 2px;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.petitsBoutonsFormulaires:hover{
+  background: #FFF;
+  color: rgba(250, 190, 107, 1);
+  border: 3px solid rgba(150, 38, 22, 1);
+}
+
+#changerPhoto, #boutonLienFacebook, #ajouter, #boutonCreerGroupe, #boutonModifierInstrument, #boutonSupprimerInstrument{
   border: 3px solid rgba(150, 38, 22, 1);
   padding: 0.6em 1.2em;
   background: transparent;
@@ -188,9 +212,10 @@ a:hover{
   margin: auto;
 }
 
-.boutonsFormulaires:hover, #changerPhoto:hover, #boutonCreerGroupe:hover, #boutonLienFacebook:hover, #ajouter:hover, #boutonInviterMembre:hover{
+.boutonsFormulaires:hover, #changerPhoto:hover, #boutonCreerGroupe:hover, #boutonLienFacebook:hover, #ajouter:hover, #boutonInviterMembre:hover, #boutonModifierInstrument:hover, #boutonSupprimerInstrument:hover{
   background: #FFF;
   color: rgba(250, 190, 107, 1);
+  border: 3px solid rgba(150, 38, 22, 1);
 }
 
 .photoNom img{
