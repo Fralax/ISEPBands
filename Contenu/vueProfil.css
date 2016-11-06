@@ -166,7 +166,7 @@ a:hover{
   border: 3px solid rgba(150, 38, 22, 1);
 }
 
-#changerPhoto, #boutonLienFacebook, #ajouter, #boutonCreerGroupe, #boutonModifierInstrument, #boutonSupprimerInstrument{
+#changerPhoto, #boutonLienFacebook, #ajouter, #boutonCreerGroupe, #boutonModifierInstrument{
   border: 3px solid rgba(150, 38, 22, 1);
   padding: 0.6em 1.2em;
   background: transparent;
@@ -212,7 +212,7 @@ a:hover{
   margin: auto;
 }
 
-.boutonsFormulaires:hover, #changerPhoto:hover, #boutonCreerGroupe:hover, #boutonLienFacebook:hover, #ajouter:hover, #boutonInviterMembre:hover, #boutonModifierInstrument:hover, #boutonSupprimerInstrument:hover{
+.boutonsFormulaires:hover, #changerPhoto:hover, #boutonCreerGroupe:hover, #boutonLienFacebook:hover, #ajouter:hover, #boutonInviterMembre:hover, #boutonModifierInstrument:hover{
   background: #FFF;
   color: rgba(250, 190, 107, 1);
   border: 3px solid rgba(150, 38, 22, 1);
