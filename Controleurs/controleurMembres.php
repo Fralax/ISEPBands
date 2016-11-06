@@ -9,6 +9,8 @@
       $user = new utilisateurs();
       $ajouterInstrumentPratique = $_POST['ajouterInstrumentPratique'];
       $instrumentPratique = $_POST['instrument'];
+      $boutonModifierInstrument = $_POST['boutonModifierInstrument'];
+      $boutonSupprimerInstrument = $_POST['boutonSupprimerInstrument'];
       $changerPhoto = $_POST['changerPhoto'];
       $niveau = $_POST['niveau'];
       $annees = $_POST['annees'];
@@ -18,6 +20,16 @@
 
       if (isset($ajouterInstrumentPratique)) {
         $user->pratiquerInstrument($_SESSION['id'], $instrumentPratique, $niveau, $annees);
+        header("Location: index.php?page=profil&id=".$_SESSION['id']);
+      }
+
+      if (isset($boutonModifierInstrument)) {
+        $user->modifierInstrument($_SESSION['id'], $_POST['modifierInstrument'], $_POST['modifierNiveau'], $_POST['modifierAnnees']);
+        header("Location: index.php?page=profil&id=".$_SESSION['id']);
+      }
+
+      if (isset($boutonSupprimerInstrument)) {
+        $user->supprimerInstrument($_SESSION['id'], $_SESSION['id']);
         header("Location: index.php?page=profil&id=".$_SESSION['id']);
       }
 

@@ -68,6 +68,45 @@ if ($verificationSessionExiste == true) {
             <?php if ($annees > 1): ?>
               <p class="experience"><span>Expérience</span> <?php echo $annees ?> ans</p>
             <?php endif; ?>
+            <?php if ($i == 0 || $i == 2): ?>
+              <button type="button" class="btn btn-primary btn-lg petitsBoutonsFormulaires" data-toggle="modal" data-target="#popupModifierInstrument<?php echo $instrument.$niveau.$annees?>">Modifier</button>
+            <?php endif; ?>
+
+            <div id="popupModifierInstrument<?php echo $instrument.$niveau.$annees ?>" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content formFacebookProfil">
+                  <form action="" method="post" enctype="multipart/form-data">
+                    <h4> <strong><?php echo $instrument ?></strong></h4>
+                    <p>
+                      <select class="select" name="modifierInstrument">
+                        <option value="<?php echo $instrument ?>"><?php echo $instrument ?></option>
+                      </select>
+                      <select class="select" name="modifierNiveau">
+                        <option value="Débutant">Débutant</option>
+                        <option value="Intermédiaire">Intermédiaire</option>
+                        <option value="Avancé">Avancé</option>
+                        <option value="Confirmé">Confirmé</option>
+                      </select>
+                      <select class="select" name="modifierAnnees">
+                        <?php for ($q=0; $q <= 20; $q++) { ?>
+                          <?php if ($q<=1) { ?>
+                            <option value="<?php echo $q ?>"><?php echo $q ?> an</option>
+                          <?php } else { ?>
+                            <option value="<?php echo $q ?>"><?php echo $q ?> ans</option>
+                          <?php } ?>
+                        <?php } ?>
+                      </select>
+                    </p>
+                    <p>
+                      <input id="boutonModifierInstrument" type="submit" name="boutonModifierInstrument" value="Modifier">
+                      <button type="button" id="boutonSupprimerInstrument" name="boutonSupprimerInstrument">Supprimer cet Instrument</button>
+                      <button id="annuler" type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                    </p>
+                  </form>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       <?php endforeach; ?>
@@ -117,23 +156,21 @@ if ($verificationSessionExiste == true) {
   <?php if ($i == 0 || $i == 2): ?>
     <div class="row row-centered">
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-        <button class="boutonsFormulaires" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#popupAjouteInstrument">Ajoute un Instrument</button>
+        <button type="button" class="btn btn-primary btn-lg boutonsFormulaires" data-toggle="modal" data-target="#popupAjouteInstrument">Ajoute un Instrument</button>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-        <button class="boutonsFormulaires" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#popupAjouteFacebook">Ajoute ton Facebook</button>
+        <button type="button" class="btn btn-primary btn-lg boutonsFormulaires" data-toggle="modal" data-target="#popupAjouteFacebook">Ajoute ton Facebook</button>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-        <button class="boutonsFormulaires" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#popupPhotoProfil">Modifie ta Photo</button>
+        <button type="button" class="btn btn-primary btn-lg boutonsFormulaires" data-toggle="modal" data-target="#popupPhotoProfil">Modifie ta Photo</button>
       </div>
-      <?php endif; ?>
       <?php if ($i==0): ?>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-          <button class="boutonsFormulaires" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#popupCreerGroupe">Crée un Groupe</button>
+          <button type="button" class="btn btn-primary btn-lg boutonsFormulaires" data-toggle="modal" data-target="#popupCreerGroupe">Crée un Groupe</button>
         </div>
       <?php endif; ?>
-
     </div>
-
+  <?php endif; ?>
 
   <div id="popupAjouteInstrument" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -152,11 +189,11 @@ if ($verificationSessionExiste == true) {
               <option value="Confirmé">Confirmé</option>
             </select>
             <select class="select" name="annees">
-              <?php for ($i=0; $i <= 20; $i++) { ?>
-                <?php if ($i<=1) { ?>
-                  <option value="<?php echo $i ?>"><?php echo $i ?> an</option>
+              <?php for ($q=0; $q <= 20; $q++) { ?>
+                <?php if ($q<=1) { ?>
+                  <option value="<?php echo $q ?>"><?php echo $q ?> an</option>
                 <?php } else { ?>
-                  <option value="<?php echo $i ?>"><?php echo $i ?> ans</option>
+                  <option value="<?php echo $q ?>"><?php echo $q ?> ans</option>
                 <?php } ?>
               <?php } ?>
             </select>
@@ -178,23 +215,6 @@ if ($verificationSessionExiste == true) {
           <p><input type="text" name="lienFacebook" placeholder="Lien Facebook"></p>
           <p>
             <input id="boutonLienFacebook" type="submit" name="boutonLienFacebook" value="Envoyer">
-            <button id="annuler" type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-          </p>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <div id="popupPhotoProfil" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content formPhotoProfil">
-        <form action="" method="post" enctype="multipart/form-data">
-          <p>
-            Choisis ta photo :
-          </p>
-          <p><input type="file" name="avatar"></p>
-          <p>
-            <input id="changerPhoto" type="submit" name="changerPhoto" value="Changer de photo">
             <button id="annuler" type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
           </p>
         </form>
