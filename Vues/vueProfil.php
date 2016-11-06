@@ -70,11 +70,10 @@ if ($verificationSessionExiste == true) {
             <?php endif; ?>
             <?php if ($i == 0 || $i == 2): ?>
               <form action="" method="post">
-                <p>
-                  <button type="button" class="btn btn-primary btn-lg petitsBoutonsFormulaires" data-toggle="modal" data-target="#popupModifierInstrument<?php echo $instrument.$niveau.$annees?>">Modifier</button>
-                  <input type="hidden" name="modifierInstrument" value="<?php echo $instrument ?>">
-                  <button type="submit" class="petitsBoutonsFormulaires" name="boutonSupprimerInstrument">Supprimer</button>
-                </p>
+
+                <button type="button" class="petitsBoutonsFormulaires" data-toggle="modal" data-target="#popupModifierInstrument<?php echo $instrument.$niveau.$annees?>">Modifier</button>
+                <input type="hidden" name="modifierInstrument" value="<?php echo $instrument ?>">
+                <button type="submit" class="petitsBoutonsFormulaires" name="boutonSupprimerInstrument">Supprimer</button>
               </form>
             <?php endif; ?>
 
@@ -103,7 +102,7 @@ if ($verificationSessionExiste == true) {
                     </p>
                     <p>
                       <input id="boutonModifierInstrument" type="submit" name="boutonModifierInstrument" value="Modifier">
-                      <button id="annuler" type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                      <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
                     </p>
                   </form>
                 </div>
@@ -159,17 +158,17 @@ if ($verificationSessionExiste == true) {
   <?php if ($i == 0 || $i == 2): ?>
     <div class="row row-centered">
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-        <button type="button" class="btn btn-primary btn-lg boutonsFormulaires" data-toggle="modal" data-target="#popupAjouteInstrument">Ajoute un Instrument</button>
+        <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupAjouteInstrument">Ajoute un Instrument</button>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-        <button type="button" class="btn btn-primary btn-lg boutonsFormulaires" data-toggle="modal" data-target="#popupAjouteFacebook">Ajoute ton Facebook</button>
+        <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupAjouteFacebook">Ajoute ton Facebook</button>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-        <button type="button" class="btn btn-primary btn-lg boutonsFormulaires" data-toggle="modal" data-target="#popupPhotoProfil">Modifie ta Photo</button>
+        <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupPhotoProfil">Modifie ta Photo</button>
       </div>
       <?php if ($i==0): ?>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-          <button type="button" class="btn btn-primary btn-lg boutonsFormulaires" data-toggle="modal" data-target="#popupCreerGroupe">Crée un Groupe</button>
+          <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupCreerGroupe">Crée un Groupe</button>
         </div>
       <?php endif; ?>
     </div>
@@ -203,7 +202,7 @@ if ($verificationSessionExiste == true) {
           </p>
           <p>
             <input id="ajouter" type="submit" name="ajouterInstrumentPratique" value="Ajouter">
-            <button id="annuler" type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+            <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
           </p>
         </form>
       </div>
@@ -218,7 +217,7 @@ if ($verificationSessionExiste == true) {
           <p><input type="text" name="lienFacebook" placeholder="Lien Facebook"></p>
           <p>
             <input id="boutonLienFacebook" type="submit" name="boutonLienFacebook" value="Envoyer">
-            <button id="annuler" type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+            <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
           </p>
         </form>
       </div>
@@ -238,7 +237,7 @@ if ($verificationSessionExiste == true) {
           <p><input type="text" name="nomGroupe" value='' placeholder="Nom"></p>
           <p>
             <input id="boutonCreerGroupe" type="submit" name="creerGroupe" value="Créer un nouveau groupe">
-            <button id="annuler" type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+            <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
           </p>
         </form>
       </div>

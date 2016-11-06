@@ -104,7 +104,7 @@ if ($verificationSessionExiste == true) {
               <p> <input type="password" name="mdpAccueil" id="mdpAccueil" placeholder="Mot de Passe" required> </p>
               <p>
                 <input name="connexion" type="submit" id="connexion" value = "Connexion">
-                <button id="annuler" type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
               </p>
             </form>
           </div>
@@ -175,7 +175,7 @@ if ($verificationSessionExiste == true) {
                 </select>
               </p>
               <input id="inscription" type="submit" name="envoyer" value="S'inscrire !">
-              <button id="annuler" type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+              <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
             </form>
           </div>
         </div>
