@@ -61,7 +61,7 @@ header .barreMenu li {
 }
 
 
-#inscription, #connexion, #annuler{
+#inscription, #connexion{
     border: 3px solid rgba(150, 38, 22, 1);
     padding: 0.6em 1.2em;
     background: transparent;
@@ -78,6 +78,25 @@ header .barreMenu li {
     -o-transition: all 0.3s;
     transition: all 0.3s;
 }
+
+#annuler{
+    border: 3px solid rgba(150, 38, 22, 1);
+    padding: 0.6em 1.2em;
+    background: transparent;
+    color: rgba(150, 38, 22, 1);
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    font-size: 1em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-block;
+    margin: 3px 2px;
+    border-radius: 2px;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
 
 #connexion:hover, #annuler:hover, #inscription:hover {
     background: #FFF;
