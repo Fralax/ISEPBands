@@ -155,7 +155,7 @@ class utilisateurs extends modele {
   }
 
   public function afficherMembresInvites($nomGroupe){
-    $sql = 'SELECT u_id, u_prenom, u_nom FROM utilisateur WHERE u_id IN (SELECT u_id FROM invitation WHERE g_nom = :nomGroupe)';
+    $sql = 'SELECT u_id, u_prenom, u_nom, u_photo FROM utilisateur WHERE u_id IN (SELECT u_id FROM invitation WHERE g_nom = :nomGroupe)';
     $afficherMembresInvites = $this->executerRequete($sql, array(
       'nomGroupe' => $nomGroupe
     ));

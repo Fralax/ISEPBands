@@ -9,7 +9,7 @@
     public function verificationCreateurGroupe(){
       $user = new utilisateurs();
       $verifierCreateurGroupe = $user->verifierCreateurGroupe($_GET['groupe'])->fetch();
-      if ($verifierCreateurGroupe[g_createur] == $_SESSION['id']) {
+      if ($verifierCreateurGroupe[0] == $_SESSION['id']) {
         return true;
       }
     }
@@ -19,7 +19,10 @@
       $membresGroupe = $user->afficherMembresGroupe($_GET['groupe'])->fetchAll();
       $afficherMembresNonInvites = $user->afficherMembresNonInvites($_GET['groupe'])->fetchAll();
       $afficherMembresInvites = $user->afficherMembresInvites($_GET['groupe'])->fetchAll();
-
+      if (isset($_POST['inviterMembre'])){
+        $inviterMembreGroupe = $user -> inviterMembreGroupe($_SESSION['id'], $_POST['membresInvites'], $_GET['groupe']);
+        header("Location: index.php?page=groupe&groupe=".$_GET['groupe']);
+      }
       $vue = new Vue('Groupe');
       $vue->generer(array("membresNonInvites" => $afficherMembresNonInvites, "membresInvites" => $afficherMembresInvites, 'membres' => $membresGroupe));
     }
