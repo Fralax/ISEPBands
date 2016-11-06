@@ -69,7 +69,13 @@ if ($verificationSessionExiste == true) {
               <p class="experience"><span>Expérience</span> <?php echo $annees ?> ans</p>
             <?php endif; ?>
             <?php if ($i == 0 || $i == 2): ?>
-              <button type="button" class="btn btn-primary btn-lg petitsBoutonsFormulaires" data-toggle="modal" data-target="#popupModifierInstrument<?php echo $instrument.$niveau.$annees?>">Modifier</button>
+              <form action="" method="post">
+                <p>
+                  <button type="button" class="btn btn-primary btn-lg petitsBoutonsFormulaires" data-toggle="modal" data-target="#popupModifierInstrument<?php echo $instrument.$niveau.$annees?>">Modifier</button>
+                  <input type="hidden" name="modifierInstrument" value="<?php echo $instrument ?>">
+                  <button type="submit" class="petitsBoutonsFormulaires" name="boutonSupprimerInstrument">Supprimer</button>
+                </p>
+              </form>
             <?php endif; ?>
 
             <div id="popupModifierInstrument<?php echo $instrument.$niveau.$annees ?>" class="modal fade" role="dialog">
@@ -77,10 +83,8 @@ if ($verificationSessionExiste == true) {
                 <div class="modal-content formFacebookProfil">
                   <form action="" method="post" enctype="multipart/form-data">
                     <h4> <strong><?php echo $instrument ?></strong></h4>
+                    <input type="hidden" name="modifierInstrument" value="<?php echo $instrument ?>">
                     <p>
-                      <select class="select" name="modifierInstrument">
-                        <option value="<?php echo $instrument ?>"><?php echo $instrument ?></option>
-                      </select>
                       <select class="select" name="modifierNiveau">
                         <option value="Débutant">Débutant</option>
                         <option value="Intermédiaire">Intermédiaire</option>
@@ -99,7 +103,6 @@ if ($verificationSessionExiste == true) {
                     </p>
                     <p>
                       <input id="boutonModifierInstrument" type="submit" name="boutonModifierInstrument" value="Modifier">
-                      <button type="button" id="boutonSupprimerInstrument" name="boutonSupprimerInstrument">Supprimer cet Instrument</button>
                       <button id="annuler" type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                     </p>
                   </form>
@@ -115,7 +118,7 @@ if ($verificationSessionExiste == true) {
     <?php if (!$instrumentsJoues): ?>
       <div class="pasInstrument">
         Ben alors ? Ajoute vite les instruments que tu maîtrises !
-      </div>
+      </di
     <?php endif; ?>
 
   </div>

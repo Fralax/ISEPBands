@@ -29,7 +29,8 @@
       }
 
       if (isset($boutonSupprimerInstrument)) {
-        $user->supprimerInstrument($_SESSION['id'], $_SESSION['id']);
+        $user->supprimerInstrument($_SESSION['id'], $_POST['modifierInstrument']);
+        var_dump($_POST['boutonSupprimerInstrument']);
         header("Location: index.php?page=profil&id=".$_SESSION['id']);
       }
 
