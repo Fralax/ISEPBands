@@ -79,7 +79,7 @@ if ($verificationSessionExiste == true) {
 
             <div id="popupModifierInstrument<?php echo $instrument.$niveau.$annees ?>" class="modal fade" role="dialog">
               <div class="modal-dialog">
-                <div class="modal-content formFacebookProfil">
+                <div class="modal-content popups">
                   <form action="" method="post" enctype="multipart/form-data">
                     <h4> <strong><?php echo $instrument ?></strong></h4>
                     <input type="hidden" name="modifierInstrument" value="<?php echo $instrument ?>">
@@ -117,7 +117,7 @@ if ($verificationSessionExiste == true) {
     <?php if (!$instrumentsJoues): ?>
       <div class="pasInstrument">
         Ben alors ? Ajoute vite les instruments que tu maîtrises !
-      </di
+      </div>
     <?php endif; ?>
 
   </div>
@@ -176,7 +176,10 @@ if ($verificationSessionExiste == true) {
 
   <div id="popupAjouteInstrument" class="modal fade" role="dialog">
     <div class="modal-dialog">
-      <div class="modal-content formInstrumentProfil">
+      <div class="modal-content popups">
+        <p>
+          Sélectionne l'instrument à ajouter
+        </p>
         <form method="post" action="">
           <p>
             <select class="select" name="instrument">
@@ -201,7 +204,7 @@ if ($verificationSessionExiste == true) {
             </select>
           </p>
           <p>
-            <input id="ajouter" type="submit" name="ajouterInstrumentPratique" value="Ajouter">
+            <input class="boutonsFormulaires" type="submit" name="ajouterInstrumentPratique" value="Ajouter">
             <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
           </p>
         </form>
@@ -211,12 +214,30 @@ if ($verificationSessionExiste == true) {
 
   <div id="popupAjouteFacebook" class="modal fade" role="dialog">
     <div class="modal-dialog">
-      <div class="modal-content formFacebookProfil">
+      <div class="modal-content popups">
         <form action="" method="post" enctype="multipart/form-data">
           <p>Lien vers ton profil : </p>
           <p><input type="text" name="lienFacebook" placeholder="Lien Facebook"></p>
           <p>
-            <input id="boutonLienFacebook" type="submit" name="boutonLienFacebook" value="Envoyer">
+            <input class="boutonsFormulaires" type="submit" name="boutonLienFacebook" value="Envoyer">
+            <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="popupPhotoProfil" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content popups">
+        <form action="" method="post" enctype="multipart/form-data">
+          <div class="inputContainer">
+            <input class="inputFile" id="maPhoto" type="file" name="avatar">
+            <label for="maPhoto" class="label" tabindex="0">Sélectionne un fichier !</label>
+          </div>
+          <p class="fileReturn"></p>
+          <p>
+            <input class="boutonsFormulaires" type="submit" name="changerPhoto" value="Changer de photo">
             <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
           </p>
         </form>
@@ -226,7 +247,7 @@ if ($verificationSessionExiste == true) {
 
   <div id="popupCreerGroupe" class="modal fade" role="dialog">
     <div class="modal-dialog">
-      <div class="modal-content formCreerGroupeProfil">
+      <div class="modal-content popups">
         <?php
           require_once 'Controleurs/controleurGroupes.php';
           $creerGroupe = new controleurGroupes();
@@ -236,7 +257,7 @@ if ($verificationSessionExiste == true) {
           <p>Pour commencer la création de ton groupe, donne lui un nom !</p>
           <p><input type="text" name="nomGroupe" value='' placeholder="Nom"></p>
           <p>
-            <input id="boutonCreerGroupe" type="submit" name="creerGroupe" value="Créer un nouveau groupe">
+            <input class="boutonsFormulaires" type="submit" name="creerGroupe" value="Créer un nouveau groupe">
             <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
           </p>
         </form>
@@ -248,4 +269,4 @@ if ($verificationSessionExiste == true) {
 
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
-<script src="JS/ajouterMembre.js"></script>
+<script src="JS/labelsInputFiles.js"></script>

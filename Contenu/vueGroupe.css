@@ -1,29 +1,9 @@
-a{
-  text-decoration: none;
-  color: rgba(138, 38, 22, 1);
-}
-
-a:hover{
-  color: rgb(247, 177, 90);
-}
-
-.row-centered {
-  text-align:center;
-}
-.col-centered {
-  display:inline-block;
-  float:none;
-  text-align:left;
-  margin-right:-4px;
-}
-
 .photoGroupeMembre{
   width: 6em;
   height: 6em;
   border-radius: 50%;
 }
 
-
 .membreGroupe{
-background-color: Pink;
+  text-align: center;
 }

@@ -19,12 +19,20 @@
       $membresGroupe = $user->afficherMembresGroupe($_GET['groupe'])->fetchAll();
       $afficherMembresNonInvites = $user->afficherMembresNonInvites($_GET['groupe'])->fetchAll();
       $afficherMembresInvites = $user->afficherMembresInvites($_GET['groupe'])->fetchAll();
+      $afficherMembresASupprimer = $user->afficherMembresASupprimer($_GET['groupe'], $_SESSION['id'])->fetchAll();
+
       if (isset($_POST['inviterMembre'])){
         $inviterMembreGroupe = $user -> inviterMembreGroupe($_SESSION['id'], $_POST['membresInvites'], $_GET['groupe']);
         header("Location: index.php?page=groupe&groupe=".$_GET['groupe']);
       }
+
+      if (isset($_POST['supprimerMembre'])) {
+        $supprimerMembreGroupe = $user->supprimerMembreGroupe($_POST['membres'], $_GET['groupe']);
+        $supprimerMembreInvitation = $user->supprimerMembreInvitation($_POST['membres'], $_GET['groupe']);
+        header("Location: index.php?page=groupe&groupe=".$_GET['groupe']);
+      }
       $vue = new Vue('Groupe');
-      $vue->generer(array("membresNonInvites" => $afficherMembresNonInvites, "membresInvites" => $afficherMembresInvites, 'membres' => $membresGroupe));
+      $vue->generer(array("membresNonInvites" => $afficherMembresNonInvites, "membresInvites" => $afficherMembresInvites, 'membres' => $membresGroupe, "membresASupprimer" => $afficherMembresASupprimer));
     }
 
     public function affichageMesGroupes(){
