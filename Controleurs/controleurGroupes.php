@@ -16,31 +16,60 @@
 
     public function affichageGroupe(){
       $user = new utilisateurs();
+      $groupe = new groupes();
       $membresGroupe = $user->afficherMembresGroupe($_GET['groupe'])->fetchAll();
       $afficherMembresNonInvites = $user->afficherMembresNonInvites($_GET['groupe'])->fetchAll();
       $afficherMembresInvites = $user->afficherMembresInvites($_GET['groupe'])->fetchAll();
       $afficherMembresASupprimer = $user->afficherMembresASupprimer($_GET['groupe'], $_SESSION['id'])->fetchAll();
+      $afficherPhotoGroupe = $groupe->afficherPhotoGroupe($_GET['groupe'])->fetch();
 
       if (isset($_POST['inviterMembre'])){
         $inviterMembreGroupe = $user -> inviterMembreGroupe($_SESSION['id'], $_POST['membresInvites'], $_GET['groupe']);
-        header("Location: index.php?page=groupe&groupe=".$_GET['groupe']);
+        header("Location: index.php?page=groupe&groupe=".urlencode($_GET['groupe']));
       }
 
       if (isset($_POST['supprimerMembre'])) {
         $supprimerMembreGroupe = $user->supprimerMembreGroupe($_POST['membres'], $_GET['groupe']);
         $supprimerMembreInvitation = $user->supprimerMembreInvitation($_POST['membres'], $_GET['groupe']);
-        header("Location: index.php?page=groupe&groupe=".$_GET['groupe']);
+        header("Location: index.php?page=groupe&groupe=".urlencode($_GET['groupe']));
       }
 
       if (isset($_POST['modifierNom'])){
         if ($_POST['nouveauNom1'] == $_POST['nouveauNom2']){
           $modiferNomGroupe = $groupe->modifierNomGroupe($_GET['groupe'],$_POST['nouveauNom1']);
-          header("Location: index.php?page=groupe&groupe=".urlencode($_GET['nouveauNom1']));
+          $modifierNomGroupeAppartient = $groupe->modifierNomGroupeAppartient($_GET['groupe'], $_POST['nouveauNom1']);
+          $modiferNomGroupeInvitation = $groupe->modifierNomGroupeInvitation($_GET['groupe'],$_POST['nouveauNom1']);
+          header("Location: index.php?page=groupe&groupe=".urlencode($_POST['nouveauNom1']));
+        }
+      }
+
+      if (isset($_POST['changerPhotoGroupe'])) {
+        if (isset($_FILES['photoGroupe']) && !empty($_FILES['photoGroupe']['name'])) {
+          $tailleMax = 10485760;
+          $extensions = array('png', 'gif', 'jpg', 'jpeg');
+          $extension = strtolower(substr(strrchr($_FILES['photoGroupe']['name'], '.'), 1));
+          if ($_FILES['photoGroupe']['size'] <= $tailleMax) {
+            if(in_array($extension, $extensions)){
+              $photo = "photosGroupes/".$_GET['groupe'].".".$extension;
+              if (move_uploaded_file($_FILES['photoGroupe']['tmp_name'], $photo)) {
+                $modifierPhoto = $groupe->modifierPhotoGroupe($_GET['groupe'], $photo);
+                header("Location: index.php?page=groupe&groupe=".urlencode($_GET['groupe']));
+              } else{
+                ?> <script>alert("Echec de l'upload !")</script><?php
+              }
+            } else{
+              ?> <script>alert("Vous devez uploader un fichier de type png, gif, jpg ou jpeg ...")</script><?php
+            }
+          } else{
+            ?> <script>alert("La photo du groupe ne doit pas dépasser 10 Mo !")</script><?php
+          }
+        } else{
+          ?> <script>alert("Echec de l'upload !")</script><?php
         }
       }
 
       $vue = new Vue('Groupe');
-      $vue->generer(array("membresNonInvites" => $afficherMembresNonInvites, "membresInvites" => $afficherMembresInvites, 'membres' => $membresGroupe, "membresASupprimer" => $afficherMembresASupprimer));
+      $vue->generer(array("membresNonInvites" => $afficherMembresNonInvites, "membresInvites" => $afficherMembresInvites, 'membres' => $membresGroupe, "membresASupprimer" => $afficherMembresASupprimer, "photoGroupe" => $afficherPhotoGroupe));
     }
 
     public function affichageMesGroupes(){

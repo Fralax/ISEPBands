@@ -52,22 +52,13 @@
   border-radius: 5%;
 }
 
-#photoInstrument{
-  height: 4em;
-  width: 4em;
-}
-
 .formulaires{
   text-align: center;
 }
 
-.js .inputFile {
-  position: absolute;
-  top: 0; left: 0;
-  width: 225px;
-  padding: 14px 0;
-  opacity: 0;
-  cursor: pointer;
+#photoInstrument{
+  height: 4em;
+  width: 4em;
 }
 
 .informationsProfil{

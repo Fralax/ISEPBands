@@ -113,14 +113,6 @@ class utilisateurs extends modele {
     ));
   }
 
-  public function afficherPhoto($id){
-    $sql = 'SELECT u_photo FROM utilisateur WHERE u_id = :id';
-    $afficherPhoto = $this->executerRequete($sql, array(
-      'id' => $id
-    ));
-    return $afficherPhoto;
-  }
-
   public function ajouterLienFacebook($id, $lien){
     $sql = 'UPDATE utilisateur SET u_facebook = :lien WHERE u_id = :id';
     $ajouterLienFacebook = $this->executerRequete($sql, array(

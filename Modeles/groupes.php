@@ -34,8 +34,35 @@ class groupes extends modele {
 
   public function modifierNomGroupe($nomGroupe, $nouveauNomGroupe){
     $sql = 'UPDATE groupe SET g_nom  = :nouveauNomGroupe WHERE g_nom = :nomGroupe';
-    $modifierNomGroupe = $this->executerRequete($sql,array('nouveauNomGroupe' => $nouveauNomGroupe, 'nomGroupe' => $nomGroupe));
+    $modifierNomGroupe = $this->executerRequete($sql, array('nouveauNomGroupe' => $nouveauNomGroupe, 'nomGroupe' => $nomGroupe));
   }
+
+  public function modifierNomGroupeAppartient($nomGroupe, $nouveauNomGroupe){
+    $sql = 'UPDATE appartient SET g_nom = :nouveauNomGroupe WHERE g_nom = :nomGroupe';
+    $modifierNomGroupeAppartient = $this->executerRequete($sql, array('nouveauNomGroupe' => $nouveauNomGroupe, 'nomGroupe' => $nomGroupe));
+  }
+
+  public function modifierNomGroupeInvitation($nomGroupe, $nouveauNomGroupe){
+    $sql = 'UPDATE invitation SET g_nom = :nouveauNomGroupe WHERE g_nom = :nomGroupe';
+    $modifierNomGroupeInvitation = $this->executerRequete($sql, array('nouveauNomGroupe' => $nouveauNomGroupe, 'nomGroupe' => $nomGroupe));
+  }
+
+  public function afficherPhotoGroupe($nomGroupe){
+    $sql = 'SELECT g_photo FROM groupe WHERE g_nom = :nomGroupe';
+    $afficherPhotoGroupe = $this->executerRequete($sql, array(
+      'nomGroupe' => $nomGroupe
+    ));
+    return $afficherPhotoGroupe;
+  }
+
+  public function modifierPhotoGroupe($nomGroupe, $photo){
+    $sql = 'UPDATE groupe SET g_photo = :photo WHERE g_nom = :nomGroupe';
+    $modifierPhotoGroupe = $this->executerRequete ($sql, array(
+      'photo' => $photo,
+      'nomGroupe' => $nomGroupe
+    ));
+  }
+
 }
 
 ?>

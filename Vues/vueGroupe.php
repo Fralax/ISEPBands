@@ -18,11 +18,14 @@ foreach ($membres as list($id)) {
 
 ?>
 
-<div class="container">
-
-  <div class="row row-centered">
+<div class="row row-centered photoNom">
+  <img id ="photoGroupe" src="<?php echo $photoGroupe[0] ?>"/>
+  <p>
     <h1><?php echo $_GET['groupe'] ?></h1>
-  </div>
+  </p>
+</div>
+
+<div class="container">
 
   <div class="row row-centered membresGroupe">
     <h2> Membres </h2>
@@ -54,9 +57,12 @@ foreach ($membres as list($id)) {
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
         <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupSupprimerMembre">Supprime un membre</button>
       </div>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupModifierNom">Modifie le nom du groupe</button>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
+        <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupModifierNom">Modifie le nom du groupe</button>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
+        <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupPhotoGroupe">Modifie la photo du groupe</button>
+      </div>
     </div>
   </div>
 <?php endif; ?>
@@ -106,21 +112,36 @@ foreach ($membres as list($id)) {
 
 <div id="popupModifierNom" class="modal fade" role="dialog">
   <div class="modal-dialog">
-    <div class="modal-content formModifierNom">
+    <div class="modal-content popups">
       <form method="post" action="">
-        <p>
-          Nouveau nom :
-          <input class="text" name="nouveauNom1">
-
-        </p>
-        <p>
-          Confirme le nouveau nom :
-          <input class="text" name="nouveauNom2">
-        </p>
-        <input type="submit" name="modifierNom" value="Valider">
+        <p>Nouveau nom : </p>
+        <p><input type="text" name="nouveauNom1" value="" placeholder="Nom du groupe"></p>
+        <p>Confirme le nouveau nom :</p>
+        <p><input type="text" name="nouveauNom2" value="" placeholder="Nom du groupe"></p>
+        <input class="boutonsFormulaires" type="submit" name="modifierNom" value="Valider">
+        <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
       </form>
     </div>
   </div>
 </div>
 
+<div id="popupPhotoGroupe" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content popups">
+      <form action="" method="post" enctype="multipart/form-data">
+        <div class="inputContainer">
+          <input class="inputFile" id="photoGroupe" type="file" name="photoGroupe">
+          <label for="photoGroupe" class="label" tabindex="0">Sélectionne un fichier !</label>
+        </div>
+        <p class="fileReturn"></p>
+        <p>
+          <input class="boutonsFormulaires" type="submit" name="changerPhotoGroupe" value="Changer de photo">
+          <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
+        </p>
+      </form>
+    </div>
+  </div>
 </div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+<script src="JS/labelsInputFiles.js"></script>
