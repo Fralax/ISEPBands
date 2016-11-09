@@ -91,7 +91,7 @@
       $nomGroupe = $_POST['nomGroupe'];
 
       if (isset($_POST['creerGroupe'])) {
-        $groupes -> creerGroupe($id, $nomGroupe);
+        $groupes -> creerGroupe($id, $nomGroupe, "photosGroupes/groupe.jpg");
         $groupes -> ajouterAppartient($id, $nomGroupe);
         header("Location: index.php?page=groupe&groupe=".urlencode($nomGroupe));
       }

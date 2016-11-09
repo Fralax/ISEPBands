@@ -4,9 +4,9 @@ require_once "Modeles/modele.php";
 
 class groupes extends modele {
 
-  public function creerGroupe($id, $nomGroupe){
-    $sql = 'INSERT INTO groupe (g_nom, g_createur) VALUES (:nomGroupe, :id)';
-    $creerGroupe = $this->executerRequete($sql, array('nomGroupe' => $nomGroupe, 'id' => $id));
+  public function creerGroupe($id, $nomGroupe, $photoGroupe){
+    $sql = 'INSERT INTO groupe (g_nom, g_createur, g_photo) VALUES (:nomGroupe, :id, :photoGroupe)';
+    $creerGroupe = $this->executerRequete($sql, array('nomGroupe' => $nomGroupe, 'id' => $id, 'photoGroupe' => $photoGroupe));
   }
 
   public function ajouterAppartient($id, $nomGroupe){
