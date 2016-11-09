@@ -3,19 +3,13 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width", initial-scale="1">
+    <meta name="viewport" content="width=device-width" initial-scale="1">
 
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="Contenu/gabarit.css" />
-    <link rel="stylesheet" href="Contenu/vueMesGroupes.css" />
-    <link rel="stylesheet" href="Contenu/vueGroupe.css" />
-    <link rel="stylesheet" href="Contenu/vueAccueil.css" />
-    <link rel="stylesheet" href="Contenu/vueProfil.css" />
-    <link rel="stylesheet" href="Contenu/vueAnnuaireGroupes.css" />
-    <link rel="stylesheet" href="Contenu/vueAnnuaireMembres.css" />
+    <link rel="stylesheet" href="<?php echo $css ?>" >
     <title><?= $titre ?></title>
 </head>
-
 <?php
 
 require_once 'Controleurs/controleurMembres.php';
@@ -63,6 +57,7 @@ if ($verificationSessionExiste == true) {
     <div class="container-fluid">
       <?= $contenu ?>
     </div>
+
 
     <footer>
         ISEPBands &copy; 2016 - Tous droits r&eacute;serv&eacute;s

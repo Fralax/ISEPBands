@@ -162,8 +162,8 @@ class utilisateurs extends modele {
     return $afficherMembresInvites;
   }
 
-  public function afficherMembresNonInvites($idCreateur){
-    $sql = 'SELECT u_id, u_prenom, u_nom FROM utilisateur WHERE u_id NOT IN (SELECT u_id FROM invitation WHERE g_nom = :nomGroupe) ORDER BY u_nom';
+  public function afficherMembresNonInvites($nomGroupe){
+    $sql = 'SELECT u_id, u_prenom, u_nom FROM utilisateur WHERE u_id NOT IN (SELECT u_id FROM invitation WHERE g_nom = :nomGroupe) AND u_id NOT IN (SELECT u_id FROM appartient WHERE g_nom = :nomGroupe) ORDER BY u_nom';
     $afficherMembresNonInvites = $this->executerRequete($sql, array(
       'nomGroupe' => $nomGroupe
     ));
@@ -174,6 +174,31 @@ class utilisateurs extends modele {
     $sql = 'SELECT u_id, u_prenom, u_nom, u_photo FROM utilisateur';
     $afficherMembres = $this->executerRequete($sql);
     return $afficherMembres;
+  }
+
+  public function afficherMembresASupprimer($nomGroupe, $idCreateur){
+    $sql = 'SELECT u_id, u_prenom, u_nom FROM utilisateur WHERE u_id != :idCreateur AND (u_id IN (SELECT u_id FROM appartient WHERE g_nom = :nomGroupe) OR u_id IN (SELECT u_id FROM invitation WHERE g_nom = :nomGroupe))';
+    $afficherMembresASupprimer = $this->executerRequete($sql, array(
+      'idCreateur' => $idCreateur,
+      'nomGroupe' => $nomGroupe
+    ));
+    return $afficherMembresASupprimer;
+  }
+
+  public function supprimerMembreGroupe($membre, $nomGroupe){
+    $sql = 'DELETE FROM appartient WHERE u_id = :membre AND g_nom = :nomGroupe';
+    $supprimerMembreGroupe = $this->executerRequete($sql, array(
+      'membre' => $membre,
+      'nomGroupe' => $nomGroupe
+    ));
+  }
+
+  public function supprimerMembreInvitation($membre, $nomGroupe){
+    $sql = 'DELETE FROM invitation WHERE u_id = :membre AND g_nom = :nomGroupe';
+    $supprimerMembreGroupe = $this->executerRequete($sql, array(
+      'membre' => $membre,
+      'nomGroupe' => $nomGroupe
+    ));
   }
 
 

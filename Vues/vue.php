@@ -7,7 +7,8 @@ class Vue {
 
   public function __construct($action) {
 
-    $this->fichier = "Vues/vue" . $action . ".php";
+    $this->fichier = "Vues/vue".$action.".php";
+    $this->css = "Contenu/vue".$action.".css";
 
   }
 
@@ -15,7 +16,7 @@ class Vue {
   public function generer($donnees=[]) {
 
     $contenu = $this->genererFichier($this->fichier, $donnees);
-    $vue = $this->genererFichier('Vues/gabarit.php', array('titre' => $this->titre, 'contenu' => $contenu));
+    $vue = $this->genererFichier('Vues/gabarit.php', array('titre' => $this->titre, 'contenu' => $contenu, 'css' => $this->css));
     echo $vue;
   }
 
