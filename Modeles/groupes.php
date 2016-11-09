@@ -15,7 +15,7 @@ class groupes extends modele {
   }
 
   public function afficherMesGroupes($id){
-    $sql = 'SELECT g_nom FROM appartient WHERE u_id = :id';
+    $sql = 'SELECT g_nom, g_photo FROM groupe NATURAL JOIN appartient WHERE u_id = :id';
     $afficherMesGroupes = $this->executerRequete($sql, array('id' => $id));
     return $afficherMesGroupes;
   }
@@ -27,7 +27,7 @@ class groupes extends modele {
   }
 
   public function afficherGroupes(){
-    $sql = 'SELECT * FROM groupe';
+    $sql = 'SELECT g_nom, g_createur, g_photo FROM groupe';
     $afficherGroupes = $this->executerRequete($sql);
     return $afficherGroupes;
   }

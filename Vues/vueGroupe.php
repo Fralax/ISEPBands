@@ -18,7 +18,7 @@ foreach ($membres as list($id)) {
 
 ?>
 
-<div class="row row-centered photoNom">
+<div class="row row-centered nomPhotoGroupe">
   <img id ="photoGroupe" src="<?php echo $photoGroupe[0] ?>"/>
   <p>
     <h1><?php echo $_GET['groupe'] ?></h1>
@@ -130,8 +130,8 @@ foreach ($membres as list($id)) {
     <div class="modal-content popups">
       <form action="" method="post" enctype="multipart/form-data">
         <div class="inputContainer">
-          <input class="inputFile" id="photoGroupe" type="file" name="photoGroupe">
-          <label for="photoGroupe" class="label" tabindex="0">Sélectionne un fichier !</label>
+          <input class="inputFile" id="changerPhotoGroupe" type="file" name="photoGroupe">
+          <label for="changerPhotoGroupe" class="label" tabindex="0">Sélectionne un fichier !</label>
         </div>
         <p class="fileReturn"></p>
         <p>
