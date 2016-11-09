@@ -31,6 +31,11 @@ class groupes extends modele {
     $afficherGroupes = $this->executerRequete($sql);
     return $afficherGroupes;
   }
+
+  public function modifierNomGroupe($nomGroupe, $nouveauNomGroupe){
+    $sql = 'UPDATE groupe SET g_nom  = :nouveauNomGroupe WHERE g_nom = :nomGroupe';
+    $modifierNomGroupe = $this->executerRequete($sql,array('nouveauNomGroupe' => $nouveauNomGroupe, 'nomGroupe' => $nomGroupe));
+  }
 }
 
 ?>

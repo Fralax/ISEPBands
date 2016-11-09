@@ -31,6 +31,14 @@
         $supprimerMembreInvitation = $user->supprimerMembreInvitation($_POST['membres'], $_GET['groupe']);
         header("Location: index.php?page=groupe&groupe=".$_GET['groupe']);
       }
+
+      if (isset($_POST['modifierNom'])){
+        if ($_POST['nouveauNom1'] == $_POST['nouveauNom2']){
+          $modiferNomGroupe = $groupe->modifierNomGroupe($_GET['groupe'],$_POST['nouveauNom1']);
+          header("Location: index.php?page=groupe&groupe=".urlencode($_GET['nouveauNom1']));
+        }
+      }
+
       $vue = new Vue('Groupe');
       $vue->generer(array("membresNonInvites" => $afficherMembresNonInvites, "membresInvites" => $afficherMembresInvites, 'membres' => $membresGroupe, "membresASupprimer" => $afficherMembresASupprimer));
     }
@@ -66,10 +74,4 @@
       $vue = new Vue('AnnuaireGroupes');
       $vue->generer(array('groupes' => $affichageGroupes));
     }
-
-    public function modifierNomGroupe(){
-      $groupe = new groupes();
-
-    }
-
   }

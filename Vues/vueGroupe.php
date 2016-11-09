@@ -111,6 +111,7 @@ foreach ($membres as list($id)) {
         <p>
           Nouveau nom :
           <input class="text" name="nouveauNom1">
+
         </p>
         <p>
           Confirme le nouveau nom :
