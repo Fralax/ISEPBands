@@ -59,4 +59,9 @@
       $vue->generer(array('groupes' => $affichageGroupes));
     }
 
+    public function modifierNomGroupe(){
+      $groupe = new groupes();
+      
+    }
+
   }
