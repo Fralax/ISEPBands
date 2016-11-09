@@ -70,7 +70,6 @@ if ($verificationSessionExiste == true) {
             <?php endif; ?>
             <?php if ($i == 0 || $i == 2): ?>
               <form action="" method="post">
-
                 <button type="button" class="petitsBoutonsFormulaires" data-toggle="modal" data-target="#popupModifierInstrument<?php echo $instrument.$niveau.$annees?>">Modifier</button>
                 <input type="hidden" name="modifierInstrument" value="<?php echo $instrument ?>">
                 <button type="submit" class="petitsBoutonsFormulaires" name="boutonSupprimerInstrument">Supprimer</button>
