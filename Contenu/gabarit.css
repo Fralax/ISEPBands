@@ -11,6 +11,7 @@ a{
 
 a:hover{
   color: rgb(247, 177, 90);
+  text-decoration: none;
 }
 
 body{

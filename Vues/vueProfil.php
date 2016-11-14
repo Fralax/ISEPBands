@@ -47,7 +47,7 @@ if ($verificationSessionExiste == true) {
 
   <div class="row row-centered instruments">
 
-    <div class="mesInstruments">
+    <div class="titres">
       Instruments
     </div>
 
@@ -114,16 +114,38 @@ if ($verificationSessionExiste == true) {
     <?php endif; ?>
 
     <?php if (!$instrumentsJoues): ?>
-      <div class="pasInstrument">
-        Ben alors ? Ajoute vite les instruments que tu maîtrises !
-      </div>
+      <?php if ($i == 0 || $i == 2): ?>
+        <div class="pasInstrument">
+          Ben alors ? Ajoute vite les instruments que tu maîtrises !
+        </div>
+      <?php endif; ?>
+
+      <?php if ($i != 0 && $i != 2): ?>
+        <div class="pasInstrument">
+          <?php echo $infos['u_prenom'] ?> n'a pas encore ajouté d'instrument.
+        </div>
+      <?php endif; ?>
     <?php endif; ?>
 
   </div>
 
+  <?php if ($groupes): ?>
+    <div class="row row-centered">
+      <div class="titres">
+        Groupes
+      </div>
+      <?php foreach ($groupes as list($nomGroupe, $photoGroupe)): ?>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered groupes">
+          <p><img class="photoGroupe" src="<?php echo $photoGroupe ?>" alt="" /></p>
+          <p><a href="index.php?page=groupe&groupe=<?php echo urlencode($nomGroupe) ?>"> <?php echo $nomGroupe ?> </a></p>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  <?php endif; ?>
+
   <div class="row row-centered informations">
 
-    <div class="mesInformations">
+    <div class="titres">
       Informations
     </div>
 

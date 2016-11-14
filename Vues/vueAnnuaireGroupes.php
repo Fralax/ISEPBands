@@ -7,7 +7,7 @@
 ?>
 
 <div class="container">
-  <div class="row row-centered instruments">
+  <div class="row row-centered">
     <?php foreach ($groupes as list($nomGroupe, $nomCreateur, $photoGroupe)): ?>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
         <p><img class="photoGroupe" src="<?php echo $photoGroupe ?>" alt="" /></p>

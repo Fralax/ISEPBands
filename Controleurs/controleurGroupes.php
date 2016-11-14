@@ -50,7 +50,7 @@
           $extension = strtolower(substr(strrchr($_FILES['photoGroupe']['name'], '.'), 1));
           if ($_FILES['photoGroupe']['size'] <= $tailleMax) {
             if(in_array($extension, $extensions)){
-              $photo = "photosGroupes/".$_GET['groupe'].".".$extension;
+              $photo = str_replace(" ", "", "photosGroupes/".$_GET['groupe'].".".$extension);
               if (move_uploaded_file($_FILES['photoGroupe']['tmp_name'], $photo)) {
                 $modifierPhoto = $groupe->modifierPhotoGroupe($_GET['groupe'], $photo);
                 header("Location: index.php?page=groupe&groupe=".urlencode($_GET['groupe']));
@@ -66,6 +66,13 @@
         } else{
           ?> <script>alert("Echec de l'upload !")</script><?php
         }
+      }
+
+      if (isset($_POST['supprimerGroupe'])) {
+        $supprimerGroupe = $groupe->supprimerGroupe($_GET['groupe']);
+        $supprimerGroupeAppartient = $groupe->supprimerGroupeAppartient($_GET['groupe']);
+        $supprimerGroupeInvitation = $groupe->supprimerGroupeInvitation($_GET['groupe']);
+        header("Location: index.php?page=mesgroupes");
       }
 
       $vue = new Vue('Groupe');

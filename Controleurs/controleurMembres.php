@@ -7,6 +7,7 @@
 
     public function affichageProfil(){
       $user = new utilisateurs();
+      $groupe = new groupes();
       $ajouterInstrumentPratique = $_POST['ajouterInstrumentPratique'];
       $instrumentPratique = $_POST['instrument'];
       $boutonModifierInstrument = $_POST['boutonModifierInstrument'];
@@ -17,6 +18,7 @@
       $afficherInstrumentsNonJoues = $user->afficherInstrumentsNonJoues($_GET['id'])->fetchAll();
       $afficherInstrumentsJoues = $user->afficherInstrumentsJoues($_GET['id'])->fetchAll();
       $afficherInfosMembre = $user->afficherInfosMembre($_GET['id'])->fetch();
+      $afficherMesGroupes = $groupe->afficherMesGroupes($_GET['id'])->fetchAll();
 
       if (isset($ajouterInstrumentPratique)) {
         $user->pratiquerInstrument($_SESSION['id'], $instrumentPratique, $niveau, $annees);
@@ -65,7 +67,7 @@
       }
 
       $vue = new Vue('Profil');
-      $vue->generer(array("intrumentsNonJoues" => $afficherInstrumentsNonJoues, "instrumentsJoues" => $afficherInstrumentsJoues, "infos" => $afficherInfosMembre));
+      $vue->generer(array("intrumentsNonJoues" => $afficherInstrumentsNonJoues, "instrumentsJoues" => $afficherInstrumentsJoues, "infos" => $afficherInfosMembre, "groupes" => $afficherMesGroupes));
     }
 
     public function verificationMembreValide(){

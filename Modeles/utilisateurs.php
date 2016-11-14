@@ -194,5 +194,10 @@ class utilisateurs extends modele {
     ));
   }
 
+  public function afficherInvitations($membre){
+    $sql = 'SELECT ut.u_id, ut.u_prenom, ut.u_nom, ut.u_photo, inv.g_nom FROM invitation inv, utilisateur ut WHERE inv.u_id = :membre AND ut.u_id IN (SELECT inv.g_createur FROM invitation WHERE inv.u_id = :membre)';
+    $afficherInvitations = $this->executerRequete($sql, array('membre' => $membre));
+    return $afficherInvitations;
+  }
 
 }

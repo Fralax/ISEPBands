@@ -63,6 +63,27 @@ class groupes extends modele {
     ));
   }
 
+  public function supprimerGroupe($nomGroupe){
+    $sql = 'DELETE FROM groupe WHERE g_nom = :nomGroupe';
+    $supprimmerGroupe = $this->executerRequete($sql, array(
+      'nomGroupe' => $nomGroupe
+    ));
+  }
+
+  public function supprimerGroupeAppartient($nomGroupe){
+    $sql = 'DELETE FROM appartient WHERE g_nom = :nomGroupe';
+    $supprimmerGroupe = $this->executerRequete($sql, array(
+      'nomGroupe' => $nomGroupe
+    ));
+  }
+
+  public function supprimerGroupeInvitation($nomGroupe){
+    $sql = 'DELETE FROM invitation WHERE g_nom = :nomGroupe';
+    $supprimmerGroupe = $this->executerRequete($sql, array(
+      'nomGroupe' => $nomGroupe
+    ));
+  }
+
 }
 
 ?>
