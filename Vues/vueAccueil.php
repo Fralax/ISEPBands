@@ -21,7 +21,7 @@ if ($verificationSessionExiste == true) {
         <?php foreach ($invitations as list($id, $prenom, $nom, $photo, $groupe)): ?>
           <div class="invitation">
             <img class="photoMembreNotifications" src="<?php echo $photo ?>" alt="" />
-            <strong><a href="index.php?page=profil&id=<?php echo $id ?>"><?php echo $prenom." ".$nom ?></a></strong> vous a invité dans le groupe <strong><a href="index.php?page=groupe&groupe=<?php echo urlencode($groupe) ?>"><?php echo $groupe ?></a></strong>
+            <strong><a href="index.php?page=profil&amp;id=<?php echo $id ?>"><?php echo $prenom." ".$nom ?></a></strong> vous a invité dans le groupe <strong><a href="index.php?page=groupe&amp;groupe=<?php echo urlencode($groupe) ?>"><?php echo $groupe ?></a></strong>
             <form action="" method="post">
               <input type="hidden" name="groupe" value="<?php echo $instrument ?>">
               <input class="boutonsFormulaires" type="submit" name="accepterInvitation" value="Accepter">

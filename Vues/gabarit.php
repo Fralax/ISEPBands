@@ -39,14 +39,14 @@ if ($verificationSessionExiste == true) {
           <li><a href="index.php?page=planning">PLANNING</a></li>
           <li class = "toggleSousMenu"> <span>ANNUAIRE</span>
             <ul class = "sousMenu">
-              <li> <a href="index.php?page=annuaire&annuaire=membres">Membres</a> </li>
-              <li> <a href="index.php?page=annuaire&annuaire=groupes">Groupes</a> </li>
+              <li> <a href="index.php?page=annuaire&amp;amp;annuaire=membres">Membres</a> </li>
+              <li> <a href="index.php?page=annuaire&amp;amp;annuaire=groupes">Groupes</a> </li>
             </ul>
           </li>
           <li> <a href="index.php?page=mesgroupes">MES GROUPES</a> </li>
           <li class = "toggleSousMenu"> <span> BONJOUR <?php echo strtoupper($_SESSION['prenom']) ?> ! </span>
             <ul class = "sousMenu">
-              <li> <a href="index.php?page=profil&id=<?php echo $_SESSION['id'] ?>">Profil</a> </li>
+              <li> <a href="index.php?page=profil&amp;id=<?php echo $_SESSION['id'] ?>">Profil</a> </li>
               <li> <a href="index.php">Déconnexion</a> </li>
             </ul>
           </li>
@@ -60,7 +60,7 @@ if ($verificationSessionExiste == true) {
 
 
     <footer>
-        ISEPBands &copy; 2016 - Tous droits r&eacute;serv&eacute;s
+        ISEPBands &amp;copy; 2016 - Tous droits r&amp;eacute;serv&amp;eacute;s
     </footer>
 
   </body>
@@ -76,8 +76,8 @@ if ($verificationSessionExiste == true) {
           <li><a href="index.php?page=accueil"><img src="Autres/logoblanc.png"></a></li>
           <li class = "toggleSousMenu"> <span>ANNUAIRE</span>
             <ul class = "sousMenu">
-              <li> <a href="index.php?page=annuaire&annuaire=membres">Membres</a> </li>
-              <li> <a href="index.php?page=annuaire&annuaire=groupes">Groupes</a> </li>
+              <li> <a href="index.php?page=annuaire&amp;annuaire=membres">Membres</a> </li>
+              <li> <a href="index.php?page=annuaire&amp;annuaire=groupes">Groupes</a> </li>
             </ul>
           </li>
           <li class = "toggleSousMenuConnexion"> <a href="#popupConnexion" data-toggle="modal">CONNEXION</a> </li>
@@ -182,7 +182,7 @@ if ($verificationSessionExiste == true) {
     </div>
 
     <footer>
-        ISEPBands &copy; 2016 - Tous droits r&eacute;serv&eacute;s
+        ISEPBands &amp;copy; 2016 - Tous droits r&amp;eacute;serv&amp;eacute;s
     </footer>
 
   </body>
@@ -194,16 +194,16 @@ if ($verificationSessionExiste == true) {
     <header>
       <nav>
         <ul class = "barreMenu">
-          <li><a href="index.php?page=profil&id=<?php echo $_SESSION['id'] ?>"><img src="Autres/logoblanc.png"></a></li>
+          <li><a href="index.php?page=profil&amp;id=<?php echo $_SESSION['id'] ?>"><img src="Autres/logoblanc.png"></a></li>
           <li class = "toggleSousMenu"> <span>ANNUAIRE</span>
             <ul class = "sousMenu">
-              <li> <a href="index.php?page=annuaire&annuaire=membres">Membres</a> </li>
-              <li> <a href="index.php?page=annuaire&annuaire=groupes">Groupes</a> </li>
+              <li> <a href="index.php?page=annuaire&amp;annuaire=membres">Membres</a> </li>
+              <li> <a href="index.php?page=annuaire&amp;annuaire=groupes">Groupes</a> </li>
             </ul>
           </li>
           <li class = "toggleSousMenu"> <span> BONJOUR <?php echo strtoupper($_SESSION['prenom']) ?> ! </span>
             <ul class = "sousMenu">
-              <li> <a href="index.php?page=profil&id=<?php echo $_SESSION['id'] ?>">Profil</a> </li>
+              <li> <a href="index.php?page=profil&amp;id=<?php echo $_SESSION['id'] ?>">Profil</a> </li>
               <li> <a href="index.php">Déconnexion</a> </li>
             </ul>
           </li>
@@ -216,7 +216,7 @@ if ($verificationSessionExiste == true) {
     </div>
 
     <footer>
-        ISEPBands &copy; 2016 - Tous droits r&eacute;serv&eacute;s
+        ISEPBands &amp;copy; 2016 - Tous droits r&amp;eacute;serv&amp;eacute;s
     </footer>
 
   </body>
