@@ -18,14 +18,15 @@ foreach ($membres as list($id)) {
 
 ?>
 
-<div class="row row-centered nomPhotoGroupe">
-  <img id ="photoGroupe" src="<?php echo $photoGroupe[0] ?>"/>
-  <p>
-    <h1><?php echo $_GET['groupe'] ?></h1>
-  </p>
-</div>
+
+<section class="row row-centered sec sec-bg-img sec-bg-overlay nomPhotoGroupe" style="background-image: url(<?php echo $photoGroupe[0] ?>);">
+</section>
 
 <div class="container">
+
+  <div class="row row-centered">
+    <h1 class="ttl ttl-lg"> <?php echo $_GET['groupe'] ?> </h1>
+  </div>
 
   <div class="row row-centered membresGroupe">
     <h2> Membres </h2>
@@ -49,66 +50,69 @@ foreach ($membres as list($id)) {
     </div>
   <?php endif; ?>
 
-  <?php if ($g == 0): ?>
-    <div class="row row-centered">
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-        <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupInviterMembre">Invite un membre</button>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-        <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupSupprimerMembre">Supprime un membre</button>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-        <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupModifierNom">Modifie le nom du groupe</button>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-        <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupPhotoGroupe">Modifie la photo du groupe</button>
-      </div>
+</div>
+
+<?php if ($g == 0): ?>
+  <div class="row row-centered">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
+      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupInviterMembre">Invite un membre</button>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
+      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupSupprimerMembre">Supprime un membre</button>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
+      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupModifierNom">Modifie le nom du groupe</button>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
+      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupPhotoGroupe">Modifie la photo du groupe</button>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
+      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupSuppressionGroupe">Supprimer le Groupe</button>
     </div>
   </div>
 <?php endif; ?>
 
-
-  <div id="popupInviterMembre" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content popups">
+<div id="popupInviterMembre" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content popups">
+      <p>
+        Sélectionne le membre à inviter
+      </p>
+      <form method="post" action="">
         <p>
-          Sélectionne le membre à inviter
+          <select class="select" name="membresInvites">
+            <?php foreach ($membresNonInvites as list($id, $prenom, $nom)) { ?>
+              <option value = "<?php echo $id ?>" > <?php echo $prenom." ".$nom?> </option>
+            <?php } ?>
+          </select>
         </p>
-        <form method="post" action="">
-          <p>
-            <select class="select" name="membresInvites">
-              <?php foreach ($membresNonInvites as list($id, $prenom, $nom)) { ?>
-                <option value = "<?php echo $id ?>" > <?php echo $prenom." ".$nom?> </option>
-              <?php } ?>
-            </select>
-          </p>
-          <input class="boutonsFormulaires" type="submit" name="inviterMembre" value="Inviter">
-          <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
-        </form>
-      </div>
+        <input class="boutonsFormulaires" type="submit" name="inviterMembre" value="Inviter">
+        <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
+      </form>
     </div>
   </div>
+</div>
 
-  <div id="popupSupprimerMembre" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content popups">
+<div id="popupSupprimerMembre" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content popups">
+      <p>
+        Sélectionne le membre à supprimer
+      </p>
+      <form method="post" action="">
         <p>
-          Sélectionne le membre à supprimer
+          <select class="select" name="membres">
+            <?php foreach ($membresASupprimer as list($id, $prenom, $nom)) { ?>
+              <option value = "<?php echo $id ?>" > <?php echo $prenom." ".$nom?> </option>
+            <?php } ?>
+          </select>
         </p>
-        <form method="post" action="">
-          <p>
-            <select class="select" name="membres">
-              <?php foreach ($membresASupprimer as list($id, $prenom, $nom)) { ?>
-                <option value = "<?php echo $id ?>" > <?php echo $prenom." ".$nom?> </option>
-              <?php } ?>
-            </select>
-          </p>
-          <input class="boutonsFormulaires" type="submit" name="supprimerMembre" value="Supprimer">
-          <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
-        </form>
-      </div>
+        <input class="boutonsFormulaires" type="submit" name="supprimerMembre" value="Supprimer">
+        <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
+      </form>
     </div>
   </div>
+</div>
 
 <div id="popupModifierNom" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -136,6 +140,20 @@ foreach ($membres as list($id)) {
         <p class="fileReturn"></p>
         <p>
           <input class="boutonsFormulaires" type="submit" name="changerPhotoGroupe" value="Changer de photo">
+          <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="popupSuppressionGroupe" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content popups">
+      <p>Voulez-vous vraiment supprimer le groupe <strong><?php echo $_GET['groupe'] ?></strong></p>
+      <form action="" method="post" enctype="multipart/form-data">
+        <p>
+          <input class="boutonsFormulaires" type="submit" name="supprimerGroupe" value="Confirmer la supression">
           <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
         </p>
       </form>

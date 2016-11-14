@@ -1,3 +1,9 @@
-.groupe{
+.groupes{
   text-align: center;
+}
+
+.photoGroupe{
+  width: 17.5em;
+  height: 10em;
+  border-radius: 10px;
 }

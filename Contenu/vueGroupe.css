@@ -12,7 +12,59 @@
   text-align: center;
 }
 
-#photoGroupe{
+.sec {
+  padding: 10em;
+  overflow: hidden;
+}
+
+.column {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px 0;
+  position: relative;
+}
+
+.centered {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.auto-width {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+}
+
+.group {
+  text-align: left;
+  color: #53FFC0;
+  padding: 0;
+}
+.success-section {
+  padding: 150px 0;
+}
+
+.minh-lg { min-height: 400px }
+
+.sec-bg-img {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.sec-bg-pattern {
+  background-position: center;
+  background-size: 200px;
+}
+
+.sec-bg-overlay { position: relative; }
+
+.sec-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 20em;
+  height: 100%;
+  z-index: 0;
 }

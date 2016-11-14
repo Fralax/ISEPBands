@@ -1,3 +1,18 @@
-.bienvenue{
-  text-align: center;
+.notifications{
+  background-color: rgb(250, 190, 107);
+  border-radius: 10px;
+}
+
+.invitation{
+  padding: 1em;
+}
+
+.photoMembreNotifications{
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+}
+
+.boutonsFormulaires{
+  text-align: right;
 }
