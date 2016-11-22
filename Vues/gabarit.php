@@ -39,8 +39,8 @@ if ($verificationSessionExiste == true) {
           <li><a href="index.php?page=planning">PLANNING</a></li>
           <li class = "toggleSousMenu"> <span>ANNUAIRE</span>
             <ul class = "sousMenu">
-              <li> <a href="index.php?page=annuaire&amp;amp;annuaire=membres">Membres</a> </li>
-              <li> <a href="index.php?page=annuaire&amp;amp;annuaire=groupes">Groupes</a> </li>
+              <li> <a href="index.php?page=annuaire&amp;annuaire=membres">Membres</a> </li>
+              <li> <a href="index.php?page=annuaire&amp;annuaire=groupes">Groupes</a> </li>
             </ul>
           </li>
           <li> <a href="index.php?page=mesgroupes">MES GROUPES</a> </li>
@@ -60,7 +60,7 @@ if ($verificationSessionExiste == true) {
 
 
     <footer>
-        ISEPBands &amp;copy; 2016 - Tous droits r&amp;eacute;serv&amp;eacute;s
+        ISEPBands &copy 2016 - Tous droits r&eacute;serv&eacute;s
     </footer>
 
   </body>
@@ -182,7 +182,7 @@ if ($verificationSessionExiste == true) {
     </div>
 
     <footer>
-        ISEPBands &amp;copy; 2016 - Tous droits r&amp;eacute;serv&amp;eacute;s
+        ISEPBands &copy 2016 - Tous droits r&eacute;serv&eacute;s
     </footer>
 
   </body>
@@ -216,7 +216,7 @@ if ($verificationSessionExiste == true) {
     </div>
 
     <footer>
-        ISEPBands &amp;copy; 2016 - Tous droits r&amp;eacute;serv&amp;eacute;s
+        ISEPBands &copy 2016 - Tous droits r&eacute;serv&eacute;s
     </footer>
 
   </body>

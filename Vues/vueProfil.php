@@ -100,7 +100,7 @@ if ($verificationSessionExiste == true) {
                       </select>
                     </p>
                     <p>
-                      <input id="boutonModifierInstrument" type="submit" name="boutonModifierInstrument" value="Modifier">
+                      <input class="boutonsFormulaires" type="submit" name="boutonModifierInstrument" value="Modifier">
                       <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
                     </p>
                   </form>

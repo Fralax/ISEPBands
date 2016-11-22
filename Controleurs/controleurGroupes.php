@@ -21,7 +21,9 @@
       $afficherMembresNonInvites = $user->afficherMembresNonInvites($_GET['groupe'])->fetchAll();
       $afficherMembresInvites = $user->afficherMembresInvites($_GET['groupe'])->fetchAll();
       $afficherMembresASupprimer = $user->afficherMembresASupprimer($_GET['groupe'], $_SESSION['id'])->fetchAll();
+      $afficherAutresMembres = $user->afficherAutresMembres($_GET['groupe'], $_SESSION['id'])->fetchAll();
       $afficherPhotoGroupe = $groupe->afficherPhotoGroupe($_GET['groupe'])->fetch();
+      $afficherPlaylist = $groupe->afficherPlaylist($_GET['groupe'])->fetchAll();
 
       if (isset($_POST['inviterMembre'])){
         $inviterMembreGroupe = $user -> inviterMembreGroupe($_SESSION['id'], $_POST['membresInvites'], $_GET['groupe']);
@@ -75,8 +77,32 @@
         header("Location: index.php?page=mesgroupes");
       }
 
+      if (isset($_POST['quitterGroupe'])) {
+        $user->supprimerMembreGroupe($_SESSION['id'], $_GET['groupe']);
+        header("Location: index.php?page=mesgroupes");
+      }
+
+      if (isset($_POST['changerChefGroupe'])) {
+        $user->modifierChefGroupe($_GET['groupe'], $_POST['membresChefGroupe']);
+        header("Location: index.php?page=groupe&groupe=".urlencode($_GET['groupe']));
+      }
+
+      if (isset($_POST['ajouterMorceau'])) {
+        if (!empty($_POST['nomMorceau']) && !empty($_POST['nomArtiste'])) {
+          $groupe->ajouterChanson($_GET['groupe'], $_POST['nomMorceau'], $_POST['nomArtiste']);
+          header("Location: index.php?page=groupe&groupe=".urlencode($_GET['groupe']));
+        } else{
+          ?> <script> alert("Des champs n'ont pas été remplis !") </script> <?php
+        }
+      }
+
+      if (isset($_POST['boutonSupprimerMorceau'])) {
+        $groupe->supprimerChanson($_GET['groupe'], $_POST['supprimerMorceau'], $_POST['supprimerArtiste']);
+        header("Location: index.php?page=groupe&groupe=".urlencode($_GET['groupe']));
+      }
+
       $vue = new Vue('Groupe');
-      $vue->generer(array("membresNonInvites" => $afficherMembresNonInvites, "membresInvites" => $afficherMembresInvites, 'membres' => $membresGroupe, "membresASupprimer" => $afficherMembresASupprimer, "photoGroupe" => $afficherPhotoGroupe));
+      $vue->generer(array("membresNonInvites" => $afficherMembresNonInvites, "membresInvites" => $afficherMembresInvites, 'membres' => $membresGroupe, "membresASupprimer" => $afficherMembresASupprimer, "photoGroupe" => $afficherPhotoGroupe, "autresMembres" => $afficherAutresMembres, 'morceaux' => $afficherPlaylist));
     }
 
     public function affichageMesGroupes(){

@@ -9,7 +9,6 @@
       $user = new utilisateurs();
       $groupe = new groupes();
       $afficherInvitations = $user->afficherInvitations($_SESSION['id'])->fetchAll();
-      var_dump($_POST['groupe']);
 
       if (isset($_POST['accepterInvitation'])) {
         $groupe->ajouterAppartient($_SESSION['id'], $_POST['groupe']);

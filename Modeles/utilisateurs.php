@@ -178,9 +178,26 @@ class utilisateurs extends modele {
     return $afficherMembresASupprimer;
   }
 
+  public function afficherAutresMembres($nomGroupe, $idCreateur){
+    $sql = 'SELECT u_id, u_prenom, u_nom FROM utilisateur WHERE u_id != :idCreateur AND u_id IN (SELECT u_id FROM appartient WHERE g_nom = :nomGroupe)';
+    $afficherAutresMembres = $this->executerRequete($sql, array(
+      'idCreateur' => $idCreateur,
+      'nomGroupe' => $nomGroupe
+    ));
+    return $afficherAutresMembres;
+  }
+
   public function supprimerMembreGroupe($membre, $nomGroupe){
     $sql = 'DELETE FROM appartient WHERE u_id = :membre AND g_nom = :nomGroupe';
     $supprimerMembreGroupe = $this->executerRequete($sql, array(
+      'membre' => $membre,
+      'nomGroupe' => $nomGroupe
+    ));
+  }
+
+  public function modifierChefGroupe($nomGroupe, $membre){
+    $sql = 'UPDATE groupe SET g_createur = :membre WHERE g_nom = :nomGroupe';
+    $this->executerRequete($sql, array(
       'membre' => $membre,
       'nomGroupe' => $nomGroupe
     ));
