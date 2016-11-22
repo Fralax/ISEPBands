@@ -4,7 +4,7 @@
   border-radius: 50%;
 }
 
-.membreGroupe{
+.membreGroupe, .morceau{
   text-align : center;
 }
 
@@ -17,54 +17,39 @@
   overflow: hidden;
 }
 
-.column {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 20px 0;
-  position: relative;
-}
-
-.centered {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.auto-width {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
-  position: relative;
-}
-
-.group {
-  text-align: left;
-  color: #53FFC0;
-  padding: 0;
-}
-.success-section {
-  padding: 150px 0;
-}
-
-.minh-lg { min-height: 400px }
-
 .sec-bg-img {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
-.sec-bg-pattern {
-  background-position: center;
-  background-size: 200px;
-}
 
 .sec-bg-overlay { position: relative; }
 
-.sec-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
+.membresGroupe{
+  margin-bottom: 2em;
+}
+
+.playlist{
+  background: white;
+  border: solid 1px rgba(138, 38, 22, 1);
+  border-radius: 10px;
+  padding-bottom: 1.5em;
+}
+
+.morceau{
+  margin-bottom: 1em;
+}
+
+.playlist p{
+  line-height: 0.5em;
+}
+
+.playlist h2{
+  margin-bottom: 1em;
+}
+
+.nomGroupe{
+  background-color: rgb(247, 177, 90);
+  padding: 1em;
+  padding-bottom: 1.5em;
 }

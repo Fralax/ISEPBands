@@ -84,6 +84,32 @@ class groupes extends modele {
     ));
   }
 
+  public function ajouterChanson($nomGroupe, $nomChanson, $nomArtiste){
+    $sql = 'INSERT INTO joue (g_nom, j_morceau, j_artiste) VALUES (:nomGroupe, :nomChanson, :nomArtiste)';
+    $this->executerRequete($sql, array(
+      'nomGroupe' => $nomGroupe,
+      'nomChanson' => $nomChanson,
+      'nomArtiste' => $nomArtiste
+    ));
+  }
+
+  public function supprimerChanson($nomGroupe, $nomChanson, $nomArtiste){
+    $sql = 'DELETE FROM joue WHERE g_nom = :nomGroupe AND j_morceau = :nomChanson AND j_artiste = :nomArtiste';
+    $this->executerRequete($sql, array(
+      'nomGroupe' => $nomGroupe,
+      'nomChanson' => $nomChanson,
+      'nomArtiste' => $nomArtiste
+    ));
+  }
+
+  public function afficherPlaylist($nomGroupe){
+    $sql = 'SELECT j_morceau, j_artiste FROM joue WHERE g_nom = :nomGroupe';
+    $afficherPlaylist = $this->executerRequete($sql, array(
+      'nomGroupe' => $nomGroupe
+    ));
+    return $afficherPlaylist;
+  }
+
 }
 
 ?>

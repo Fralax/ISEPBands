@@ -23,7 +23,7 @@ if ($verificationSessionExiste == true) {
             <img class="photoMembreNotifications" src="<?php echo $photo ?>" alt="" />
             <strong><a href="index.php?page=profil&amp;id=<?php echo $id ?>"><?php echo $prenom." ".$nom ?></a></strong> vous a invité dans le groupe <strong><a href="index.php?page=groupe&amp;groupe=<?php echo urlencode($groupe) ?>"><?php echo $groupe ?></a></strong>
             <form action="" method="post">
-              <input type="hidden" name="groupe" value="<?php echo $instrument ?>">
+              <input type="hidden" name="groupe" value="<?php echo $groupe ?>">
               <input class="boutonsFormulaires" type="submit" name="accepterInvitation" value="Accepter">
               <input class="boutonsFormulaires" type="submit" name="refuserInvitation" value="Refuser">
             </form>
