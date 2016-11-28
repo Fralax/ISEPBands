@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="Contenu/gabarit.css" />
     <link rel="stylesheet" href="<?php echo $css ?>" >
+    <link rel="icon" href="Autres/LogoISEPBands.png" />
     <title><?= $titre ?></title>
 </head>
 <?php
