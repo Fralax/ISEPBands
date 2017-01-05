@@ -1,0 +1,31 @@
+.inscriptionVueInscription{
+  margin: auto;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding-top: 1px;
+  padding-bottom: 1em;
+  padding-left: 10px;
+  border-radius: 1em;
+  width: 40%;
+}
+
+.inscriptionVueInscription table{
+  margin: auto;
+  text-align: left;
+  padding-bottom: 1em;
+}
+
+.inscriptionVueInscription a{
+  text-decoration: none;
+  color: white;
+}
+
+.inscriptionVueInscription a:hover{
+  color: grey;
+}
+
+.inscriptionVueInscription img{
+  width: 25px;
+  height: 25px;
+}
