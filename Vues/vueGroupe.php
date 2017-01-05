@@ -18,7 +18,6 @@ foreach ($membres as list($id)) {
 
 ?>
 
-
 <section class="row row-centered sec sec-bg-img sec-bg-overlay nomPhotoGroupe" style="background-image: url(<?php echo $photoGroupe[0] ?>);">
 </section>
 
