@@ -86,6 +86,8 @@
       }
     }
 
+
+
     public function verificationSessionExiste(){
       if (isset($_SESSION['id'])) {
         return true;
