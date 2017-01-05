@@ -9,17 +9,21 @@ $verificationSessionValide = $membre->verificationSessionValide();
 $verificationMembreValide = $membre->verificationMembreValide();
 
 if ($verificationSessionExiste == true) {
-  if ($verificationSessionValide == true) {
-    if ($verificationMembreValide == true) {
-      $i = 0; // Si le membre est connecté, sur sa page de profil, et qu'il est validé
-    } else{
-      $i = 2; // Si le membre est connecté, sur sa page de profil, mais qu'il n'est pas validé
-    }
-  } else {
-    if ($verificationMembreValide == true) {
-      $i = 3; // Si le membre est connecté sur la page de profil d'un autre membre et qu'il est validé
-    } else{
-      $i = 1; // Si le membre est connecté sur la page de profil d'un membre et qu'il n'est pas validé
+  if($verificationAdmin = true){
+    $i=3; //le membre est administrateur,
+  }  else{
+    if ($verificationSessionValide == true) {
+      if ($verificationMembreValide == true) {
+        $i = 0; // Si le membre est connecté, sur sa page de profil, et qu'il est validé
+      } else{
+        $i = 2; // Si le membre est connecté, sur sa page de profil, mais qu'il n'est pas validé
+      }
+    } else {
+      if ($verificationMembreValide == true) {
+        $i = 3; // Si le membre est connecté sur la page de profil d'un autre membre et qu'il est validé
+      } else{
+        $i = 1; // Si le membre est connecté sur la page de profil d'un membre et qu'il n'est pas validé
+      }
     }
   }
 } else{
@@ -36,6 +40,10 @@ if ($verificationSessionExiste == true) {
 </div>
 
 <div class="container">
+<?php if($i == 3): ?>
+  ADMIN
+<?php endif; ?>  
+
 
   <?php if ($i == 2): ?>
     <div class="row inscriptionConfirmee">
@@ -136,7 +144,7 @@ if ($verificationSessionExiste == true) {
       </div>
       <?php foreach ($groupes as list($nomGroupe, $photoGroupe)): ?>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered groupes">
-          <p><img class="photoGroupe" src="<?php echo $photoGroupe ?>" alt="" /></p>
+          <p><a href="index.php?page=groupe&amp;groupe=<?php echo urlencode($nomGroupe) ?>"><img class="photoGroupe" src="<?php echo $photoGroupe ?>" alt="" /></a></p>
           <p><a href="index.php?page=groupe&amp;groupe=<?php echo urlencode($nomGroupe) ?>"> <?php echo $nomGroupe ?> </a></p>
         </div>
       <?php endforeach; ?>
