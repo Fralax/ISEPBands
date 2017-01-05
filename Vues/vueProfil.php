@@ -7,10 +7,11 @@ $membre = new controleurMembres();
 $verificationSessionExiste = $membre->verificationSessionExiste();
 $verificationSessionValide = $membre->verificationSessionValide();
 $verificationMembreValide = $membre->verificationMembreValide();
+$verificationAdmin = $membre->verificationAdmin();
 
 if ($verificationSessionExiste == true) {
-  if($verificationAdmin = true){
-    $i=3; //le membre est administrateur,
+  if($verificationAdmin == true){
+    $i=4; //le membre est administrateur
   }  else{
     if ($verificationSessionValide == true) {
       if ($verificationMembreValide == true) {
@@ -40,9 +41,9 @@ if ($verificationSessionExiste == true) {
 </div>
 
 <div class="container">
-<?php if($i == 3): ?>
+<?php if($i == 4): ?>
   ADMIN
-<?php endif; ?>  
+<?php endif; ?>
 
 
   <?php if ($i == 2): ?>
