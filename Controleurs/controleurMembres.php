@@ -78,6 +78,14 @@
       }
     }
 
+    public function verificationAdmin(){
+      $user = new utilisateurs();
+      $verificationAdmin = $user->verifierAdmin($_SESSION['id'])->fetch();
+      if ($verificationAdmin[0] == "1") {
+        return true;
+      }
+    }
+
     public function verificationSessionExiste(){
       if (isset($_SESSION['id'])) {
         return true;

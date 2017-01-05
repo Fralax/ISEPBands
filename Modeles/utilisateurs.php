@@ -97,6 +97,14 @@ class utilisateurs extends modele {
     ));
     return $recupererValide;
   }
+  public function verifierAdmin($id){
+    $sql = 'SELECT u_admin FROM utilisateur WHERE u_id = :id';
+    $recupererAdmin = $this->executerRequete($sql, array(
+      'id' => $id
+    ));
+    return $recupererAdmin;
+  }
+
 
   public function afficherInfosMembre($id){
     $sql = 'SELECT u_prenom, u_nom, u_email, u_mdp, u_portable, u_promo, u_dateInscription, u_valide, u_photo, u_facebook FROM utilisateur WHERE u_id = :id';
