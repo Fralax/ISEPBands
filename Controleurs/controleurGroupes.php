@@ -17,6 +17,7 @@
     public function affichageGroupe(){
       $user = new utilisateurs();
       $groupe = new groupes();
+
       $membresGroupe = $user->afficherMembresGroupe($_GET['groupe'])->fetchAll();
       $afficherMembresNonInvites = $user->afficherMembresNonInvites($_GET['groupe'])->fetchAll();
       $afficherMembresInvites = $user->afficherMembresInvites($_GET['groupe'])->fetchAll();
