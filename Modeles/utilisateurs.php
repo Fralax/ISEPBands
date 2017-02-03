@@ -97,6 +97,7 @@ class utilisateurs extends modele {
     ));
     return $recupererValide;
   }
+  
   public function verifierAdmin($id){
     $sql = 'SELECT u_admin FROM utilisateur WHERE u_id = :id';
     $recupererAdmin = $this->executerRequete($sql, array(
