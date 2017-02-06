@@ -97,7 +97,7 @@ class utilisateurs extends modele {
     ));
     return $recupererValide;
   }
-  
+
   public function verifierAdmin($id){
     $sql = 'SELECT u_admin FROM utilisateur WHERE u_id = :id';
     $recupererAdmin = $this->executerRequete($sql, array(
@@ -224,6 +224,34 @@ class utilisateurs extends modele {
     $sql = 'SELECT ut.u_id, ut.u_prenom, ut.u_nom, ut.u_photo, inv.g_nom FROM invitation inv, utilisateur ut WHERE inv.u_id = :membre AND ut.u_id IN (SELECT inv.g_createur FROM invitation WHERE inv.u_id = :membre)';
     $afficherInvitations = $this->executerRequete($sql, array('membre' => $membre));
     return $afficherInvitations;
+  }
+
+  public function bannirMembre($id){
+    $sql = 'INSERT INTO banni (u_id) VALUES (:id)';
+    $bannirMembre = $this->executerRequete($sql, array(
+      'id'=>$id
+    ));
+  }
+
+  public function debannirMembre($id){
+    $sql = 'DELETE FROM banni WHERE u_id = :id';
+    $debannirMembre = $this->executerRequete($sql, array(
+      'id' => $id
+    ));
+  }
+
+  public function afficherMembresNonBannis(){
+    $sql = 'SELECT u_prenom, u_nom, u_id FROM utilisateur WHERE u_admin != :admin AND u_id NOT IN (SELECT u_id FROM banni) ORDER BY u_prenom';
+    $afficherMembresNonBannis = $this->executerRequete($sql, array(
+      'admin' => 1
+    ));
+    return $afficherMembresNonBannis;
+  }
+
+  public function afficherMembresBannis(){
+    $sql = 'SELECT u_prenom, u_nom, u_id FROM utilisateur WHERE u_id IN (SELECT u_id FROM banni) ORDER BY u_prenom';
+    $afficherMembresBannis = $this->executerRequete($sql);
+    return $afficherMembresBannis;
   }
 
 }
