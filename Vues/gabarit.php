@@ -14,13 +14,20 @@
 <?php
 
 require_once 'Controleurs/controleurMembres.php';
+require_once 'Controleurs/controleurAdmin.php';
 $membre = new controleurMembres();
+$admin = new controleurAdmin();
+
 $verificationSessionExiste = $membre->verificationSessionExiste();
 $verificationMembreValide = $membre->verificationMembreValide();
+$verificationAdmin = $admin->verificationAdmin();
 
 if ($verificationSessionExiste == true) {
   if ($verificationMembreValide == true) {
     $c = 0;
+    if($verificationAdmin == true){
+      $admn = 1; //le membre est administrateur
+    }
   } else{
     $c = 2;
   }
@@ -48,6 +55,9 @@ if ($verificationSessionExiste == true) {
           <li class = "toggleSousMenu"> <span> BONJOUR <?php echo strtoupper($_SESSION['prenom']) ?> ! </span>
             <ul class = "sousMenu">
               <li> <a href="index.php?page=profil&amp;id=<?php echo $_SESSION['id'] ?>">Profil</a> </li>
+              <?php if ($admn == 1): ?>
+                <li><a href="index.php?page=administration">Panneau d'administration</a></li>
+              <?php endif; ?>
               <li> <a href="index.php">Déconnexion</a> </li>
             </ul>
           </li>

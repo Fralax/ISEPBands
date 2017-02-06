@@ -1,6 +1,6 @@
 <div class="container">
 
-  <div class="row row-centered membresAnnuaire">
+  <div class="row row-centered">
     <?php foreach ($membres as list($id, $prenom, $nom, $photo)): ?>
       <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 col-centered membreAnnuaire">
         <a href="index.php?page=profil&amp;id=<?php echo $id ?>"><img class="photoAnnuaireMembre" src="<?php echo $photo ?>" /></a>
@@ -10,5 +10,3 @@
   </div>
 
 </div>
-
-//ceciestuntest

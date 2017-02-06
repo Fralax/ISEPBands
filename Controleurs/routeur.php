@@ -5,6 +5,7 @@
   require_once 'Controleurs/controleurConnexion.php';
   require_once 'Controleurs/controleurMembres.php';
   require_once 'Controleurs/controleurGroupes.php';
+  require_once 'Controleurs/controleurAdmin.php';
 
   class routeur{
 
@@ -13,6 +14,7 @@
     private $controleurConnexion;
     private $controleurMembres;
     private $controleurGroupes;
+    private $controleurAdmin;
 
     public function __construct(){
       $this->controleurAccueil = new controleurAccueil();
@@ -20,6 +22,7 @@
       $this->controleurconnexion = new controleurConnexion();
       $this->controleurMembres = new controleurMembres();
       $this->controleurGroupes = new controleurGroupes();
+      $this->controleurAdmin = new controleurAdmin();
 
       session_start();
 
@@ -56,6 +59,10 @@
 
         case 'groupe':
           $this->controleurGroupes->affichageGroupe();
+          break;
+
+        case 'administration':
+          $this->controleurAdmin->affichageAdmin();
           break;
 
         default:

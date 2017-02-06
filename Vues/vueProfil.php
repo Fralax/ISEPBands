@@ -4,30 +4,31 @@
 
 require_once 'Controleurs/controleurMembres.php';
 $membre = new controleurMembres();
+$admin = new controleurAdmin();
 $verificationSessionExiste = $membre->verificationSessionExiste();
 $verificationSessionValide = $membre->verificationSessionValide();
 $verificationMembreValide = $membre->verificationMembreValide();
-$verificationAdmin = $membre->verificationAdmin();
+$verificationAdmin = $admin->verificationAdmin();
 
 if ($verificationSessionExiste == true) {
   if($verificationAdmin == true){
-    $i=4; //le membre est administrateur
-  }  else{
-    if ($verificationSessionValide == true) {
-      if ($verificationMembreValide == true) {
-        $i = 0; // Si le membre est connecté, sur sa page de profil, et qu'il est validé
-      } else{
-        $i = 2; // Si le membre est connecté, sur sa page de profil, mais qu'il n'est pas validé
-      }
-    } else {
-      if ($verificationMembreValide == true) {
-        $i = 3; // Si le membre est connecté sur la page de profil d'un autre membre et qu'il est validé
-      } else{
-        $i = 1; // Si le membre est connecté sur la page de profil d'un membre et qu'il n'est pas validé
-      }
+    $j=1; //le membre est administrateur
+  }
+  if ($verificationSessionValide == true) {
+    if ($verificationMembreValide == true) {
+      $i = 0; // Si le membre est connecté, sur sa page de profil, et qu'il est validé
+    } else{
+      $i = 2; // Si le membre est connecté, sur sa page de profil, mais qu'il n'est pas validé
+    }
+  } else {
+    if ($verificationMembreValide == true) {
+      $i = 3; // Si le membre est connecté sur la page de profil d'un autre membre et qu'il est validé
+    } else{
+      $i = 1; // Si le membre est connecté sur la page de profil d'un membre et qu'il n'est pas validé
     }
   }
-} else{
+}
+ else{
   $i = 1; // Si l'utilisateur qui visionne cette page n'est pas connecté (c'est un visiteur)
 }
 
@@ -41,9 +42,7 @@ if ($verificationSessionExiste == true) {
 </div>
 
 <div class="container">
-<?php if($i == 4): ?>
-  ADMIN
-<?php endif; ?>
+
 
 
   <?php if ($i == 2): ?>
@@ -294,6 +293,7 @@ if ($verificationSessionExiste == true) {
       </div>
     </div>
   </div>
+
 
 </div>
 

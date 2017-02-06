@@ -32,6 +32,7 @@ if ($verificationSessionExiste == true) {
       </div>
     <?php endif; ?>
   </div>
+
 <?php endif; ?>
 
   <?php if ($a == 1): ?>
