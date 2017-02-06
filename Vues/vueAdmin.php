@@ -41,11 +41,10 @@ $admin = new controleurAdmin();
         <?php foreach ($membresBannis as list($prenom, $nom, $id)): ?>
           <option value="<?php echo $id ?>"><?php echo $prenom.' '.$nom ?></option>
           <form class="" action="index.html" method="post">
-            
+            <p> <?php echo $prenom.' '.$nom ?> <input class="petitsBoutonsFormulaires" type="submit" name="boutonDebannirMembre" value="Débannir"> </p>
           </form>
         <?php endforeach; ?>
       <p>
-        <input class="boutonsFormulaires" type="submit" name="boutonBannirMembre" value="Bannir">
         <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
       </p>
     </div>

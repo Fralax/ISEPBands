@@ -103,7 +103,7 @@ foreach ($membres as list($id)) {
 
   <?php if ($g == 1): ?>
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupQuitterGroupe">Quitte le Groupe</button>
+      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupQuitterGroupe">Quitter le Groupe</button>
     </div>
   <?php endif; ?>
 
