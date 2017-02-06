@@ -15,12 +15,9 @@
         header("Location: index.php?page=administration");
       }
 
-
       $vue = new Vue('Admin');
       $vue->generer(array('membresNonBannis' => $membresNonBannis, 'membresBannis' => $membresBannis));
     }
-
-
 
     public function verificationAdmin(){
       $user = new utilisateurs();
