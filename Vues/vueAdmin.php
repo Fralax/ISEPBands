@@ -34,19 +34,31 @@ $admin = new controleurAdmin();
   </div>
 </div>
 
-<div id="popupBannirMembre" class="modal fade" role="dialog">
+<div id="popupMembresBannis" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content popups">
-      <p>Membres bannis :  </p>
-        <?php foreach ($membresBannis as list($prenom, $nom, $id)): ?>
-          <option value="<?php echo $id ?>"><?php echo $prenom.' '.$nom ?></option>
-          <form class="" action="index.html" method="post">
-            <p> <?php echo $prenom.' '.$nom ?> <input class="petitsBoutonsFormulaires" type="submit" name="boutonDebannirMembre" value="Débannir"> </p>
-          </form>
-        <?php endforeach; ?>
-      <p>
-        <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
-      </p>
+      <p>Membres bannis : </p>
+
+      <?php if (!$membresBannis[0][0]): ?>
+        <p> Aucun membre n'a été banni </p>
+
+        <?php else: ?>
+          <table class="tableauMembresBannis">
+            <?php foreach ($membresBannis as list($prenom, $nom, $id)): ?>
+              <form class="" action="" method="post">
+                <input type="hidden" name="membreADebannir" value="<?php echo $id ?>">
+                <tr>
+                  <td style="padding-right:1em; text-align:left;"><?php echo $prenom.' '.$nom ?></td>
+                  <td> <input class="petitsBoutonsFormulaires" type="submit" name="boutonDebannirMembre" value="Débannir"> </td>
+                </tr>
+              </form>
+            <?php endforeach; ?>
+          </table>
+      <?php endif; ?>
+
+
+
+      <p> <button id="annuler" type="button" data-dismiss="modal">Annuler</button> </p>
     </div>
   </div>
 </div>

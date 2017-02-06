@@ -72,7 +72,6 @@ foreach ($membres as list($id)) {
       <?php endforeach; ?>
     </div>
   <?php endif; ?>
-
 </div>
 
 <div class="row row-centered">
