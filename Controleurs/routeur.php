@@ -71,6 +71,7 @@
           $this->controleurAccueil->affichageAccueil();
           break;
       }
+
     }
 
   }
