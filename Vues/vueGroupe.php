@@ -77,25 +77,25 @@ foreach ($membres as list($id)) {
 <div class="row row-centered">
   <?php if ($g == 0): ?>
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupInviterMembre">Invite un membre</button>
+      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupInviterMembre">Inviter un membre</button>
     </div>
     <?php if ($membresASupprimer[0][0]): ?>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-        <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupSupprimerMembre">Supprime un membre</button>
+        <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupSupprimerMembre">Supprimer un membre</button>
       </div>
     <?php endif; ?>
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupModifierNom">Modifie le nom du Groupe</button>
+      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupModifierNom">Modifier le nom du Groupe</button>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupPhotoGroupe">Modifie la photo du Groupe</button>
+      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupPhotoGroupe">Modifier la photo du Groupe</button>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupSuppressionGroupe">Supprime le Groupe</button>
+      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupSuppressionGroupe">Supprimer le Groupe</button>
     </div>
     <?php if ($autresMembres[0][0]): ?>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-        <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupNommerChefGroupe">Désigne un nouveau Chef</button>
+        <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupNommerChefGroupe">Désigner un nouveau Chef</button>
       </div>
     <?php endif; ?>
   <?php endif; ?>
@@ -117,7 +117,7 @@ foreach ($membres as list($id)) {
   <div class="modal-dialog">
     <div class="modal-content popups">
       <p>
-        Sélectionne le membre à inviter
+        Sélectionner le membre à inviter
       </p>
       <form method="post" action="">
         <p>
@@ -138,7 +138,7 @@ foreach ($membres as list($id)) {
   <div class="modal-dialog">
     <div class="modal-content popups">
       <p>
-        Sélectionne le membre à supprimer
+        Sélectionner le membre à supprimer
       </p>
       <form method="post" action="">
         <p>
@@ -159,10 +159,8 @@ foreach ($membres as list($id)) {
   <div class="modal-dialog">
     <div class="modal-content popups">
       <form method="post" action="">
-        <p>Nouveau nom : </p>
-        <p><input type="text" name="nouveauNom1" value="" placeholder="Nom du groupe"></p>
-        <p>Confirme le nouveau nom :</p>
-        <p><input type="text" name="nouveauNom2" value="" placeholder="Nom du groupe"></p>
+        <p>Nouveau nom pour le groupe : </p>
+        <p><input type="text" name="nouveauNom" value="" placeholder="Nom du groupe"></p>
         <input class="boutonsFormulaires" type="submit" name="modifierNom" value="Valider">
         <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
       </form>
@@ -176,7 +174,7 @@ foreach ($membres as list($id)) {
       <form action="" method="post" enctype="multipart/form-data">
         <div class="inputContainer">
           <input class="inputFile" id="changerPhotoGroupe" type="file" name="photoGroupe">
-          <label for="changerPhotoGroupe" class="label" tabindex="0">Sélectionne un fichier !</label>
+          <label for="changerPhotoGroupe" class="label" tabindex="0">Sélectionner un fichier !</label>
         </div>
         <p class="fileReturn"></p>
         <p>
@@ -191,7 +189,7 @@ foreach ($membres as list($id)) {
 <div id="popupSuppressionGroupe" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content popups">
-      <p>Voulez-vous vraiment supprimer le groupe <strong><?php echo $_GET['groupe'] ?></strong> ?</p>
+      <p>Tu veux vraiment supprimer le groupe <strong><?php echo $_GET['groupe'] ?></strong> ?</p>
       <form action="" method="post" enctype="multipart/form-data">
         <p>
           <input class="boutonsFormulaires" type="submit" name="supprimerGroupe" value="Confirmer la supression">
@@ -206,7 +204,7 @@ foreach ($membres as list($id)) {
   <div class="modal-dialog">
     <div class="modal-content popups">
       <p>
-        Désigne le nouveau chef du groupe :
+        Désigner le nouveau chef du groupe :
       </p>
       <form action="" method="post" enctype="multipart/form-data">
         <p>

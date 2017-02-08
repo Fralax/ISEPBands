@@ -12,11 +12,11 @@
       </div>
 
     <?php } ?>
-  <p>
+
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupCreerGroupe">Crée un Groupe</button>
+      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupCreerGroupe">Créer un Groupe</button>
     </div>
-  </p>
+
     <div id="popupCreerGroupe" class="modal fade" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content popups">
