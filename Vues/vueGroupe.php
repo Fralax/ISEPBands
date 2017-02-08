@@ -38,7 +38,7 @@
     <h2>Set-List</h2>
     <?php if ($morceaux): ?>
       <?php foreach ($morceaux as list($morceau, $artiste)): ?>
-        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 col-centered morceau">
+        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col-centered morceau">
           <p><?php echo $morceau ?></p>
           <p>(<?php echo $artiste ?>)</p>
 
