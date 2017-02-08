@@ -10,6 +10,7 @@
       $user = new utilisateurs();
       $membresNonBannis = $user -> afficherMembresNonBannis()->fetchAll();
       $membresBannis = $user -> afficherMembresBannis()->fetchAll();
+      $membresNonValides = $user -> afficherMembresNonValides()->fetchAll();
 
       if(isset($_POST['boutonBannirMembre'])){
         $user->bannirMembre($_POST['membreABannir']);
@@ -21,8 +22,13 @@
         header("Location: index.php?page=administration");
       }
 
+      if (isset($_POST['boutonValiderMembre'])) {
+        $user->validerMembre($_POST['membreAValider']);
+        header("Location: index.php?page=administration");
+      }
+
       $vue = new Vue('Admin');
-      $vue->generer(array('membresNonBannis' => $membresNonBannis, 'membresBannis' => $membresBannis));
+      $vue->generer(array('membresNonBannis' => $membresNonBannis, 'membresBannis' => $membresBannis, 'membresNonValides' => $membresNonValides));
 
     }
 

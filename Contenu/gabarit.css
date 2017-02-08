@@ -285,6 +285,14 @@ header .barreMenu ul {
   margin-right:-4px;
 }
 
+.banni{
+  text-align: center;
+}
+
+.banni.h2{
+  font-weight: bold;
+}
+
 footer{
   position: relative;
   text-align: center;

@@ -75,6 +75,7 @@ if ($verificationSessionExiste == true) {
     </footer>
 
   </body>
+
 <?php endif; ?>
 
 <?php if ($c == 1): ?>
