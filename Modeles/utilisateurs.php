@@ -173,7 +173,7 @@ class utilisateurs extends modele {
   }
 
   public function afficherMembresNonInvites($nomGroupe){
-    $sql = 'SELECT u_id, u_prenom, u_nom FROM utilisateur WHERE u_id NOT IN (SELECT u_id FROM invitation WHERE g_nom = :nomGroupe) AND u_id NOT IN (SELECT u_id FROM appartient WHERE g_nom = :nomGroupe) ORDER BY u_nom';
+    $sql = 'SELECT u_id, u_prenom, u_nom FROM utilisateur WHERE u_id NOT IN (SELECT u_id FROM invitation WHERE g_nom = :nomGroupe) AND u_id NOT IN (SELECT u_id FROM appartient WHERE g_nom = :nomGroupe) AND u_id NOT IN (SELECT u_id FROM banni) ORDER BY u_nom';
     $afficherMembresNonInvites = $this->executerRequete($sql, array(
       'nomGroupe' => $nomGroupe
     ));

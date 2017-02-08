@@ -1,10 +1,16 @@
 <?php
-require_once 'Controleurs/controleurGroupes.php';
-$groupe = new controleurGroupes();
-$verificationCreateurGroupe = $groupe->verificationCreateurGroupe();
+  require_once 'Controleurs/controleurGroupes.php';
+  require_once 'Controleurs/controleurMembres.php';
+  $groupe = new controleurGroupes();
+  $membre = new controleurMembres();
+  $verificationCreateurGroupe = $groupe->verificationCreateurGroupe();
+  $verificationMembreBanniBySession = $membre->verificationMembreBanni($_SESSION['id']);
 
+  if ($verificationMembreBanniBySession == true) {
+    $banni = 1;
+  }
 
-foreach ($membres as list($id)) {
+  foreach ($membres as list($id)) {
     if ($id == $_SESSION['id']) {
       $g = 1;
       break;
@@ -12,6 +18,7 @@ foreach ($membres as list($id)) {
       $g = 2;
     }
   }
+
   if ($verificationCreateurGroupe == true) {
     $g = 0;
   }
@@ -75,7 +82,7 @@ foreach ($membres as list($id)) {
 </div>
 
 <div class="row row-centered">
-  <?php if ($g == 0): ?>
+  <?php if ($g == 0 && $banni != 1): ?>
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
       <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupInviterMembre">Inviter un membre</button>
     </div>
@@ -100,18 +107,24 @@ foreach ($membres as list($id)) {
     <?php endif; ?>
   <?php endif; ?>
 
-  <?php if ($g == 1): ?>
+  <?php if ($g == 1 && $banni != 1): ?>
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
       <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupQuitterGroupe">Quitter le Groupe</button>
     </div>
   <?php endif; ?>
 
-  <?php if ($g == 0 || $g == 1): ?>
+  <?php if (($g == 0 || $g == 1) && $banni != 1): ?>
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
       <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupAjouterMorceau">Ajouter un Morceau</button>
     </div>
   <?php endif; ?>
 </div>
+
+<?php if (($g == 0 || $g == 1) && $banni == 1): ?>
+  <div class="banni">
+    Vous avez été banni. Vous ne pouvez plus interagir avec votre groupe.
+  </div>
+<?php endif; ?>
 
 <div id="popupInviterMembre" class="modal fade" role="dialog">
   <div class="modal-dialog">
