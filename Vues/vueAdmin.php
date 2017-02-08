@@ -13,6 +13,9 @@ $admin = new controleurAdmin();
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
     <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupMembresBannis">Afficher les membres bannis</button>
   </div>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
+    <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupValiderMembres">Valider un membre</button>
+  </div>
 </div>
 
 <div id="popupBannirMembre" class="modal fade" role="dialog">
@@ -56,9 +59,34 @@ $admin = new controleurAdmin();
           </table>
       <?php endif; ?>
 
-
-
       <p> <button id="annuler" type="button" data-dismiss="modal">Annuler</button> </p>
+    </div>
+  </div>
+</div>
+
+<div id="popupValiderMembres" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content popups">
+      <?php if ($membresNonValides[0][0]): ?>
+        <form action="" method="post" enctype="multipart/form-data">
+          <p>Membres à valider :</p>
+          <p><select class="" name="membreAValider">
+            <?php foreach ($membresNonValides as list($prenom, $nom, $id)): ?>
+              <option value="<?php echo $id ?>"><?php echo $prenom.' '.$nom ?></option>
+            <?php endforeach; ?>
+          </select></p>
+          <p>
+            <input class="boutonsFormulaires" type="submit" name="boutonValiderMembre" value="Valider l'inscription">
+            <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
+          </p>
+        </form>
+      <?php endif; ?>
+      <?php if (!$membresNonValides[0][0]): ?>
+        <p>Il n'y a pas de memmbre à valider !</p>
+        <p>
+          <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
+        </p>
+      <?php endif; ?>
     </div>
   </div>
 </div>

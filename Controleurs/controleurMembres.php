@@ -78,10 +78,6 @@
       }
     }
 
-
-
-
-
     public function verificationSessionExiste(){
       if (isset($_SESSION['id'])) {
         return true;
@@ -101,6 +97,17 @@
       $vue->generer(array('membres' => $affichageMembres));
     }
 
-  }
+    public function verificationMembreBanni($id){
+
+      $user = new utilisateurs();
+      $verificationBanni = $user->verifierBanni($id)->fetch();
+
+      if ($verificationBanni[0]) {
+        return true;
+      }
+
+    }
+
+}
 
 ?>

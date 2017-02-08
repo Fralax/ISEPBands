@@ -106,6 +106,14 @@ class utilisateurs extends modele {
     return $recupererAdmin;
   }
 
+  public function verifierBanni($id){
+    $sql = 'SELECT u_id FROM banni WHERE u_id = :id';
+    $recupererBanni = $this->executerRequete($sql, array(
+      'id' => $id
+    ));
+    return $recupererBanni;
+  }
+
 
   public function afficherInfosMembre($id){
     $sql = 'SELECT u_prenom, u_nom, u_email, u_mdp, u_portable, u_promo, u_dateInscription, u_valide, u_photo, u_facebook FROM utilisateur WHERE u_id = :id';
@@ -252,6 +260,21 @@ class utilisateurs extends modele {
     $sql = 'SELECT u_prenom, u_nom, u_id FROM utilisateur WHERE u_id IN (SELECT u_id FROM banni) ORDER BY u_prenom';
     $afficherMembresBannis = $this->executerRequete($sql);
     return $afficherMembresBannis;
+  }
+
+  public function afficherMembresNonValides(){
+    $sql = 'SELECT u_prenom, u_nom, u_id FROM utilisateur WHERE u_valide = :valide';
+    $afficherMembresNonValides = $this->executerRequete($sql, array(
+      'valide' => 0));
+    return $afficherMembresNonValides;
+  }
+
+  public function validerMembre($id){
+    $sql = 'UPDATE utilisateur SET u_valide = :valide WHERE u_id = :id';
+    $validerMembre = $this->executerRequete($sql, array(
+      'valide' => 1,
+      'id' => $id
+    ));
   }
 
 }
