@@ -34,17 +34,34 @@ class groupes extends modele {
 
   public function modifierNomGroupe($nomGroupe, $nouveauNomGroupe){
     $sql = 'UPDATE groupe SET g_nom  = :nouveauNomGroupe WHERE g_nom = :nomGroupe';
-    $modifierNomGroupe = $this->executerRequete($sql, array('nouveauNomGroupe' => $nouveauNomGroupe, 'nomGroupe' => $nomGroupe));
+    $modifierNomGroupe = $this->executerRequete($sql, array(
+      'nouveauNomGroupe' => $nouveauNomGroupe,
+      'nomGroupe' => $nomGroupe
+    ));
   }
 
   public function modifierNomGroupeAppartient($nomGroupe, $nouveauNomGroupe){
     $sql = 'UPDATE appartient SET g_nom = :nouveauNomGroupe WHERE g_nom = :nomGroupe';
-    $modifierNomGroupeAppartient = $this->executerRequete($sql, array('nouveauNomGroupe' => $nouveauNomGroupe, 'nomGroupe' => $nomGroupe));
+    $modifierNomGroupeAppartient = $this->executerRequete($sql, array(
+      'nouveauNomGroupe' => $nouveauNomGroupe,
+      'nomGroupe' => $nomGroupe
+    ));
   }
 
   public function modifierNomGroupeInvitation($nomGroupe, $nouveauNomGroupe){
     $sql = 'UPDATE invitation SET g_nom = :nouveauNomGroupe WHERE g_nom = :nomGroupe';
-    $modifierNomGroupeInvitation = $this->executerRequete($sql, array('nouveauNomGroupe' => $nouveauNomGroupe, 'nomGroupe' => $nomGroupe));
+    $modifierNomGroupeInvitation = $this->executerRequete($sql, array(
+      'nouveauNomGroupe' => $nouveauNomGroupe,
+      'nomGroupe' => $nomGroupe
+    ));
+  }
+
+  public function modifierNomGroupeJoue($nomGroupe, $nouveauNomGroupe){
+    $sql = 'UPDATE joue SET g_nom = :nouveauNomGroupe WHERE g_nom = :nomGroupe';
+    $modifierNomGroupeJoue = $this->executerRequete($sql, array(
+      'nouveauNomGroupe' => $nouveauNomGroupe,
+      'nomGroupe' => $nomGroupe
+    ));
   }
 
   public function afficherPhotoGroupe($nomGroupe){
@@ -72,7 +89,14 @@ class groupes extends modele {
 
   public function supprimerGroupeAppartient($nomGroupe){
     $sql = 'DELETE FROM appartient WHERE g_nom = :nomGroupe';
-    $supprimmerGroupe = $this->executerRequete($sql, array(
+    $supprimmerGroupeAppartient = $this->executerRequete($sql, array(
+      'nomGroupe' => $nomGroupe
+    ));
+  }
+
+  public function supprimerGroupeJoue($nomGroupe){
+    $sql = 'DELETE FROM joue WHERE g_nom = :nomGroupe';
+    $supprimerGroupeJoue = $this->executerRequete($sql, array(
       'nomGroupe' => $nomGroupe
     ));
   }
@@ -108,6 +132,12 @@ class groupes extends modele {
       'nomGroupe' => $nomGroupe
     ));
     return $afficherPlaylist;
+  }
+
+  public function verifierMorceau(){
+    $sql = 'SELECT j_morceau, j_artiste FROM joue';
+    $verifierMorceau = $this->executerRequete($sql);
+    return $verifierMorceau;
   }
 
 }

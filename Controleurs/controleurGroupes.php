@@ -38,12 +38,11 @@
       }
 
       if (isset($_POST['modifierNom'])){
-        if ($_POST['nouveauNom1'] == $_POST['nouveauNom2']){
-          $modiferNomGroupe = $groupe->modifierNomGroupe($_GET['groupe'],$_POST['nouveauNom1']);
-          $modifierNomGroupeAppartient = $groupe->modifierNomGroupeAppartient($_GET['groupe'], $_POST['nouveauNom1']);
-          $modiferNomGroupeInvitation = $groupe->modifierNomGroupeInvitation($_GET['groupe'],$_POST['nouveauNom1']);
-          header("Location: index.php?page=groupe&groupe=".urlencode($_POST['nouveauNom1']));
-        }
+        $modiferNomGroupe = $groupe->modifierNomGroupe($_GET['groupe'],$_POST['nouveauNom']);
+        $modifierNomGroupeAppartient = $groupe->modifierNomGroupeAppartient($_GET['groupe'], $_POST['nouveauNom']);
+        $modiferNomGroupeInvitation = $groupe->modifierNomGroupeInvitation($_GET['groupe'],$_POST['nouveauNom']);
+        $modifierNomGroupeJoue = $groupe->modifierNomGroupeJoue($_GET['groupe'], $_POST['nouveauNom']);
+        header("Location: index.php?page=groupe&groupe=".urlencode($_POST['nouveauNom']));
       }
 
       if (isset($_POST['changerPhotoGroupe'])) {
@@ -75,6 +74,7 @@
         $supprimerGroupe = $groupe->supprimerGroupe($_GET['groupe']);
         $supprimerGroupeAppartient = $groupe->supprimerGroupeAppartient($_GET['groupe']);
         $supprimerGroupeInvitation = $groupe->supprimerGroupeInvitation($_GET['groupe']);
+        $supprimerGroupeJoue = $groupe->supprimerGroupeJoue($_GET['groupe']);
         header("Location: index.php?page=mesgroupes");
       }
 
@@ -90,8 +90,20 @@
 
       if (isset($_POST['ajouterMorceau'])) {
         if (!empty($_POST['nomMorceau']) && !empty($_POST['nomArtiste'])) {
-          $groupe->ajouterChanson($_GET['groupe'], $_POST['nomMorceau'], $_POST['nomArtiste']);
-          header("Location: index.php?page=groupe&groupe=".urlencode($_GET['groupe']));
+          $verificationMorceau = $groupe->verifierMorceau()->fetchAll();
+          foreach ($verificationMorceau as list($titre, $artiste)) {
+            if (strtolower($titre) == strtolower($_POST['nomMorceau']) && strtolower($artiste) == strtolower($_POST['nomArtiste'])) {
+              $morceauExiste = 1;
+              ?> <script> alert("Ce morceau est déjà joué par un autre groupe !") </script> <?php
+              break;
+            } else{
+              $morceauExiste = 0;
+            }
+          }
+          if ($morceauExiste == 0) {
+            $groupe->ajouterChanson($_GET['groupe'], $_POST['nomMorceau'], $_POST['nomArtiste']);
+            header("Location: index.php?page=groupe&groupe=".urlencode($_GET['groupe']));
+          }
         } else{
           ?> <script> alert("Des champs n'ont pas été remplis !") </script> <?php
         }
