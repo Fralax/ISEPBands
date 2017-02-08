@@ -40,7 +40,7 @@
       <?php foreach ($morceaux as list($morceau, $artiste)): ?>
         <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col-centered morceau">
           <p><?php echo $morceau ?></p>
-          <p>(<?php echo $artiste ?>)</p>
+          <p>(<?php echo $artiste ?>))</p>
 
           <?php if ($g == 0 || $g == 1): ?>
             <form action="" method="post">
