@@ -31,6 +31,10 @@
 
 
       if (isset($_POST['boutonSupprimerMembre'])) {
+
+        $user = new utilisateurs();
+        $group = new groupes();
+
         $membreASupprimer = $_POST['membreAsupprimer'];
         //on supprime les groupes auquel il appartient
         $mesGroupes = $group -> afficherMesGroupes($membreASupprimer) -> fetchAll();
