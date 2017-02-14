@@ -28,6 +28,12 @@ class utilisateurs extends modele {
     ));
   }
 
+  public function supprimerUtilisateur($id){
+    $sql = 'DELETE FROM utilisateur WHERE u_id = :id';
+    $supprimerUtilisateur = $this->executerRequete($sql, array(
+      'id' => $id
+    ));
+  }
 
   public function verifierMdp($email){
     $sql = 'SELECT u_mdp, u_email, u_prenom, u_id, u_valide FROM utilisateur WHERE u_email = :email';
@@ -70,6 +76,13 @@ class utilisateurs extends modele {
     $supprimerInstrument = $this->executerRequete($sql, array(
       'id' => $id,
       'instrument' => $instrument
+    ));
+  }
+
+  public function supprimerTousInstrumentsJoues($id){
+    $sql = 'DELETE FROM pratique WHERE u_id = :id';
+    $supprimerInstrument = $this->executerRequete($sql, array(
+      'id' => $id,
     ));
   }
 
@@ -276,5 +289,6 @@ class utilisateurs extends modele {
       'id' => $id
     ));
   }
+
 
 }

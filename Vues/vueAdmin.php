@@ -16,6 +16,9 @@ $admin = new controleurAdmin();
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
     <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupValiderMembres">Valider un membre</button>
   </div>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
+    <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupSupprimerMembre">Supprimer un membre</button>
+  </div>
 </div>
 
 <div id="popupBannirMembre" class="modal fade" role="dialog">
@@ -30,6 +33,25 @@ $admin = new controleurAdmin();
         </select></p>
         <p>
           <input class="boutonsFormulaires" type="submit" name="boutonBannirMembre" value="Bannir">
+          <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="popupSupprimerMembre" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content popups">
+      <form action="" method="post" enctype="multipart/form-data">
+        <p>Membre que tu veux bannir : </p>
+        <p><select class="" name="membreASupprimer">
+          <?php foreach ($membres as list($prenom, $nom, $id)): ?>
+            <option value="<?php echo $id ?>"><?php echo $prenom.' '.$nom ?></option>
+          <?php endforeach; ?>
+        </select></p>
+        <p>
+          <input class="boutonsFormulaires" type="submit" name="boutonSupprimerMembre" value="Bannir">
           <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
         </p>
       </form>
