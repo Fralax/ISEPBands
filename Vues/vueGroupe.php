@@ -38,7 +38,7 @@
     <h2>Set-List</h2>
     <?php if ($morceaux): ?>
       <?php foreach ($morceaux as list($morceau, $artiste)): ?>
-        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col-centered morceau">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 col-centered morceau">
           <p><?php echo $morceau ?></p>
           <p>(<?php echo $artiste ?>)</p>
 
@@ -61,7 +61,7 @@
   <div class="row row-centered membresGroupe">
     <h2> Membres </h2>
     <?php foreach ($membres as list($id, $prenom, $nom, $photo)): ?>
-      <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 col-centered membreGroupe">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-centered membreGroupe">
         <img class="photoGroupeMembre" src="<?php echo $photo ?>" />
         <a href="index.php?page=profil&amp;id=<?php echo $id ?>"> <?php echo $prenom." ".$nom ?></a>
       </div>
@@ -79,52 +79,46 @@
       <?php endforeach; ?>
     </div>
   <?php endif; ?>
-</div>
-
-<div class="row row-centered">
-  <?php if ($g == 0 && $banni != 1): ?>
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupInviterMembre">Inviter un membre</button>
-    </div>
-    <?php if ($membresASupprimer[0][0]): ?>
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-        <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupSupprimerMembre">Supprimer un membre</button>
-      </div>
-    <?php endif; ?>
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupModifierNom">Modifier le nom du Groupe</button>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupPhotoGroupe">Modifier la photo du Groupe</button>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupSuppressionGroupe">Supprimer le Groupe</button>
-    </div>
-    <?php if ($autresMembres[0][0]): ?>
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-        <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupNommerChefGroupe">Désigner un nouveau Chef</button>
-      </div>
-    <?php endif; ?>
-  <?php endif; ?>
-
-  <?php if ($g == 1 && $banni != 1): ?>
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupQuitterGroupe">Quitter le Groupe</button>
-    </div>
-  <?php endif; ?>
 
   <?php if (($g == 0 || $g == 1) && $banni != 1): ?>
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
-      <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupAjouterMorceau">Ajouter un Morceau</button>
+    <div class="row row-centered">
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-centered boutonsMembres">
+        <h3>Options Membres</h3>
+        <?php if ($g == 0 && $banni != 1): ?>
+            <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupInviterMembre">Inviter un membre</button>
+          <?php if ($membresASupprimer[0][0]): ?>
+              <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupSupprimerMembre">Supprimer un membre</button>
+          <?php endif; ?>
+          <?php if ($autresMembres[0][0]): ?>
+              <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupNommerChefGroupe">Désigner un nouveau Chef</button>
+          <?php endif; ?>
+        <?php endif; ?>
+        <?php if ($g == 1 && $banni != 1): ?>
+            <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupQuitterGroupe">Quitter le Groupe</button>
+        <?php endif; ?>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-centered boutonsGroupe">
+        <h3>Option Groupe</h3>
+        <?php if ($g == 0 && $banni != 1): ?>
+            <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupModifierNom">Modifier le nom du Groupe</button>
+            <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupPhotoGroupe">Modifier la photo du Groupe</button>
+            <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupSuppressionGroupe">Supprimer le Groupe</button>
+        <?php endif; ?>
+        <?php if (($g == 0 || $g == 1) && $banni != 1): ?>
+            <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupAjouterMorceau">Ajouter un Morceau</button>
+        <?php endif; ?>
+      </div>
+    </div>
+
+  <?php endif; ?>
+
+  <?php if (($g == 0 || $g == 1) && $banni == 1): ?>
+    <div class="banni">
+      Vous avez été banni. Vous ne pouvez plus interagir avec votre groupe.
     </div>
   <?php endif; ?>
-</div>
 
-<?php if (($g == 0 || $g == 1) && $banni == 1): ?>
-  <div class="banni">
-    Vous avez été banni. Vous ne pouvez plus interagir avec votre groupe.
-  </div>
-<?php endif; ?>
+</div>
 
 <div id="popupInviterMembre" class="modal fade" role="dialog">
   <div class="modal-dialog">

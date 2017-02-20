@@ -17,5 +17,6 @@ $(document).ready(function(){
     }
       // On empêche le navigateur de suivre le lien :
   });
+
   return false;
 });
