@@ -200,13 +200,21 @@ class utilisateurs extends modele {
     return $afficherMembres;
   }
 
-  public function afficherMembresASupprimer($nomGroupe, $idCreateur){
-    $sql = 'SELECT u_id, u_prenom, u_nom FROM utilisateur WHERE u_id != :idCreateur AND (u_id IN (SELECT u_id FROM appartient WHERE g_nom = :nomGroupe) OR u_id IN (SELECT u_id FROM invitation WHERE g_nom = :nomGroupe))';
+  public function afficherMembresASupprimer($id){
+    $sql = 'SELECT u_id, u_prenom, u_nom, u_photo FROM utilisateur WHERE u_id != :id ORDER BY u_prenom';
     $afficherMembresASupprimer = $this->executerRequete($sql, array(
+      'id' => $id
+    ));
+    return $afficherMembresASupprimer;
+  }
+
+  public function afficherMembresASupprimerGroupe($nomGroupe, $idCreateur){
+    $sql = 'SELECT u_id, u_prenom, u_nom FROM utilisateur WHERE u_id != :idCreateur AND (u_id IN (SELECT u_id FROM appartient WHERE g_nom = :nomGroupe) OR u_id IN (SELECT u_id FROM invitation WHERE g_nom = :nomGroupe))';
+    $afficherMembresASupprimerGroupe = $this->executerRequete($sql, array(
       'idCreateur' => $idCreateur,
       'nomGroupe' => $nomGroupe
     ));
-    return $afficherMembresASupprimer;
+    return $afficherMembresASupprimerGroupe;
   }
 
   public function afficherAutresMembres($nomGroupe, $idCreateur){

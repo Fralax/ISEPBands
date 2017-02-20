@@ -13,6 +13,7 @@
       $membresNonBannis = $user -> afficherMembresNonBannis()->fetchAll();
       $membresBannis = $user -> afficherMembresBannis()->fetchAll();
       $membresNonValides = $user -> afficherMembresNonValides()->fetchAll();
+      $membresASupprimer = $user -> afficherMembresASupprimer($_SESSION['id'])->fetchAll();
 
       if(isset($_POST['boutonBannirMembre'])){
         $user->bannirMembre($_POST['membreABannir']);
@@ -35,13 +36,14 @@
         $user = new utilisateurs();
         $group = new groupes();
 
-        $membreASupprimer = $_POST['membreAsupprimer'];
+        $membreASupprimer = $_POST['membreASupprimer'];
         //on supprime les groupes auquel il appartient
         $mesGroupes = $group -> afficherMesGroupes($membreASupprimer) -> fetchAll();
         foreach($mesGroupes as list($nomGroupe)){
           $supprimerGroupe = $group -> supprimerGroupe($nomGroupe);
           $supprimerGroupeAppartient = $group -> supprimerGroupeAppartient($nomGroupe);
           $supprimerGroupeInvitation = $group -> supprimerGroupeInvitation($nomGroupe);
+        //il faut le supprimer de la table joue
         }
         //on supprime ses instruments
         $supprimerTousInstrumentsJoues = $user -> supprimerTousInstrumentsJoues($membreASupprimer);
@@ -53,7 +55,7 @@
       }
 
       $vue = new Vue('Admin');
-      $vue->generer(array('membresNonBannis' => $membresNonBannis, 'membresBannis' => $membresBannis, 'membresNonValides' => $membresNonValides));
+      $vue->generer(array('membresNonBannis' => $membresNonBannis, 'membresBannis' => $membresBannis, 'membresNonValides' => $membresNonValides, 'membresASupprimer' => $membresASupprimer));
 
     }
 

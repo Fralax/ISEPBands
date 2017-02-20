@@ -98,7 +98,7 @@
         <?php endif; ?>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-centered boutonsGroupe">
-        <h3>Option Groupe</h3>
+        <h3>Options Groupe</h3>
         <?php if ($g == 0 && $banni != 1): ?>
             <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupModifierNom">Modifier le nom du Groupe</button>
             <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupPhotoGroupe">Modifier la photo du Groupe</button>

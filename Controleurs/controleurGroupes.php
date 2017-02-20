@@ -21,7 +21,7 @@
       $membresGroupe = $user->afficherMembresGroupe($_GET['groupe'])->fetchAll();
       $afficherMembresNonInvites = $user->afficherMembresNonInvites($_GET['groupe'])->fetchAll();
       $afficherMembresInvites = $user->afficherMembresInvites($_GET['groupe'])->fetchAll();
-      $afficherMembresASupprimer = $user->afficherMembresASupprimer($_GET['groupe'], $_SESSION['id'])->fetchAll();
+      $afficherMembresASupprimerGroupe = $user->afficherMembresASupprimerGroupe($_GET['groupe'], $_SESSION['id'])->fetchAll();
       $afficherAutresMembres = $user->afficherAutresMembres($_GET['groupe'], $_SESSION['id'])->fetchAll();
       $afficherPhotoGroupe = $groupe->afficherPhotoGroupe($_GET['groupe'])->fetch();
       $afficherPlaylist = $groupe->afficherPlaylist($_GET['groupe'])->fetchAll();
@@ -115,7 +115,7 @@
       }
 
       $vue = new Vue('Groupe');
-      $vue->generer(array("membresNonInvites" => $afficherMembresNonInvites, "membresInvites" => $afficherMembresInvites, 'membres' => $membresGroupe, "membresASupprimer" => $afficherMembresASupprimer, "photoGroupe" => $afficherPhotoGroupe, "autresMembres" => $afficherAutresMembres, 'morceaux' => $afficherPlaylist));
+      $vue->generer(array("membresNonInvites" => $afficherMembresNonInvites, "membresInvites" => $afficherMembresInvites, 'membres' => $membresGroupe, "membresASupprimer" => $afficherMembresASupprimerGroupe, "photoGroupe" => $afficherPhotoGroupe, "autresMembres" => $afficherAutresMembres, 'morceaux' => $afficherPlaylist));
     }
 
     public function affichageMesGroupes(){

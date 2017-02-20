@@ -44,14 +44,14 @@ $admin = new controleurAdmin();
   <div class="modal-dialog">
     <div class="modal-content popups">
       <form action="" method="post" enctype="multipart/form-data">
-        <p>Membre que tu veux bannir : </p>
+        <p>Membre que tu veux supprimer : </p>
         <p><select class="" name="membreASupprimer">
-          <?php foreach ($membres as list($prenom, $nom, $id)): ?>
+          <?php foreach ($membresASupprimer as list($id, $prenom, $nom)): ?>
             <option value="<?php echo $id ?>"><?php echo $prenom.' '.$nom ?></option>
           <?php endforeach; ?>
         </select></p>
         <p>
-          <input class="boutonsFormulaires" type="submit" name="boutonSupprimerMembre" value="Bannir">
+          <input class="boutonsFormulaires" type="submit" name="boutonSupprimerMembre" value="Supprimer">
           <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
         </p>
       </form>
