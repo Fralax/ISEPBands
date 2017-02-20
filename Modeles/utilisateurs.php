@@ -11,8 +11,8 @@ class utilisateurs extends modele {
   }
 
 
-  public function inscrireUtilisateur($prenom, $nom, $email, $mdp, $portable, $promo, $dateInscription, $valide, $photo, $facebook){
-    $sql = 'INSERT INTO utilisateur (u_prenom, u_nom, u_email, u_mdp, u_portable, u_promo, u_dateInscription, u_valide, u_photo, u_facebook) VALUES (:prenom, :nom, :email, :mdp, :portable, :promo, :dateInscription, :valide, :photo, :facebook)';
+  public function inscrireUtilisateur($prenom, $nom, $email, $mdp, $portable, $promo, $dateInscription, $valide, $photo, $facebook, $admin){
+    $sql = 'INSERT INTO utilisateur (u_prenom, u_nom, u_email, u_mdp, u_portable, u_promo, u_dateInscription, u_valide, u_photo, u_facebook, u_admin) VALUES (:prenom, :nom, :email, :mdp, :portable, :promo, :dateInscription, :valide, :photo, :facebook, :admin)';
 
     $inscrireUtilisateur = $this->executerRequete($sql, array(
       'prenom' => $prenom,
@@ -24,7 +24,8 @@ class utilisateurs extends modele {
       'dateInscription' => $dateInscription,
       'valide' => $valide,
       'photo' => $photo,
-      'facebook' => $facebook
+      'facebook' => $facebook,
+      'admin' => $admin
     ));
   }
 
