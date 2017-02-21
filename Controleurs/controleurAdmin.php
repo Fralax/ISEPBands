@@ -14,6 +14,7 @@
       $membresBannis = $user -> afficherMembresBannis()->fetchAll();
       $membresNonValides = $user -> afficherMembresNonValides()->fetchAll();
       $membresASupprimer = $user -> afficherMembresASupprimer($_SESSION['id'])->fetchAll();
+      $membresAdministrateurs = $user -> afficherMembresAdministrateurs()->fetchAll();
 
       if(isset($_POST['boutonBannirMembre'])){
         $user->bannirMembre($_POST['membreABannir']);
@@ -30,6 +31,15 @@
         header("Location: index.php?page=administration");
       }
 
+      if (isset($_POST['boutonNommerAdministrateur'])) {
+        $user->nommerMembreAdministrateur($_POST['membreANommerAdministrateur']);
+        header("Location: index.php?page=administration");
+      }
+
+      if (isset($_POST['boutonSupprimerAdministrateur'])) {
+        $user->supprimerMembreAdministrateur($_POST['membreASupprimerAdministrateur']);
+        header("Location: index.php?page=administration");
+      }
 
       if (isset($_POST['boutonSupprimerMembre'])) {
 
@@ -43,19 +53,17 @@
           $supprimerGroupe = $group -> supprimerGroupe($nomGroupe);
           $supprimerGroupeAppartient = $group -> supprimerGroupeAppartient($nomGroupe);
           $supprimerGroupeInvitation = $group -> supprimerGroupeInvitation($nomGroupe);
-        //il faut le supprimer de la table joue
+          $supprimerGroupeJoue = $group -> supprimerGroupeJoue($nomGroupe);
         }
-        //on supprime ses instruments
+
         $supprimerTousInstrumentsJoues = $user -> supprimerTousInstrumentsJoues($membreASupprimer);
-        //on le supprime de la table banni cas ou
         $debannirMembre = $user -> debannirMembre($membreASupprimer);
-        //on le supprime de la table utilisateur
         $supprimerUtilisateur = $user -> supprimerUtilisateur($membreASupprimer);
         header("Location: index.php?page=administration");
       }
 
       $vue = new Vue('Admin');
-      $vue->generer(array('membresNonBannis' => $membresNonBannis, 'membresBannis' => $membresBannis, 'membresNonValides' => $membresNonValides, 'membresASupprimer' => $membresASupprimer));
+      $vue->generer(array('membresNonBannis' => $membresNonBannis, 'membresBannis' => $membresBannis, 'membresNonValides' => $membresNonValides, 'membresASupprimer' => $membresASupprimer, 'membresAdministrateurs' => $membresAdministrateurs));
 
     }
 
