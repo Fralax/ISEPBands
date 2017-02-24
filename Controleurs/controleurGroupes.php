@@ -149,4 +149,6 @@
       $vue = new Vue('AnnuaireGroupes');
       $vue->generer(array('groupes' => $affichageGroupes));
     }
+
+
   }

@@ -19,6 +19,15 @@ $admin = new controleurAdmin();
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
     <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupSupprimerMembre">Supprimer un membre</button>
   </div>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
+    <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupNommerAdministrateur">Nommer un administrateur</button>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
+    <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupSupprimerAdministrateur">Supprimer un administrateur</button>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
+    <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupSupprimerGroupe">Supprimer un groupe</button>
+  </div>
 </div>
 
 <div id="popupBannirMembre" class="modal fade" role="dialog">
@@ -36,6 +45,48 @@ $admin = new controleurAdmin();
           <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
         </p>
       </form>
+    </div>
+  </div>
+</div>
+
+<div id="popupNommerAdministrateur" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content popups">
+      <form action="" method="post" enctype="multipart/form-data">
+        <p>Membre que tu veux nommer administrateur : </p>
+        <p><select class="" name="membreANommerAdministrateur">
+          <?php foreach ($membresNonBannis as list($prenom, $nom, $id)): ?>
+            <option value="<?php echo $id ?>"><?php echo $prenom.' '.$nom ?></option>
+          <?php endforeach; ?>
+        </select></p>
+        <p>
+          <input class="boutonsFormulaires" type="submit" name="boutonNommerAdministrateur" value="NommerAdministrateur">
+          <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="popupSupprimerAdministrateur" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content popups">
+      <?php if (!$membresAdministrateurs[0][0]): ?>
+        <p>Il n'y a aucun autre administrateur</p>
+      <?php else: ?>
+        <form action="" method="post" enctype="multipart/form-data">
+          <p>Administrateur à supprimer : </p>
+          <p><select class="" name="membreASupprimerAdministrateur">
+            <?php foreach ($membresAdministrateurs as list($prenom, $nom, $id)): ?>
+              <option value="<?php echo $id ?>"><?php echo $prenom.' '.$nom ?></option>
+            <?php endforeach; ?>
+          </select></p>
+          <p>
+            <input class="boutonsFormulaires" type="submit" name="boutonSupprimerAdministrateur" value="Supprimer Administrateur">
+      <?php endif; ?>
+            <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
+          </p>
+        </form>
     </div>
   </div>
 </div>
@@ -109,6 +160,25 @@ $admin = new controleurAdmin();
           <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
         </p>
       <?php endif; ?>
+    </div>
+  </div>
+</div>
+
+<div id="popupSupprimerGroupe" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content popups">
+      <form action="" method="post" enctype="multipart/form-data">
+        <p>Groupe que tu veux supprimer : </p>
+        <p><select class="" name="groupeASupprimer">
+          <?php foreach ($groupes as list($nomGroupe)): ?>
+            <option value="<?php echo $nomGroupe ?>"><?php echo $nomGroupe ?></option>
+          <?php endforeach; ?>
+        </select></p>
+        <p>
+          <input class="boutonsFormulaires" type="submit" name="boutonSupprimerGroupe" value="Supprimer">
+          <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
+        </p>
+      </form>
     </div>
   </div>
 </div>

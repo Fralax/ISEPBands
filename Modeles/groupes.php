@@ -27,7 +27,7 @@ class groupes extends modele {
   }
 
   public function afficherGroupes(){
-    $sql = 'SELECT g_nom, g_createur, g_photo FROM groupe';
+    $sql = 'SELECT g_nom, g_createur, g_photo FROM groupe ORDER BY g_nom';
     $afficherGroupes = $this->executerRequete($sql);
     return $afficherGroupes;
   }
@@ -107,6 +107,7 @@ class groupes extends modele {
       'nomGroupe' => $nomGroupe
     ));
   }
+
 
   public function ajouterChanson($nomGroupe, $nomChanson, $nomArtiste){
     $sql = 'INSERT INTO joue (g_nom, j_morceau, j_artiste) VALUES (:nomGroupe, :nomChanson, :nomArtiste)';

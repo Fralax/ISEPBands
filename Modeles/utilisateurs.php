@@ -299,5 +299,26 @@ class utilisateurs extends modele {
     ));
   }
 
+  public function nommerMembreAdministrateur($id){
+    $sql = 'UPDATE utilisateur SET u_admin = 1 WHERE u_id = :id';
+    $this->executerRequete($sql, array(
+      'id' => $id
+    ));
+  }
+
+  public function afficherMembresAdministrateurs($id){
+    $sql = 'SELECT u_prenom, u_nom, u_id FROM utilisateur WHERE u_admin = 1 AND u_id != :id ORDER BY u_prenom';
+    $afficherMembresAdministrateurs = $this->executerRequete($sql, array(
+        'id' => $id
+      ));
+    return $afficherMembresAdministrateurs;
+  }
+
+  public function SupprimerMembreAdministrateur($id){
+    $sql = 'UPDATE utilisateur SET u_admin = 0 WHERE u_id = :id';
+    $this->executerRequete($sql, array(
+      'id' => $id
+    ));
+  }
 
 }

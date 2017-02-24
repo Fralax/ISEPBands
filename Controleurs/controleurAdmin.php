@@ -14,7 +14,8 @@
       $membresBannis = $user -> afficherMembresBannis()->fetchAll();
       $membresNonValides = $user -> afficherMembresNonValides()->fetchAll();
       $membresASupprimer = $user -> afficherMembresASupprimer($_SESSION['id'])->fetchAll();
-      $membresAdministrateurs = $user -> afficherMembresAdministrateurs()->fetchAll();
+      $membresAdministrateurs = $user -> afficherMembresAdministrateurs($_SESSION['id'])->fetchAll();
+      $groupes = $group -> afficherGroupes()->fetchAll();
 
       if(isset($_POST['boutonBannirMembre'])){
         $user->bannirMembre($_POST['membreABannir']);
@@ -41,13 +42,21 @@
         header("Location: index.php?page=administration");
       }
 
+      if (isset($_POST['boutonSupprimerGroupe'])) {
+        $groupeASupprimer = $_GET['groupeASupprimer'];
+        $supprimerGroupe = $groupe->supprimerGroupe($groupeASupprimer);
+        $supprimerGroupeAppartient = $groupe->supprimerGroupeAppartient($groupeASupprimer);
+        $supprimerGroupeInvitation = $groupe->supprimerGroupeInvitation($groupeASupprimer);
+        $supprimerGroupeJoue = $groupe->supprimerGroupeJoue($groupeASupprimer);
+        header("Location: index.php?page=administration");
+      }
+
       if (isset($_POST['boutonSupprimerMembre'])) {
 
         $user = new utilisateurs();
         $group = new groupes();
 
         $membreASupprimer = $_POST['membreASupprimer'];
-        //on supprime les groupes auquel il appartient
         $mesGroupes = $group -> afficherMesGroupes($membreASupprimer) -> fetchAll();
         foreach($mesGroupes as list($nomGroupe)){
           $supprimerGroupe = $group -> supprimerGroupe($nomGroupe);
@@ -63,7 +72,7 @@
       }
 
       $vue = new Vue('Admin');
-      $vue->generer(array('membresNonBannis' => $membresNonBannis, 'membresBannis' => $membresBannis, 'membresNonValides' => $membresNonValides, 'membresASupprimer' => $membresASupprimer, 'membresAdministrateurs' => $membresAdministrateurs));
+      $vue->generer(array('membresNonBannis' => $membresNonBannis, 'membresBannis' => $membresBannis, 'membresNonValides' => $membresNonValides, 'membresASupprimer' => $membresASupprimer, 'membresAdministrateurs' => $membresAdministrateurs, 'groupes' => $groupes));
 
     }
 
