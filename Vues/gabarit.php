@@ -7,11 +7,13 @@
 
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="Contenu/gabarit.css" />
+    <link rel="stylesheet" href="fullcalendar/fullcalendar.css">
+    <link rel='stylesheet' href='fullcalendar/fullcalendar.print.css' media='print' />
     <link rel="stylesheet" href="<?php echo $css ?>" >
+
     <link rel="icon" href="Autres/LogoISEPBands.png" />
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="JS/gabarit.js"></script>
 
