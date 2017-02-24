@@ -72,12 +72,20 @@
           $this->controleurPlanning->affichagePlanning();
           break;
 
-        case 'evenements':
+        case 'ajaxrecuperationevenements':
           $this->controleurPlanning->recuperationEvenements();
           break;
 
-        case 'sendevenement':
+        case 'ajaxmodificationevenement':
           $this->controleurPlanning->modificationEvenement();
+          break;
+
+        case 'ajaxsuppressionevenement':
+          $this->controleurPlanning->suppressionEvenement();
+          break;
+
+        case 'ajaxcreationevenement':
+          $this->controleurPlanning->creationEvenement();
           break;
 
         default:
