@@ -6,6 +6,7 @@
   require_once 'Controleurs/controleurMembres.php';
   require_once 'Controleurs/controleurGroupes.php';
   require_once 'Controleurs/controleurAdmin.php';
+  require_once 'Controleurs/controleurPlanning.php';
 
   class routeur{
 
@@ -15,6 +16,7 @@
     private $controleurMembres;
     private $controleurGroupes;
     private $controleurAdmin;
+    private $controleurPlanning;
 
     public function __construct(){
       $this->controleurAccueil = new controleurAccueil();
@@ -23,6 +25,7 @@
       $this->controleurMembres = new controleurMembres();
       $this->controleurGroupes = new controleurGroupes();
       $this->controleurAdmin = new controleurAdmin();
+      $this->controleurPlanning = new controleurPlanning();
 
       session_start();
 
@@ -63,6 +66,18 @@
 
         case 'administration':
           $this->controleurAdmin->affichageAdmin();
+          break;
+
+        case 'planning':
+          $this->controleurPlanning->affichagePlanning();
+          break;
+
+        case 'evenements':
+          $this->controleurPlanning->recuperationEvenements();
+          break;
+
+        case 'sendevenement':
+          $this->controleurPlanning->modificationEvenement();
           break;
 
         default:
