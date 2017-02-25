@@ -51,6 +51,31 @@
         header("Location: index.php?page=administration");
       }
 
+      if (isset($_POST['ajouterInstrument'])) {
+        if (isset($_FILES['photoInstrument']) && !empty($_FILES['photoInstrument']['name'])) {
+          $tailleMax = 10485760;
+          $extensions = array('png');
+          $extension = strtolower(substr(strrchr($_FILES['photoInstrument']['name'], '.'), 1));
+          if ($_FILES['photoInstrument']['size'] <= $tailleMax) {
+            if(in_array($extension, $extensions)){
+              $photo = 'Autres/'.$_POST['nomInstrument'].'.'.$extension;
+              if (move_uploaded_file($_FILES['photoInstrument']['tmp_name'], $photo)) {
+                $ajouterInstrument = $user->ajouterInstrument($_POST['nomInstrument']);
+                header("Location: index.php?page=administration");
+              } else{
+                ?> <script>alert("Echec de l'upload !")</script><?php
+              }
+            } else{
+              ?> <script>alert("Vous devez uploader un fichier de type png ...")</script><?php
+            }
+          } else{
+            ?> <script>alert("La photo de l'instrument ne doit pas dépasser 10 Mo !")</script><?php
+          }
+        } else{
+          ?> <script>alert("Echec de l'upload !")</script><?php
+        }
+      }
+
       if (isset($_POST['boutonSupprimerMembre'])) {
 
         $user = new utilisateurs();

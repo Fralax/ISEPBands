@@ -314,10 +314,17 @@ class utilisateurs extends modele {
     return $afficherMembresAdministrateurs;
   }
 
-  public function SupprimerMembreAdministrateur($id){
+  public function supprimerMembreAdministrateur($id){
     $sql = 'UPDATE utilisateur SET u_admin = 0 WHERE u_id = :id';
     $this->executerRequete($sql, array(
       'id' => $id
+    ));
+  }
+
+  public function ajouterInstrument($nomInstrument){
+    $sql = 'INSERT INTO instrument (i_instrument) VALUES (:nomInstrument)';
+    $this->executerRequete($sql, array(
+      'nomInstrument' => $nomInstrument
     ));
   }
 

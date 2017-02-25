@@ -28,6 +28,28 @@ $admin = new controleurAdmin();
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
     <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupSupprimerGroupe">Supprimer un groupe</button>
   </div>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
+    <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupAjouterInstrument">Rajouter un instrument</button>
+  </div>
+</div>
+
+<div id="popupAjouterInstrument" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content popups">
+      <form action="" method="post" enctype="multipart/form-data">
+        <div class="inputContainer">
+          <p><input type="text" name="nomInstrument" value="" placeholder="Nom de l'instrument"></p>
+          <input class="inputFile" id="ajouterPhotoInstrument" type="file" name="photoInstrument">
+          <label for="ajouterPhotoInstrument" class="label" tabindex="0">Sélectionner une photo !</label>
+        </div>
+        <p class="fileReturn"></p>
+        <p>
+          <input class="boutonsFormulaires" type="submit" name="ajouterInstrument" value="Ajouter un instrument">
+          <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
+        </p>
+      </form>
+    </div>
+  </div>
 </div>
 
 <div id="popupBannirMembre" class="modal fade" role="dialog">
@@ -182,3 +204,6 @@ $admin = new controleurAdmin();
     </div>
   </div>
 </div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+<script src="JS/labelsInputFiles.js"></script>
