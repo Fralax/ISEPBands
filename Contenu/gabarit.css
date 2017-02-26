@@ -1,3 +1,7 @@
+html{
+  height: 100%;
+}
+
 *{
     font-family: 'Lato', Calibri, Arial, sans-serif;
     letter-spacing: 1px;
@@ -16,6 +20,9 @@ a:hover{
 
 body{
   background-color: rgba(245, 245, 225, 1);
+  position: relative;
+  padding-bottom: 6rem;
+  min-height: 100%;
 }
 
 header nav{
@@ -279,8 +286,8 @@ header .barreMenu ul {
   text-align:center;
 }
 .col-centered {
+  float: none;
   display:inline-block;
-  float:none;
   text-align:left;
   margin-right:-4px;
 }
@@ -293,12 +300,17 @@ header .barreMenu ul {
   font-weight: bold;
 }
 
-footer{
-  position: relative;
-  text-align: center;
-  clear:both;
-  margin-top: 3em;
-  padding: 0.8em;
+.container-fluid{
+  margin: 0 auto;
+}
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
   background-color: rgba(138, 38, 22, 1);
   color: white;
+  text-align: center;
 }

@@ -10,6 +10,22 @@
       return $afficherEvenements;
     }
 
+    public function afficherEvenementsMesGroupes($id){
+      $sql = 'SELECT id, title, start, end FROM evenement WHERE title IN (SELECT g_nom FROM appartient WHERE u_id = :id)';
+      $afficherEvenementsMesGroupes = $this->executerRequete($sql, array(
+        'id' => $id
+      ));
+      return $afficherEvenementsMesGroupes;
+    }
+
+    public function afficherEvenementsAutresGroupes($id){
+      $sql = 'SELECT id, title, start, end FROM evenement WHERE title NOT IN (SELECT g_nom FROM appartient WHERE u_id = :id)';
+      $afficherEvenementsAutresGroupes = $this->executerRequete($sql, array(
+        'id' => $id
+      ));
+      return $afficherEvenementsAutresGroupes;
+    }
+
     public function creerEvenement($groupe, $debut, $fin){
       $sql = 'INSERT INTO evenement (title, start, end) VALUES (:groupe, :debut, :fin)';
       $creerEvenement = $this->executerRequete($sql, array(

@@ -21,7 +21,7 @@
     public function __construct(){
       $this->controleurAccueil = new controleurAccueil();
       $this->controleurInscription = new controleurInscription();
-      $this->controleurconnexion = new controleurConnexion();
+      $this->controleurConnexion = new controleurConnexion();
       $this->controleurMembres = new controleurMembres();
       $this->controleurGroupes = new controleurGroupes();
       $this->controleurAdmin = new controleurAdmin();
@@ -35,6 +35,10 @@
       $routeur = new routeur();
       //error_reporting(0);
       switch($_GET['page']){
+
+        case '':
+          $this->controleurAccueil->affichageAccueil();
+          break;
 
         case 'accueil':
           $this->controleurAccueil->affichageAccueil();
@@ -76,6 +80,14 @@
           $this->controleurPlanning->recuperationEvenements();
           break;
 
+        case 'ajaxrecuperationevenementsmesgroupes':
+          $this->controleurPlanning->recuperationEvenementsMesGroupes();
+          break;
+
+        case 'ajaxrecuperationevenementsautresgroupes':
+          $this->controleurPlanning->recuperationEvenementsAutresGroupes();
+          break;
+
         case 'ajaxmodificationevenement':
           $this->controleurPlanning->modificationEvenement();
           break;
@@ -88,10 +100,16 @@
           $this->controleurPlanning->creationEvenement();
           break;
 
+        case 'erreur404':
+          $this->controleurMembres->affichagePage404();
+          break;
+
+        case 'deconnexion':
+          $this->controleurConnexion->deconnexionUtilisateur();
+          break;
+
         default:
-          $_SESSION = array();
-          session_destroy();
-          $this->controleurAccueil->affichageAccueil();
+          $this->controleurMembres->affichagePage404();
           break;
       }
 
