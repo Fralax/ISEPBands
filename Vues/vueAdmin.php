@@ -82,7 +82,7 @@ $admin = new controleurAdmin();
           <?php endforeach; ?>
         </select></p>
         <p>
-          <input class="boutonsFormulaires" type="submit" name="boutonNommerAdministrateur" value="NommerAdministrateur">
+          <input class="boutonsFormulaires" type="submit" name="boutonNommerAdministrateur" value="Nommer un Administrateur">
           <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
         </p>
       </form>
@@ -104,7 +104,7 @@ $admin = new controleurAdmin();
             <?php endforeach; ?>
           </select></p>
           <p>
-            <input class="boutonsFormulaires" type="submit" name="boutonSupprimerAdministrateur" value="Supprimer Administrateur">
+            <input class="boutonsFormulaires" type="submit" name="boutonSupprimerAdministrateur" value="Supprimer cet Administrateur">
       <?php endif; ?>
             <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
           </p>
