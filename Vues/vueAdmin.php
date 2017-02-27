@@ -31,6 +31,9 @@ $admin = new controleurAdmin();
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
     <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupAjouterInstrument">Rajouter un instrument</button>
   </div>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered formulaires">
+    <button type="button" class="boutonsFormulaires" data-toggle="modal" data-target="#popupSupprimerInstrument">Supprimer un instrument</button>
+  </div>
 </div>
 
 <div id="popupAjouterInstrument" class="modal fade" role="dialog">
@@ -44,7 +47,7 @@ $admin = new controleurAdmin();
         </div>
         <p class="fileReturn"></p>
         <p>
-          <input class="boutonsFormulaires" type="submit" name="ajouterInstrument" value="Ajouter un instrument">
+          <input class="boutonsFormulaires" type="submit" name="boutonAjouterInstrument" value="Ajouter un instrument">
           <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
         </p>
       </form>
@@ -64,6 +67,25 @@ $admin = new controleurAdmin();
         </select></p>
         <p>
           <input class="boutonsFormulaires" type="submit" name="boutonBannirMembre" value="Bannir">
+          <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="popupSupprimerInstrument" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content popups">
+      <form action="" method="post" enctype="multipart/form-data">
+        <p>Instrument que tu veux supprimer : </p>
+        <p><select class="" name="instrumentASupprimer">
+          <?php foreach ($instruments as list($instrumentASupprimer)): ?>
+            <option value="<?php echo $instrumentASupprimer ?>"><?php echo $instrumentASupprimer ?></option>
+          <?php endforeach; ?>
+        </select></p>
+        <p>
+          <input class="boutonsFormulaires" type="submit" name="boutonSupprimerInstrument" value="Supprimer">
           <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
         </p>
       </form>

@@ -72,9 +72,24 @@ class utilisateurs extends modele {
     ));
   }
 
-  public function supprimerInstrument($id, $instrument){
-    $sql = 'DELETE FROM pratique WHERE u_id = :id AND p_instrument = :instrument';
+  public function supprimerInstrument($instrumentASupprimer){
+    $sql = 'DELETE FROM instrument WHERE i_instrument = :instrumentASupprimer';
     $supprimerInstrument = $this->executerRequete($sql, array(
+      'instrumentASupprimer' => $instrumentASupprimer
+    ));
+  }
+
+  public function supprimerInstrumentAdminPratique($instrumentASupprimer){
+    $sql = 'DELETE FROM pratique WHERE p_instrument = :instrumentASupprimer';
+    $supprimerInstrumentAdminPratique = $this->executerRequete($sql,array(
+      'instrumentASupprimer' => $instrumentASupprimer
+    ));
+  }
+
+
+  public function supprimerInstrumentPratique($id, $instrument){
+    $sql = 'DELETE FROM pratique WHERE u_id = :id AND p_instrument = :instrument';
+    $supprimerInstrumentPratique = $this->executerRequete($sql, array(
       'id' => $id,
       'instrument' => $instrument
     ));
@@ -85,6 +100,12 @@ class utilisateurs extends modele {
     $supprimerInstrument = $this->executerRequete($sql, array(
       'id' => $id,
     ));
+  }
+
+  public function afficherInstruments(){
+    $sql = 'SELECT i_instrument FROM instrument ORDER BY i_instrument';
+    $afficherInstruments = $this->executerRequete($sql);
+    return $afficherInstruments;
   }
 
 

@@ -19,6 +19,7 @@
       $membresASupprimer = $user -> afficherMembresASupprimer($_SESSION['id'])->fetchAll();
       $membresAdministrateurs = $user -> afficherMembresAdministrateurs($_SESSION['id'])->fetchAll();
       $groupes = $groupe -> afficherGroupes()->fetchAll();
+      $instruments = $user -> afficherInstruments()->fetchAll();
 
       if(isset($_POST['boutonBannirMembre'])){
         $user->bannirMembre($_POST['membreABannir']);
@@ -58,7 +59,7 @@
         header("Location: index.php?page=administration");
       }
 
-      if (isset($_POST['ajouterInstrument'])) {
+      if (isset($_POST['boutonAjouterInstrument'])) {
         if (isset($_FILES['photoInstrument']) && !empty($_FILES['photoInstrument']['name'])) {
           $tailleMax = 10485760;
           $extensions = array('png');
@@ -83,6 +84,16 @@
         }
       }
 
+
+      if (isset($_POST['boutonSupprimerInstrument'])){
+        $user = new utilisateurs();
+        $instrumentASupprimer = $_POST['instrumentASupprimer'];
+        $supprimerInstrument = $user -> supprimerInstrument($instrumentASupprimer);
+        $supprimerInstrumentAdminPratique = $user -> supprimerInstrumentAdminPratique($instrumentASupprimer);
+        $supprimerPhoto = unlink('Autres/'.$instrumentASupprimer.'.png');
+        header("Location: index.php?page=administration");
+      }
+
       if (isset($_POST['boutonSupprimerMembre'])) {
 
         $user = new utilisateurs();
@@ -104,7 +115,7 @@
       }
 
       $vue = new Vue('Admin');
-      $vue->generer(array('membresNonBannis' => $membresNonBannis, 'membresBannis' => $membresBannis, 'membresNonValides' => $membresNonValides, 'membresASupprimer' => $membresASupprimer, 'membresAdministrateurs' => $membresAdministrateurs, 'groupes' => $groupes));
+      $vue->generer(array('instruments' => $instruments, 'membresNonBannis' => $membresNonBannis, 'membresBannis' => $membresBannis, 'membresNonValides' => $membresNonValides, 'membresASupprimer' => $membresASupprimer, 'membresAdministrateurs' => $membresAdministrateurs, 'groupes' => $groupes));
 
     }
 
