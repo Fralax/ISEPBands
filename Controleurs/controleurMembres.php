@@ -71,6 +71,11 @@
       $vue->generer(array("intrumentsNonJoues" => $afficherInstrumentsNonJoues, "instrumentsJoues" => $afficherInstrumentsJoues, "infos" => $afficherInfosMembre, "groupes" => $afficherMesGroupes));
     }
 
+    public function affichagePage404(){
+      $vue = new Vue('404');
+      $vue->generer();
+    }
+
     public function verificationMembreValide(){
       $user = new utilisateurs();
       $verificationValide = $user->verifierValide($_SESSION['id'])->fetch();

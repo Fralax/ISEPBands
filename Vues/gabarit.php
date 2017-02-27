@@ -66,7 +66,7 @@ if ($verificationSessionExiste == true) {
               <?php if ($admn == 1): ?>
                 <li><a href="index.php?page=administration">Panneau d'administration</a></li>
               <?php endif; ?>
-              <li> <a href="index.php">Déconnexion</a> </li>
+              <li> <a href="index.php?page=deconnexion">Déconnexion</a> </li>
             </ul>
           </li>
         </ul>
@@ -224,7 +224,7 @@ if ($verificationSessionExiste == true) {
           <li class = "toggleSousMenu"> <span> BONJOUR <?php echo strtoupper($_SESSION['prenom']) ?> ! </span>
             <ul class = "sousMenu">
               <li> <a href="index.php?page=profil&amp;id=<?php echo $_SESSION['id'] ?>">Profil</a> </li>
-              <li> <a href="index.php">Déconnexion</a> </li>
+              <li> <a href="index.php?page=deconnexion">Déconnexion</a> </li>
             </ul>
           </li>
         </ul>

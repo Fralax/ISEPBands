@@ -29,6 +29,20 @@
       echo $evenements;
     }
 
+    public function recuperationEvenementsMesGroupes(){
+      $event = new evenements();
+
+      $evenements = json_encode($event->afficherEvenementsMesGroupes($_SESSION['id'])->fetchAll());
+      echo $evenements;
+    }
+
+    public function recuperationEvenementsAutresGroupes(){
+      $event = new evenements();
+
+      $evenements = json_encode($event->afficherEvenementsAutresGroupes($_SESSION['id'])->fetchAll());
+      echo $evenements;
+    }
+
     public function modificationEvenement(){
       $id = $_POST['id'];
       $debut = $_POST['start'];
