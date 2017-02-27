@@ -11,7 +11,7 @@
       $ajouterInstrumentPratique = $_POST['ajouterInstrumentPratique'];
       $instrumentPratique = $_POST['instrument'];
       $boutonModifierInstrument = $_POST['boutonModifierInstrument'];
-      $boutonSupprimerInstrument = $_POST['boutonSupprimerInstrument'];
+      $boutonsupprimerInstrumentPratique = $_POST['boutonsupprimerInstrumentPratique'];
       $changerPhoto = $_POST['changerPhoto'];
       $niveau = $_POST['niveau'];
       $annees = $_POST['annees'];
@@ -19,6 +19,7 @@
       $afficherInstrumentsJoues = $user->afficherInstrumentsJoues($_GET['id'])->fetchAll();
       $afficherInfosMembre = $user->afficherInfosMembre($_GET['id'])->fetch();
       $afficherMesGroupes = $groupe->afficherMesGroupes($_GET['id'])->fetchAll();
+
 
       if (isset($ajouterInstrumentPratique)) {
         $user->pratiquerInstrument($_SESSION['id'], $instrumentPratique, $niveau, $annees);
@@ -30,9 +31,9 @@
         header("Location: index.php?page=profil&id=".$_SESSION['id']);
       }
 
-      if (isset($boutonSupprimerInstrument)) {
-        $user->supprimerInstrument($_SESSION['id'], $_POST['modifierInstrument']);
-        var_dump($_POST['boutonSupprimerInstrument']);
+      if (isset($boutonsupprimerInstrumentPratique)) {
+        $user->supprimerInstrumentPratique($_SESSION['id'], $_POST['modifierInstrument']);
+        var_dump($_POST['boutonsupprimerInstrumentPratique']);
         header("Location: index.php?page=profil&id=".$_SESSION['id']);
       }
 
