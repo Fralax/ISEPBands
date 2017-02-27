@@ -51,6 +51,15 @@
       ));
     }
 
+    public function recupererDateEvenement($id){
+      $sql = 'SELECT start, end FROM evenement WHERE id = :id';
+      $recupererDateEvenement = $this->executerRequete($sql, array(
+        'id' => $id
+      ));
+      
+      return $recupererDateEvenement;
+    }
+
   }
 
 ?>

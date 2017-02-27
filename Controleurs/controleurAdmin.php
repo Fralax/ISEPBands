@@ -2,6 +2,7 @@
 
   require_once 'Vues/vue.php';
   require_once 'Modeles/utilisateurs.php';
+  require_once 'Modeles/actualites.php';
   require_once 'Modeles/groupes.php';
 
   class controleurAdmin{
@@ -9,26 +10,31 @@
     public function affichageAdmin(){
 
       $user = new utilisateurs();
-      $group = new groupes();
+      $groupe = new groupes();
+      $actu = new actualites();
+      $date = $actu->recupererDateHeureAction();
       $membresNonBannis = $user -> afficherMembresNonBannis()->fetchAll();
       $membresBannis = $user -> afficherMembresBannis()->fetchAll();
       $membresNonValides = $user -> afficherMembresNonValides()->fetchAll();
       $membresASupprimer = $user -> afficherMembresASupprimer($_SESSION['id'])->fetchAll();
       $membresAdministrateurs = $user -> afficherMembresAdministrateurs($_SESSION['id'])->fetchAll();
-      $groupes = $group -> afficherGroupes()->fetchAll();
+      $groupes = $groupe -> afficherGroupes()->fetchAll();
 
       if(isset($_POST['boutonBannirMembre'])){
         $user->bannirMembre($_POST['membreABannir']);
+        $actu->insererActuTypeUtilisateurDate("bannissement", $_POST['membreABannir'], $date);
         header("Location: index.php?page=administration");
       }
 
       if (isset($_POST['boutonDebannirMembre'])) {
         $user->debannirMembre($_POST['membreADebannir']);
+        $actu->insererActuTypeUtilisateurDate("debannissement", $_POST['membreADebannir'], $date);
         header("Location: index.php?page=administration");
       }
 
       if (isset($_POST['boutonValiderMembre'])) {
         $user->validerMembre($_POST['membreAValider']);
+        $actu->insererActuTypeUtilisateurDate("inscription", $_POST['membreAValider'], $date);
         header("Location: index.php?page=administration");
       }
 
@@ -43,11 +49,12 @@
       }
 
       if (isset($_POST['boutonSupprimerGroupe'])) {
-        $groupeASupprimer = $_GET['groupeASupprimer'];
+        $groupeASupprimer = $_POST['groupeASupprimer'];
         $supprimerGroupe = $groupe->supprimerGroupe($groupeASupprimer);
         $supprimerGroupeAppartient = $groupe->supprimerGroupeAppartient($groupeASupprimer);
         $supprimerGroupeInvitation = $groupe->supprimerGroupeInvitation($groupeASupprimer);
         $supprimerGroupeJoue = $groupe->supprimerGroupeJoue($groupeASupprimer);
+        $actu->insererActuTypeGroupeDate("supressionGroupe", $groupeASupprimer, $date);
         header("Location: index.php?page=administration");
       }
 
@@ -82,12 +89,12 @@
         $group = new groupes();
 
         $membreASupprimer = $_POST['membreASupprimer'];
-        $mesGroupes = $group -> afficherMesGroupes($membreASupprimer) -> fetchAll();
+        $mesGroupes = $groupe -> afficherMesGroupes($membreASupprimer) -> fetchAll();
         foreach($mesGroupes as list($nomGroupe)){
-          $supprimerGroupe = $group -> supprimerGroupe($nomGroupe);
-          $supprimerGroupeAppartient = $group -> supprimerGroupeAppartient($nomGroupe);
-          $supprimerGroupeInvitation = $group -> supprimerGroupeInvitation($nomGroupe);
-          $supprimerGroupeJoue = $group -> supprimerGroupeJoue($nomGroupe);
+          $supprimerGroupe = $groupe -> supprimerGroupe($nomGroupe);
+          $supprimerGroupeAppartient = $groupe -> supprimerGroupeAppartient($nomGroupe);
+          $supprimerGroupeInvitation = $groupe -> supprimerGroupeInvitation($nomGroupe);
+          $supprimerGroupeJoue = $groupe -> supprimerGroupeJoue($nomGroupe);
         }
 
         $supprimerTousInstrumentsJoues = $user -> supprimerTousInstrumentsJoues($membreASupprimer);

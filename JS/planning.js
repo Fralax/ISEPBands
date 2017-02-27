@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-  console.log(administrateur + " " + JSON.parse(mesGroupes) + " " + statut);
-
   var today = new Date();
   var dd = today.getDate();
   var mm = today.getMonth() + 1;
@@ -53,6 +51,7 @@ $(document).ready(function () {
       defaultDate: today,
       allDaySlot: false,
       selectable: true,
+      selectHelper: true,
       editable: true,
       navLinks: true, // can click day/week names to navigate views
       eventLimit: true, // allow "more" link when too many events
@@ -66,6 +65,11 @@ $(document).ready(function () {
         var end = $.fullCalendar.formatDate(end, "YYYY-MM-DD HH:mm:ss");
         $("#popupCreerEvenement").modal();
 
+        $('#popupCreerEvenement').on('hide.bs.modal', function (e) {
+          $("form[name='formulaireEvenement']").unbind();
+          $('#calendar').fullCalendar("unselect");
+        })
+
         $("form[name='formulaireEvenement']").submit(function (e) {
           var groupe = $("select[name='groupe'] option:selected").val();
 
@@ -75,12 +79,10 @@ $(document).ready(function () {
             type: "POST",
             success: function (json) {
               console.log('Événement ajouté');
-              location.reload()
+              location.reload();
             }
           });
           $("#popupCreerEvenement").modal('hide');
-          $('#calendar').fullCalendar('renderEvent', { title: groupe, start: start, end: end }, true);
-          $('#calendar').fullCalendar('unselect');
           e.preventDefault();
         });
       },
@@ -93,7 +95,7 @@ $(document).ready(function () {
         $.ajax({
           url: 'index.php?page=ajaxmodificationevenement',
           type: "POST",
-          data: 'id=' + id + '&start=' + start + '&end=' + end,
+          data: 'groupe=' + encodeURIComponent(event.title) + '&id=' + event.id + '&start=' + start + '&end=' + end,
           success: function (json) {
             console.log("Événement mis à jour");
           }
@@ -107,7 +109,7 @@ $(document).ready(function () {
         $.ajax({
           url: 'index.php?page=ajaxmodificationevenement',
           type: "POST",
-          data: 'id=' + event.id + '&start=' + start + '&end=' + end,
+          data: 'groupe=' + encodeURIComponent(event.title) + '&id=' + event.id + '&start=' + start + '&end=' + end,
           success: function (json) {
             console.log("Événement mis à jour");
           }
@@ -119,7 +121,7 @@ $(document).ready(function () {
           $.ajax({
             url: "index.php?page=ajaxsuppressionevenement",
             type: "POST",
-            data: "id=" + event.id,
+            data: "id=" + event.id + "&groupe=" + encodeURIComponent(event.title),
             success: function (json) {
               console.log(event.id);
               console.log("Événement supprimé.");
@@ -165,6 +167,7 @@ $(document).ready(function () {
       aspectRatio: 1.8,
       allDaySlot: false,
       selectable: true,
+      selectHelper: true,
       editable: false,
       navLinks: true, // can click day/week names to navigate views
       eventLimit: true, // allow "more" link when too many events
@@ -184,6 +187,11 @@ $(document).ready(function () {
         var end = $.fullCalendar.formatDate(end, "YYYY-MM-DD HH:mm:ss");
         $("#popupCreerEvenement").modal();
 
+        $('#popupCreerEvenement').on('hide.bs.modal', function (e) {
+          $("form[name='formulaireEvenement']").unbind();
+          $('#calendar').fullCalendar("unselect");
+        })
+
         $("form[name='formulaireEvenement']").submit(function (e) {
           var groupe = $("select[name='groupe'] option:selected").val();
 
@@ -197,8 +205,6 @@ $(document).ready(function () {
             }
           });
           $("#popupCreerEvenement").modal('hide');
-          $('#calendar').fullCalendar('renderEvent', { title: groupe, start: start, end: end }, true);
-          $('#calendar').fullCalendar('unselect');
           e.preventDefault();
         });
       },
@@ -211,7 +217,7 @@ $(document).ready(function () {
         $.ajax({
           url: 'index.php?page=ajaxmodificationevenement',
           type: "POST",
-          data: 'id=' + id + '&start=' + start + '&end=' + end,
+          data: 'groupe=' + encodeURIComponent(event.title) + '&id=' + event.id + '&start=' + start + '&end=' + end,
           success: function (json) {
             console.log("Événement mis à jour");
           }
@@ -225,7 +231,7 @@ $(document).ready(function () {
         $.ajax({
           url: 'index.php?page=ajaxmodificationevenement',
           type: "POST",
-          data: 'id=' + event.id + '&start=' + start + '&end=' + end,
+          data: 'groupe=' + encodeURIComponent(event.title) + '&id=' + event.id + '&start=' + start + '&end=' + end,
           success: function (json) {
             console.log("Événement mis à jour");
           }
@@ -248,7 +254,7 @@ $(document).ready(function () {
             $.ajax({
               url: "index.php?page=ajaxsuppressionevenement",
               type: "POST",
-              data: "id=" + event.id,
+              data: "id=" + event.id + "&groupe=" + encodeURIComponent(event.title),
               success: function (json) {
                 console.log(event.id);
                 console.log("Événement supprimé.");

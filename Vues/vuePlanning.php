@@ -34,7 +34,7 @@
 
   <div id="loader"></div>
   <div id="emptyDiv"></div>
-  <div id="calendar" class="animate-bottom"></div>
+  <div id="calendar"></div>
 
   <div id="popupCreerEvenement" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -47,7 +47,7 @@
             <?php endforeach; ?>
           </select>
           <p>
-            <input class="boutonsFormulaires" type="submit" name="creerEvenement" value="Valider">
+            <input id="boutonAjouterEvenement" class="boutonsFormulaires" type="submit" name="creerEvenement" value="Valider">
             <button id="annuler" type="button" data-dismiss="modal">Annuler</button>
           </p>
         </form>

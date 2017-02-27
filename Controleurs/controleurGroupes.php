@@ -3,6 +3,7 @@
   require_once 'Vues/vue.php';
   require_once 'Modeles/groupes.php';
   require_once 'Modeles/utilisateurs.php';
+  require_once 'Modeles/actualites.php';
 
   class controleurGroupes{
 
@@ -17,7 +18,9 @@
     public function affichageGroupe(){
       $user = new utilisateurs();
       $groupe = new groupes();
+      $actu = new actualites();
 
+      $date = $actu->recupererDateHeureAction();
       $membresGroupe = $user->afficherMembresGroupe($_GET['groupe'])->fetchAll();
       $afficherMembresNonInvites = $user->afficherMembresNonInvites($_GET['groupe'])->fetchAll();
       $afficherMembresInvites = $user->afficherMembresInvites($_GET['groupe'])->fetchAll();
@@ -34,6 +37,7 @@
       if (isset($_POST['supprimerMembre'])) {
         $supprimerMembreGroupe = $user->supprimerMembreGroupe($_POST['membres'], $_GET['groupe']);
         $supprimerMembreInvitation = $user->supprimerMembreInvitation($_POST['membres'], $_GET['groupe']);
+        $actu->insererActuTypeGroupeUtilisateurDate("quitterGroupe", $_POST['membres'], $_GET['groupe'], $date);
         header("Location: index.php?page=groupe&groupe=".urlencode($_GET['groupe']));
       }
 
@@ -75,11 +79,13 @@
         $supprimerGroupeAppartient = $groupe->supprimerGroupeAppartient($_GET['groupe']);
         $supprimerGroupeInvitation = $groupe->supprimerGroupeInvitation($_GET['groupe']);
         $supprimerGroupeJoue = $groupe->supprimerGroupeJoue($_GET['groupe']);
+        $actu->insererActuTypeGroupeDate("supressionGroupe", $_GET['groupe'], $date);
         header("Location: index.php?page=mesgroupes");
       }
 
       if (isset($_POST['quitterGroupe'])) {
         $user->supprimerMembreGroupe($_SESSION['id'], $_GET['groupe']);
+        $actu->insererActuTypeGroupeUtilisateurDate("quitterGroupe", $_SESSION['id'], $_GET['groupe'], $date);
         header("Location: index.php?page=mesgroupes");
       }
 
@@ -102,6 +108,7 @@
           }
           if ($morceauExiste == 0) {
             $groupe->ajouterChanson($_GET['groupe'], $_POST['nomMorceau'], $_POST['nomArtiste']);
+            $actu->insererActuTypeGroupeMorceauArtisteDate("ajoutMorceau", $_GET['groupe'], $_POST['nomMorceau'], $_POST['nomArtiste'], $date);
             header("Location: index.php?page=groupe&groupe=".urlencode($_GET['groupe']));
           }
         } else{
@@ -133,11 +140,14 @@
 
     public function creationGroupe(){
       $groupes = new groupes();
+      $actu = new actualites();
       $id = $_SESSION['id'];
       $nomGroupe = $_POST['nomGroupe'];
+      $date = $actu->recupererDateHeureAction();
 
       if (isset($_POST['creerGroupe'])) {
         $groupes -> creerGroupe($id, $nomGroupe, "photosGroupes/groupe.jpg");
+        $actu -> insererActuTypeGroupeUtilisateurDate("creationGroupe", $id, $_POST['nomGroupe'], $date);
         $groupes -> ajouterAppartient($id, $nomGroupe);
         header("Location: index.php?page=groupe&groupe=".urlencode($nomGroupe));
       }

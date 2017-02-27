@@ -3,6 +3,7 @@
   require_once 'Vues/vue.php';
   require_once 'Modeles/evenements.php';
   require_once 'Modeles/groupes.php';
+  require_once 'Modeles/actualites.php';
 
   class controleurPlanning{
 
@@ -14,12 +15,15 @@
     }
 
     public function creationEvenement(){
+      $actu = new actualites();
       $event = new evenements();
       $groupe = $_POST['groupe'];
       $debut = $_POST['start'];
       $fin = $_POST['end'];
+      $date = $actu->recupererDateHeureAction();
 
       $event->creerEvenement($groupe, $debut, $fin);
+      //$actu->insererActuTypeGroupeDebutFinDate("creationEvenement", $_POST['groupe'], $_POST['start'], $_POST['end'], $date);
     }
 
     public function recuperationEvenements(){
@@ -44,18 +48,29 @@
     }
 
     public function modificationEvenement(){
+      $actu = new actualites();
+      $event = new evenements();
+      $groupe = $_POST['groupe'];
       $id = $_POST['id'];
       $debut = $_POST['start'];
       $fin = $_POST['end'];
-      $event = new evenements();
+      $date = $actu->recupererDateHeureAction();
 
-      $event->modifierEvenement($id, $debut, $fin);   
+      //$dateEvenement = $event->recupererDateEvenement($id)->fetch();
+      //$actu->insererActuTypeGroupeDebutFinDate("suppressionEvenement", $groupe, $dateEvenement['start'], $dateEvenement['end'], $date);
+      $event->modifierEvenement($id, $debut, $fin);
+      //$actu->insererActuTypeGroupeDebutFinDate("creationEvenement", $groupe, $_POST['start'], $_POST['end'], $date);
     }
 
     public function suppressionEvenement(){
-      $id = $_POST['id'];
+      $actu = new actualites();
       $event = new evenements();
+      $groupe = $_POST['groupe'];
+      $id = $_POST['id'];
+      $date = $actu->recupererDateHeureAction();
 
+      //$dateEvenement = $event->recupererDateEvenement($id)->fetch();
+      //$actu->insererActuTypeGroupeDebutFinDate("suppressionEvenement", $groupe, $dateEvenement['start'], $dateEvenement['end'], $date);
       $event->supprimerEvenement($id);   
     }
   }
