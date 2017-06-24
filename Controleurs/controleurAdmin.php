@@ -23,19 +23,22 @@
 
       if(isset($_POST['boutonBannirMembre'])){
         $user->bannirMembre($_POST['membreABannir']);
-        $actu->insererActuTypeUtilisateurDate("bannissement", $_POST['membreABannir'], $date);
+        $prenomNomUser = $user->recupererMembreById($_POST['membreABannir'])->fetch();
+        $actu->insererActuTypeUtilisateurDate("bannissement", $_POST['membreABannir'], $prenomNomUser['u_prenom'], $prenomNomUser['u_nom'], $date);
         header("Location: index.php?page=administration");
       }
 
       if (isset($_POST['boutonDebannirMembre'])) {
         $user->debannirMembre($_POST['membreADebannir']);
-        $actu->insererActuTypeUtilisateurDate("debannissement", $_POST['membreADebannir'], $date);
+        $prenomNomUser = $user->recupererMembreById($_POST['membreADebannir'])->fetch();
+        $actu->insererActuTypeUtilisateurDate("debannissement", $_POST['membreADebannir'], $prenomNomUser['u_prenom'], $prenomNomUser['u_nom'], $date);
         header("Location: index.php?page=administration");
       }
 
       if (isset($_POST['boutonValiderMembre'])) {
         $user->validerMembre($_POST['membreAValider']);
-        $actu->insererActuTypeUtilisateurDate("inscription", $_POST['membreAValider'], $date);
+        $prenomNomUser = $user->recupererMembreById($_POST['membreAValider'])->fetch();
+        $actu->insererActuTypeUtilisateurDate("inscription", $_POST['membreAValider'], $prenomNomUser['u_prenom'], $prenomNomUser['u_nom'], $date);
         header("Location: index.php?page=administration");
       }
 
@@ -55,7 +58,7 @@
         $supprimerGroupeAppartient = $groupe->supprimerGroupeAppartient($groupeASupprimer);
         $supprimerGroupeInvitation = $groupe->supprimerGroupeInvitation($groupeASupprimer);
         $supprimerGroupeJoue = $groupe->supprimerGroupeJoue($groupeASupprimer);
-        $actu->insererActuTypeGroupeDate("supressionGroupe", $groupeASupprimer, $date);
+        $actu->insererActuTypeGroupeDate("suppressionGroupe", $groupeASupprimer, $date);
         header("Location: index.php?page=administration");
       }
 

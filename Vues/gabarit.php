@@ -2,19 +2,20 @@
 <html>
 
 <head>
+    <base href="//isepbands.local" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" initial-scale="1">
 
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="librairies/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="Contenu/gabarit.css" />
-    <link rel="stylesheet" href="fullcalendar/fullcalendar.css">
-    <link rel='stylesheet' href='fullcalendar/fullcalendar.print.css' media='print' />
+    <link rel="stylesheet" href="librairies/fullcalendar/fullcalendar.css">
+    <link rel='stylesheet' href='librairies/fullcalendar/fullcalendar.print.css' media='print' />
     <link rel="stylesheet" href="<?php echo $css ?>" >
 
     <link rel="icon" href="Autres/LogoISEPBands.png" />
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="librairies/bootstrap/js/bootstrap.js"></script>
     <script src="JS/gabarit.js"></script>
 
     <title><?= $titre ?></title>
@@ -47,11 +48,24 @@ if ($verificationSessionExiste == true) {
 
 <?php if ($c == 0): ?>
   <body>
+    <div id="fb-root"></div>
+    <script>
+      (
+        function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.8";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk')
+      );
+    </script>
 
     <header>
       <nav>
         <ul class = "barreMenu">
-          <li><a href="index.php?page=accueil"><img src="Autres/logoblanc.png"></a></li>
+          <li><a href="accueil"><img src="Autres/logoblanc.png"></a></li>
           <li><a href="index.php?page=planning">PLANNING</a></li>
           <li class = "toggleSousMenu"> <span>ANNUAIRE</span>
             <ul class = "sousMenu">
@@ -59,10 +73,10 @@ if ($verificationSessionExiste == true) {
               <li> <a href="index.php?page=annuaire&amp;annuaire=groupes">Groupes</a> </li>
             </ul>
           </li>
-          <li> <a href="index.php?page=mesgroupes">MES GROUPES</a> </li>
+          <li> <a href="mesgroupes">MES GROUPES</a> </li>
           <li class = "toggleSousMenu"> <span> BONJOUR <?php echo strtoupper($_SESSION['prenom']) ?> ! </span>
             <ul class = "sousMenu">
-              <li> <a href="index.php?page=profil&amp;id=<?php echo $_SESSION['id'] ?>">Profil</a> </li>
+              <li> <a href="profil/<?php echo $_SESSION['id'] ?>">Profil</a> </li>
               <?php if ($admn == 1): ?>
                 <li><a href="index.php?page=administration">Panneau d'administration</a></li>
               <?php endif; ?>
@@ -93,7 +107,7 @@ if ($verificationSessionExiste == true) {
 
       <nav>
         <ul class = "barreMenu">
-          <li><a href="index.php?page=accueil"><img src="Autres/logoblanc.png"></a></li>
+          <li><a href="accueil"><img src="Autres/logoblanc.png"></a></li>
           <li class = "toggleSousMenu"> <span>ANNUAIRE</span>
             <ul class = "sousMenu">
               <li> <a href="index.php?page=annuaire&amp;annuaire=membres">Membres</a> </li>
@@ -214,7 +228,7 @@ if ($verificationSessionExiste == true) {
     <header>
       <nav>
         <ul class = "barreMenu">
-          <li><a href="index.php?page=profil&amp;id=<?php echo $_SESSION['id'] ?>"><img src="Autres/logoblanc.png"></a></li>
+          <li><a href="profil/<?php echo $_SESSION['id'] ?>"><img src="Autres/logoblanc.png"></a></li>
           <li class = "toggleSousMenu"> <span>ANNUAIRE</span>
             <ul class = "sousMenu">
               <li> <a href="index.php?page=annuaire&amp;annuaire=membres">Membres</a> </li>
@@ -223,7 +237,7 @@ if ($verificationSessionExiste == true) {
           </li>
           <li class = "toggleSousMenu"> <span> BONJOUR <?php echo strtoupper($_SESSION['prenom']) ?> ! </span>
             <ul class = "sousMenu">
-              <li> <a href="index.php?page=profil&amp;id=<?php echo $_SESSION['id'] ?>">Profil</a> </li>
+              <li> <a href="profil/<?php echo $_SESSION['id'] ?>">Profil</a> </li>
               <li> <a href="index.php?page=deconnexion">Déconnexion</a> </li>
             </ul>
           </li>

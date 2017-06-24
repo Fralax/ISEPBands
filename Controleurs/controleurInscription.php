@@ -31,7 +31,7 @@
               $_SESSION['email'] = $email;
               $_SESSION['prenom'] = $prenom;
               $_SESSION['id'] = $id[0];
-              header("Location: index.php?page=profil&id=".$id[0]);
+              header("Location: profil/".$id[0]);
             } else{
               ?> <script>alert("L'adresse Mail saisie est déjà utilisée avec un autre compte !")</script><?php
             }

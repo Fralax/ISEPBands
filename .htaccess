@@ -1,0 +1,7 @@
+Options +FollowSymlinks
+RewriteEngine On
+
+RewriteRule ^profil/([0-9]*)$ index.php?page=profil&id=$1
+RewriteRule ^accueil$ index.php?page=accueil
+RewriteRule ^mesgroupes$ index.php?page=mesgroupes
+RewriteRule ^groupe/(.*)$ index.php?page=groupe&groupe=$1 [NE]

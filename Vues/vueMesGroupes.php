@@ -14,8 +14,8 @@
   <div class="row row-centered">
     <?php for ($i=0; $i<count($listeMembres) ; $i++) { ?>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-centered groupes">
-        <p><a href="index.php?page=groupe&amp;groupe=<?php echo urlencode($groupes[$i][0]) ?>"><img class="photoGroupe" src="<?php echo $groupes[$i][1] ?>" alt="" /></a></p>
-        <p><a href="index.php?page=groupe&amp;groupe=<?php echo urlencode($groupes[$i][0]) ?>"> <?php echo $groupes[$i][0]; ?> </a></p>
+        <p><a href="groupe/<?php echo urlencode($groupes[$i][0]) ?>"><img class="photoGroupe" src="<?php echo $groupes[$i][1] ?>" alt="" /></a></p>
+        <p><a href="groupe/<?php echo urlencode($groupes[$i][0]) ?>"> <?php echo $groupes[$i][0]; ?> </a></p>
         <p>
           <?php foreach ($listeMembres[$i] as list($membres) ): ?>
           <?php echo $membres ?>

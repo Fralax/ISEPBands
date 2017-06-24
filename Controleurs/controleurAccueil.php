@@ -12,21 +12,29 @@
       $actu = new actualites();
       $date = $actu->recupererDateHeureAction();
       $afficherInvitations = $user->afficherInvitations($_SESSION['id'])->fetchAll();
+      $actualites = $actu->recupererActualites(0)->fetchAll();
 
       if (isset($_POST['accepterInvitation'])) {
         $groupe->ajouterAppartient($_SESSION['id'], $_POST['groupe']);
         $user->supprimerMembreInvitation($_SESSION['id'], $_POST['groupe']);
-        $actu->insererActuTypeGroupeUtilisateurDate("rejoindreGroupe", $_SESSION['id'], $_POST['groupe'], $date);
-        header("Location: index.php?page=groupe&groupe=".urlencode($_POST['groupe']));
+        $prenomNomUser = $user->recupererMembreById($_SESSION['id'])->fetch();
+        $actu->insererActuTypeGroupeUtilisateurDate("rejoindreGroupe", $_SESSION['id'], $prenomNomUser['u_prenom'], $prenomNomUser['u_nom'], $_POST['groupe'], $date);
+        header("Location: groupe/".urlencode($_POST['groupe']));
       }
 
       if (isset($_POST['refuserInvitation'])) {
         $user->supprimerMembreInvitation($_SESSION['id'], $_POST['groupe']);
-        header("Location: index.php?page=accueil");
+        header("Location: accueil");
       }
 
       $vue = new Vue('Accueil');
-      $vue->generer(array("invitations" => $afficherInvitations));
+      $vue->generer(array("invitations" => $afficherInvitations, "actus" => $actualites));
+    }
+
+    public function chargementActualites(){
+      $actu = new actualites();
+      $actualites = $actu->recupererActualites($_POST['offset'])->fetchAll();
+      echo json_encode($actualites);
     }
 
   }

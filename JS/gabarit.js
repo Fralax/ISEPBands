@@ -16,7 +16,6 @@ $(document).ready(function(){
       $(this).next("ul.sousMenu").slideDown("normal");
     }
       // On empêche le navigateur de suivre le lien :
+      return false;
   });
-
-  return false;
 });

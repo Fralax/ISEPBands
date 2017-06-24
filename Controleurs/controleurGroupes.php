@@ -31,14 +31,15 @@
 
       if (isset($_POST['inviterMembre'])){
         $inviterMembreGroupe = $user -> inviterMembreGroupe($_SESSION['id'], $_POST['membresInvites'], $_GET['groupe']);
-        header("Location: index.php?page=groupe&groupe=".urlencode($_GET['groupe']));
+        header("Location: groupe/".urlencode($_GET['groupe']));
       }
 
       if (isset($_POST['supprimerMembre'])) {
         $supprimerMembreGroupe = $user->supprimerMembreGroupe($_POST['membres'], $_GET['groupe']);
         $supprimerMembreInvitation = $user->supprimerMembreInvitation($_POST['membres'], $_GET['groupe']);
-        $actu->insererActuTypeGroupeUtilisateurDate("quitterGroupe", $_POST['membres'], $_GET['groupe'], $date);
-        header("Location: index.php?page=groupe&groupe=".urlencode($_GET['groupe']));
+        $prenomNomUser = $user->recupererMembreById($_POST['membres'])->fetch();
+        $actu->insererActuTypeGroupeUtilisateurDate("quitterGroupe", $_POST['membres'], $prenomNomUser['u_prenom'], $prenomNomUser['u_nom'], $_GET['groupe'], $date);
+        header("Location: groupe/".urlencode($_GET['groupe']));
       }
 
       if (isset($_POST['modifierNom'])){
@@ -46,7 +47,7 @@
         $modifierNomGroupeAppartient = $groupe->modifierNomGroupeAppartient($_GET['groupe'], $_POST['nouveauNom']);
         $modiferNomGroupeInvitation = $groupe->modifierNomGroupeInvitation($_GET['groupe'],$_POST['nouveauNom']);
         $modifierNomGroupeJoue = $groupe->modifierNomGroupeJoue($_GET['groupe'], $_POST['nouveauNom']);
-        header("Location: index.php?page=groupe&groupe=".urlencode($_POST['nouveauNom']));
+        header("Location: groupe/".urlencode($_POST['nouveauNom']));
       }
 
       if (isset($_POST['changerPhotoGroupe'])) {
@@ -59,7 +60,7 @@
               $photo = str_replace(" ", "", "photosGroupes/".$_GET['groupe'].".".$extension);
               if (move_uploaded_file($_FILES['photoGroupe']['tmp_name'], $photo)) {
                 $modifierPhoto = $groupe->modifierPhotoGroupe($_GET['groupe'], $photo);
-                header("Location: index.php?page=groupe&groupe=".urlencode($_GET['groupe']));
+                header("Location: groupe/".urlencode($_GET['groupe']));
               } else{
                 ?> <script>alert("Echec de l'upload !")</script><?php
               }
@@ -79,19 +80,20 @@
         $supprimerGroupeAppartient = $groupe->supprimerGroupeAppartient($_GET['groupe']);
         $supprimerGroupeInvitation = $groupe->supprimerGroupeInvitation($_GET['groupe']);
         $supprimerGroupeJoue = $groupe->supprimerGroupeJoue($_GET['groupe']);
-        $actu->insererActuTypeGroupeDate("supressionGroupe", $_GET['groupe'], $date);
-        header("Location: index.php?page=mesgroupes");
+        $actu->insererActuTypeGroupeDate("suppressionGroupe", $_GET['groupe'], $date);
+        header("Location: mesgroupes");
       }
 
       if (isset($_POST['quitterGroupe'])) {
         $user->supprimerMembreGroupe($_SESSION['id'], $_GET['groupe']);
-        $actu->insererActuTypeGroupeUtilisateurDate("quitterGroupe", $_SESSION['id'], $_GET['groupe'], $date);
-        header("Location: index.php?page=mesgroupes");
+        $prenomNomUser = $user->recupererMembreById($_SESSION['id'])->fetch();
+        $actu->insererActuTypeGroupeUtilisateurDate("quitterGroupe", $_SESSION['id'], $prenomNomUser['u_prenom'], $prenomNomUser['u_nom'], $_GET['groupe'], $date);
+        header("Location: mesgroupes");
       }
 
       if (isset($_POST['changerChefGroupe'])) {
         $user->modifierChefGroupe($_GET['groupe'], $_POST['membresChefGroupe']);
-        header("Location: index.php?page=groupe&groupe=".urlencode($_GET['groupe']));
+        header("Location: groupe/".urlencode($_GET['groupe']));
       }
 
       if (isset($_POST['ajouterMorceau'])) {
@@ -109,7 +111,7 @@
           if ($morceauExiste == 0) {
             $groupe->ajouterChanson($_GET['groupe'], $_POST['nomMorceau'], $_POST['nomArtiste']);
             $actu->insererActuTypeGroupeMorceauArtisteDate("ajoutMorceau", $_GET['groupe'], $_POST['nomMorceau'], $_POST['nomArtiste'], $date);
-            header("Location: index.php?page=groupe&groupe=".urlencode($_GET['groupe']));
+            header("Location: groupe/".urlencode($_GET['groupe']));
           }
         } else{
           ?> <script> alert("Des champs n'ont pas été remplis !") </script> <?php
@@ -118,7 +120,7 @@
 
       if (isset($_POST['boutonSupprimerMorceau'])) {
         $groupe->supprimerChanson($_GET['groupe'], $_POST['supprimerMorceau'], $_POST['supprimerArtiste']);
-        header("Location: index.php?page=groupe&groupe=".urlencode($_GET['groupe']));
+        header("Location: groupe/".urlencode($_GET['groupe']));
       }
 
       $vue = new Vue('Groupe');
@@ -140,6 +142,7 @@
 
     public function creationGroupe(){
       $groupes = new groupes();
+      $user = new utilisateurs();
       $actu = new actualites();
       $id = $_SESSION['id'];
       $nomGroupe = $_POST['nomGroupe'];
@@ -147,9 +150,10 @@
 
       if (isset($_POST['creerGroupe'])) {
         $groupes -> creerGroupe($id, $nomGroupe, "photosGroupes/groupe.jpg");
-        $actu -> insererActuTypeGroupeUtilisateurDate("creationGroupe", $id, $_POST['nomGroupe'], $date);
         $groupes -> ajouterAppartient($id, $nomGroupe);
-        header("Location: index.php?page=groupe&groupe=".urlencode($nomGroupe));
+        $prenomNomUser = $user->recupererMembreById($id)->fetch();
+        $actu -> insererActuTypeGroupeUtilisateurDate("creationGroupe", $id, $prenomNomUser['u_prenom'], $prenomNomUser['u_nom'], $nomGroupe, $date);
+        header("Location: groupe/".urlencode($nomGroupe));
       }
     }
 

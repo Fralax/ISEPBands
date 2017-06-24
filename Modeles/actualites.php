@@ -11,11 +11,13 @@ class actualites extends modele {
         return $date;
     }
 
-    public function insererActuTypeUtilisateurDate($type, $utilisateur, $date){
-        $sql = 'INSERT INTO actualite (a_type, u_id, a_date) VALUES (:type, :utilisateur, :date)';
+    public function insererActuTypeUtilisateurDate($type, $utilisateur, $prenom, $nom, $date){
+        $sql = 'INSERT INTO actualite (a_type, u_id, u_prenom, u_nom, a_date) VALUES (:type, :utilisateur, :prenom, :nom, :date)';
         $this->executerRequete($sql, array(
             'type' => $type,
             'utilisateur' => $utilisateur,
+            'prenom' => $prenom,
+            'nom' => $nom,
             'date' => $date
         ));
     }
@@ -29,12 +31,14 @@ class actualites extends modele {
         ));
     }
 
-    public function insererActuTypeGroupeUtilisateurDate($type, $utilisateur, $groupe, $date){
-        $sql = 'INSERT INTO actualite (a_type, g_nom, u_id, a_date) VALUES (:type, :groupe, :utilisateur, :date)';
+    public function insererActuTypeGroupeUtilisateurDate($type, $utilisateur, $prenom, $nom, $groupe, $date){
+        $sql = 'INSERT INTO actualite (a_type, g_nom, u_id, u_prenom, u_nom, a_date) VALUES (:type, :groupe, :utilisateur, :prenom, :nom, :date)';
         $this->executerRequete($sql, array(
             'type' => $type,
             'groupe' => $groupe,
             'utilisateur' => $utilisateur,
+            'prenom' => $prenom,
+            'nom' => $nom,
             'date' => $date
         ));
     }
@@ -59,6 +63,16 @@ class actualites extends modele {
             'fin' => $fin,
             'date' => $date
         ));
+    }
+
+    public function recupererActualites($os){
+
+      $dateFR = "SET lc_time_names = 'fr_FR'";
+      $this->executerRequete($dateFR);
+
+      $sql = "SELECT a_id, DATE_FORMAT(a_date, '%W %d %M %Y, %Hh%i') as date, a_type, u_id, u_prenom, u_nom, g_nom, j_morceau, j_artiste, DATE_FORMAT(start, '%W %d %M %Y') as startDate, DATE_FORMAT(start, '%Hh%i') as startHeure, DATE_FORMAT(end, '%W %d %M %Y') as endDate, DATE_FORMAT(end, '%Hh%i') as endHeure FROM actualite ORDER BY a_date DESC LIMIT 10 OFFSET $os";
+      $recupererActualites = $this->executerRequete($sql);
+      return $recupererActualites;
     }
 
 

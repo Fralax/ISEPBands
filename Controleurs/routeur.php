@@ -108,6 +108,10 @@
           $this->controleurConnexion->deconnexionUtilisateur();
           break;
 
+        case 'plusdactualites':
+          $this->controleurAccueil->chargementActualites();
+          break;
+
         default:
           $this->controleurMembres->affichagePage404();
           break;

@@ -22,8 +22,8 @@
       $fin = $_POST['end'];
       $date = $actu->recupererDateHeureAction();
 
+      $actu->insererActuTypeGroupeDebutFinDate("creationEvenement", $_POST['groupe'], $_POST['start'], $_POST['end'], $date);
       $event->creerEvenement($groupe, $debut, $fin);
-      //$actu->insererActuTypeGroupeDebutFinDate("creationEvenement", $_POST['groupe'], $_POST['start'], $_POST['end'], $date);
     }
 
     public function recuperationEvenements(){
@@ -56,10 +56,10 @@
       $fin = $_POST['end'];
       $date = $actu->recupererDateHeureAction();
 
-      //$dateEvenement = $event->recupererDateEvenement($id)->fetch();
-      //$actu->insererActuTypeGroupeDebutFinDate("suppressionEvenement", $groupe, $dateEvenement['start'], $dateEvenement['end'], $date);
+      $dateEvenement = $event->recupererDateEvenement($id)->fetch();
+      $actu->insererActuTypeGroupeDebutFinDate("suppressionEvenement", $groupe, $dateEvenement['start'], $dateEvenement['end'], $date);
       $event->modifierEvenement($id, $debut, $fin);
-      //$actu->insererActuTypeGroupeDebutFinDate("creationEvenement", $groupe, $_POST['start'], $_POST['end'], $date);
+      $actu->insererActuTypeGroupeDebutFinDate("creationEvenement", $groupe, $_POST['start'], $_POST['end'], $date);
     }
 
     public function suppressionEvenement(){
@@ -69,9 +69,9 @@
       $id = $_POST['id'];
       $date = $actu->recupererDateHeureAction();
 
-      //$dateEvenement = $event->recupererDateEvenement($id)->fetch();
-      //$actu->insererActuTypeGroupeDebutFinDate("suppressionEvenement", $groupe, $dateEvenement['start'], $dateEvenement['end'], $date);
-      $event->supprimerEvenement($id);   
+      $dateEvenement = $event->recupererDateEvenement($id)->fetch();
+      $actu->insererActuTypeGroupeDebutFinDate("suppressionEvenement", $groupe, $dateEvenement['start'], $dateEvenement['end'], $date);
+      $event->supprimerEvenement($id);
     }
   }
 

@@ -29,7 +29,7 @@
 </section>
 
 <div class="row row-centered nomGroupe">
-  <h1> <?php echo $_GET['groupe'] ?> </h1>
+  <h1> <?php echo urldecode($_GET['groupe']) ?> </h1>
 </div>
 
 <div class="container">
@@ -63,7 +63,7 @@
     <?php foreach ($membres as list($id, $prenom, $nom, $photo)): ?>
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-centered membreGroupe">
         <img class="photoGroupeMembre" src="<?php echo $photo ?>" />
-        <a href="index.php?page=profil&amp;id=<?php echo $id ?>"> <?php echo $prenom." ".$nom ?></a>
+        <a href="profil/<?php echo $id ?>"> <?php echo $prenom." ".$nom ?></a>
       </div>
     <?php endforeach; ?>
   </div>
@@ -74,7 +74,7 @@
       <?php foreach ($membresInvites as list($id, $prenom, $nom, $photo)): ?>
         <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 col-centered membreGroupe">
           <img class="photoGroupeMembre" src="<?php echo $photo ?>" />
-          <a href="index.php?page=profil&amp;id=<?php echo $id ?>"> <?php echo $prenom." ".$nom ?></a>
+          <a href="profil/<?php echo $id ?>"> <?php echo $prenom." ".$nom ?></a>
         </div>
       <?php endforeach; ?>
     </div>

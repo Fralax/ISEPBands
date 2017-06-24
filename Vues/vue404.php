@@ -12,7 +12,7 @@
         <p>
             Mmmmmh, c'est embêtant, on dirait bien que nous avons rencontré un petit problème ... !<br>
         </p>
-        <p><a href="index.php?page=accueil">Cliquez ici</a> pour retourner à l'accueil !</p>
+        <p><a href="accueil">Cliquez ici</a> pour retourner à l'accueil !</p>
       </div>
     </div>
   </div>

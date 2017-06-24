@@ -55,7 +55,7 @@
     </div>
   </div>
 
-  <?php 
+  <?php
     if ($t == 3) {
       header("Location: index.php?page=erreur404");
     }
@@ -63,14 +63,12 @@
 
 </div>
 
-<script src='fullcalendar/lib/moment.min.js'></script>
-<script src='fullcalendar/fullcalendar.js'></script>
-<script src='fullcalendar/locale/fr.js'></script>
+<script src='librairies/fullcalendar/lib/moment.min.js'></script>
+<script src='librairies/fullcalendar/fullcalendar.js'></script>
+<script src='librairies/fullcalendar/locale/fr.js'></script>
 <script type="text/javascript">
   var statut = '<?php echo $t ?>';
   var administrateur = '<?php echo $admn ?>';
   var mesGroupes = '<?php echo json_encode($mesGroupes) ?>';
 </script>
 <script src='JS/planning.js'></script>
-
-

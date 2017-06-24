@@ -23,23 +23,23 @@
 
       if (isset($ajouterInstrumentPratique)) {
         $user->pratiquerInstrument($_SESSION['id'], $instrumentPratique, $niveau, $annees);
-        header("Location: index.php?page=profil&id=".$_SESSION['id']);
+        header("Location: profil/".$_SESSION['id']);
       }
 
       if (isset($boutonModifierInstrument)) {
         $user->modifierInstrument($_SESSION['id'], $_POST['modifierInstrument'], $_POST['modifierNiveau'], $_POST['modifierAnnees']);
-        header("Location: index.php?page=profil&id=".$_SESSION['id']);
+        header("Location: profil/".$_SESSION['id']);
       }
 
       if (isset($boutonsupprimerInstrumentPratique)) {
         $user->supprimerInstrumentPratique($_SESSION['id'], $_POST['modifierInstrument']);
         var_dump($_POST['boutonsupprimerInstrumentPratique']);
-        header("Location: index.php?page=profil&id=".$_SESSION['id']);
+        header("Location: profil/".$_SESSION['id']);
       }
 
       if (isset($_POST['boutonLienFacebook']) && $_POST['lienFacebook'] != "") {
         $user->ajouterLienFacebook($_SESSION['id'], $_POST['lienFacebook']);
-        header("Location: index.php?page=profil&id=".$_SESSION['id']);
+        header("Location: profil/".$_SESSION['id']);
       }
 
       if (isset($changerPhoto)) {
@@ -52,7 +52,7 @@
               $photo = "avatars/".$_SESSION['id'].".".$extension;
               if (move_uploaded_file($_FILES['avatar']['tmp_name'], $photo)) {
                 $modifierPhoto = $user->modifierPhoto($_SESSION['id'], $photo);
-                header("Location: index.php?page=profil&id=".$_SESSION['id']);
+                header("Location: profil/".$_SESSION['id']);
               } else{
                 ?> <script>alert("Echec de l'upload !")</script><?php
               }
@@ -63,6 +63,7 @@
             ?> <script>alert("Votre photo de profil ne doit pas dépasser 2 Mo !")</script><?php
           }
         } else{
+
           ?> <script>alert("Echec de l'upload !")</script><?php
         }
       }

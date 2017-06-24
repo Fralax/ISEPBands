@@ -349,4 +349,13 @@ class utilisateurs extends modele {
     ));
   }
 
+  public function recupererMembreById($id){
+    $sql = 'SELECT u_prenom, u_nom FROM utilisateur WHERE u_id = :id';
+    $recupererMembreById = $this->executerRequete($sql, array(
+      'id' => $id
+    ));
+
+    return $recupererMembreById;
+  }
+
 }
